@@ -4,6 +4,11 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { StyleListComponent } from './style-list/style-list.component';
 import {RouterModule, Routes} from '@angular/router';
+import {environment} from '../environments/environment';
+import {AngularFireModule} from '@angular/fire';
+import {AngularFirestoreModule} from '@angular/fire/firestore';
+import {AngularFireAuthModule} from '@angular/fire/auth';
+import {AngularFireStorageModule} from '@angular/fire/storage';
 
 const routes: Routes = [
 
@@ -14,7 +19,6 @@ const routes: Routes = [
 
 ];
 
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -22,7 +26,11 @@ const routes: Routes = [
   ],
   imports: [
     BrowserModule,
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes),
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFirestoreModule, // firestore
+    AngularFireAuthModule, // auth
+    AngularFireStorageModule // storage
   ],
   exports: [RouterModule],
 

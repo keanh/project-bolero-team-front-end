@@ -3,7 +3,17 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  firebaseConfig: {
+    apiKey: 'AIzaSyDHMrE74Ajdc2C1q8vmb8Mzg4ONHYmV03o',
+    authDomain: 'databasezingmp3.firebaseapp.com',
+    databaseURL: 'https://databasezingmp3.firebaseio.com',
+    projectId: 'databasezingmp3',
+    storageBucket: 'databasezingmp3.appspot.com',
+    messagingSenderId: '1056839183831',
+    appId: '1:1056839183831:web:24baf63579b1786b756f92',
+    measurementId: 'G-YTKJ8H8J36'
+  }
 };
 
 /*
