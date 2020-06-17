@@ -14,4 +14,5 @@ export class StyleService {
   findAll(): Observable<Style[]> {
     return this.httpClient.get<Style[]>(API_URL);
   }
+
 }
