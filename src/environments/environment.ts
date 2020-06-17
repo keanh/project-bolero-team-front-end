@@ -4,6 +4,7 @@
 
 export const environment = {
   production: false,
+  apiUrl: 'http://localhost:8080',
   firebaseConfig: {
     apiKey: 'AIzaSyDHMrE74Ajdc2C1q8vmb8Mzg4ONHYmV03o',
     authDomain: 'databasezingmp3.firebaseapp.com',
