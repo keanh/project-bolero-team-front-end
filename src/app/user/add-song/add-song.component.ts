@@ -13,20 +13,18 @@ export class AddSongComponent implements OnInit {
   songList: Song[] = [];
   success: string;
   fail: string;
-  songForm: FormGroup;
-
-  constructor(private songService: SongService) { }
-
-  ngOnInit(): void {
-    this.songForm = new FormGroup({
+  songForm = new FormGroup({
       name: new FormControl(),
       image: new FormControl(),
       lyrics: new FormControl(),
       fileMp3: new FormControl(),
       singer: new FormControl(),
       author: new FormControl(),
-      }
-    );
+    }
+  );
+  constructor(private songService: SongService) {}
+
+  ngOnInit(): void {
   }
   onSubmit(){
       const {value} = this.songForm;

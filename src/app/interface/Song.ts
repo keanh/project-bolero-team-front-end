@@ -10,5 +10,5 @@ export interface Song {
   singer: string;
   author: string;
   views: number;
-  style: Style;
+  style?: Style;
 }
