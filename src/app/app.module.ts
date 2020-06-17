@@ -2,9 +2,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
-import { StyleListComponent } from './style-list/style-list.component';
 import {RouterModule, Routes} from '@angular/router';
-
+import {HttpClientModule} from '@angular/common/http';
 const routes: Routes = [
 
   {
@@ -18,11 +17,12 @@ const routes: Routes = [
 @NgModule({
   declarations: [
     AppComponent,
-    StyleListComponent
   ],
   imports: [
     BrowserModule,
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes),
+    HttpClientModule,
+
   ],
   exports: [RouterModule],
 
