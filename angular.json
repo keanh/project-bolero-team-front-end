@@ -119,6 +119,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "bolero-team"
+    }
+  },
+  "defaultProject": "bolero-team",
+  "cli": {
+    "analytics": false
+  }
 }
