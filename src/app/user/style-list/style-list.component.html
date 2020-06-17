@@ -1,0 +1,13 @@
+<h2>List supplier</h2>
+<a [routerLink]="['/admin/add-suppler']">Add Category</a>
+<ul>
+  <li
+    *ngFor="let style of styles">
+    {{style.id}}
+    {{style.name}}
+    {{style.description}}
+<!--    <a [routerLink]="['/admin/edit-suppler', supplier.id]">Edit</a>-->
+    <br/>
+<!--    <button (click)="deleteSupplier(i)">Delete</button>-->
+  </li>
+</ul>

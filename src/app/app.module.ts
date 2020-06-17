@@ -2,7 +2,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
-import { StyleListComponent } from './style-list/style-list.component';
 import {RouterModule, Routes} from '@angular/router';
 import {environment} from '../environments/environment';
 import {AngularFireModule} from '@angular/fire';
@@ -10,6 +9,7 @@ import {AngularFirestoreModule} from '@angular/fire/firestore';
 import {AngularFireAuthModule} from '@angular/fire/auth';
 import {AngularFireStorageModule} from '@angular/fire/storage';
 
+import {HttpClientModule} from '@angular/common/http';
 const routes: Routes = [
 
   {
@@ -19,10 +19,10 @@ const routes: Routes = [
 
 ];
 
+
 @NgModule({
   declarations: [
     AppComponent,
-    StyleListComponent
   ],
   imports: [
     BrowserModule,
@@ -30,7 +30,10 @@ const routes: Routes = [
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFirestoreModule, // firestore
     AngularFireAuthModule, // auth
-    AngularFireStorageModule // storage
+    AngularFireStorageModule, // storage
+    RouterModule.forRoot(routes),
+    HttpClientModule,
+
   ],
   exports: [RouterModule],
 

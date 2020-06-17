@@ -6,6 +6,7 @@ import { LayoutComponent } from './layout/layout.component';
 import {RouterModule, Routes} from '@angular/router';
 import { PlayMusicComponent } from './play-music/play-music.component';
 import { AddSongComponent } from './add-song/add-song.component';
+import {StyleListComponent} from './style-list/style-list.component';
 
 const routes: Routes = [
   {
@@ -19,13 +20,17 @@ const routes: Routes = [
       {
         path: 'add',
         component: AddSongComponent
-      }
+      },
+      {
+        path: 'style-list',
+        component: StyleListComponent
+      },
     ]
   }
 ];
 
 @NgModule({
-  declarations: [FooterComponent, HeaderComponent, LayoutComponent, PlayMusicComponent, AddSongComponent],
+  declarations: [FooterComponent, HeaderComponent, LayoutComponent, PlayMusicComponent, AddSongComponent, StyleListComponent],
   imports: [
     CommonModule,
     RouterModule.forChild(routes)
