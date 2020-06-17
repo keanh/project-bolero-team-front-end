@@ -119,6 +119,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "bolero-team"
+    }
+  },
+  "defaultProject": "bolero-team",
+  "cli": {
+    "analytics": "985347cc-34f8-451a-bcf3-b69848c35334"
+  }
 }

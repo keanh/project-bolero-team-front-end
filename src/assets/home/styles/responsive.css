@@ -27,7 +27,7 @@
 
 @media only screen and (max-width: 1600px)
 {
-	
+
 }
 
 /************
@@ -36,7 +36,7 @@
 
 @media only screen and (max-width: 1440px)
 {
-	
+
 }
 
 /************
@@ -45,7 +45,7 @@
 
 @media only screen and (max-width: 1380px)
 {
-	
+
 }
 
 /************
@@ -54,7 +54,7 @@
 
 @media only screen and (max-width: 1280px)
 {
-	
+
 }
 
 /************
@@ -109,7 +109,7 @@
 
 @media only screen and (max-width: 1100px)
 {
-	
+
 }
 
 /************
@@ -118,7 +118,7 @@
 
 @media only screen and (max-width: 1024px)
 {
-	
+
 }
 
 /************
@@ -129,7 +129,7 @@
 {
 	.header_content
 	{
-		width: 100%;
+		width: 50%;
 		left: auto;
 	}
 	.main_nav
@@ -237,7 +237,7 @@
 
 @media only screen and (max-width: 959px)
 {
-	
+
 }
 
 /************
@@ -246,7 +246,7 @@
 
 @media only screen and (max-width: 880px)
 {
-	
+
 }
 
 /************
@@ -255,7 +255,7 @@
 
 @media only screen and (max-width: 768px)
 {
-	
+
 }
 
 /************
@@ -402,9 +402,9 @@
 	.tickets_form_input::-moz-placeholder
 	{
 		font-size: 14px !important;
-	} 
+	}
 	.tickets_form_input:-ms-input-placeholder
-	{ 
+	{
 		font-size: 14px !important;
 	}
 	.tickets_form_input::input-placeholder
@@ -418,7 +418,7 @@
 	}
 	.tickets_form_button
 	{
-		
+
 	}
 	.home_slider_nav,
 	.home_social
@@ -481,9 +481,9 @@
 	.newsletter_input::-moz-placeholder
 	{
 		font-size: 14px !important;
-	} 
+	}
 	.newsletter_input:-ms-input-placeholder
-	{ 
+	{
 		font-size: 14px !important;
 	}
 	.newsletter_input::input-placeholder
@@ -498,7 +498,7 @@
 
 @media only screen and (max-width: 539px)
 {
-	
+
 }
 
 /************
@@ -507,7 +507,7 @@
 
 @media only screen and (max-width: 480px)
 {
-	
+
 }
 
 /************
@@ -516,7 +516,7 @@
 
 @media only screen and (max-width: 479px)
 {
-	
+
 }
 
 /************
@@ -525,5 +525,5 @@
 
 @media only screen and (max-width: 400px)
 {
-	
+
 }
