@@ -9,6 +9,8 @@ import {StyleListComponent} from './style-list/style-list.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { UpdateSongComponent } from './update-song/update-song.component';
 import {WelcomeAreaComponent} from './welcome-area/welcome-area.component';
+import { NavbarComponent } from './navbar/navbar.component';
+import { FeatureComponent } from './feature/feature.component';
 
 const routes: Routes = [
   {
@@ -41,7 +43,7 @@ const routes: Routes = [
     LayoutComponent,
     AddSongComponent,
     StyleListComponent,
-    UpdateSongComponent, WelcomeAreaComponent,
+    UpdateSongComponent, WelcomeAreaComponent, NavbarComponent, FeatureComponent,
   ],
   imports: [
     CommonModule,
