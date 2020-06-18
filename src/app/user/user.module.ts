@@ -8,8 +8,8 @@ import { PlayMusicComponent } from './play-music/play-music.component';
 import { AddSongComponent } from './add-song/add-song.component';
 import {StyleListComponent} from './style-list/style-list.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import { NavbarComponent } from './navbar/navbar.component';
 import { UpdateSongComponent } from './update-song/update-song.component';
+import { SongDetailsComponent } from './song-details/song-details.component';
 
 const routes: Routes = [
   {
@@ -31,7 +31,7 @@ const routes: Routes = [
       {
         path: 'update',
         component: UpdateSongComponent
-      },
+      }
     ]
   }
 ];
@@ -44,7 +44,9 @@ const routes: Routes = [
       AddSongComponent,
       StyleListComponent,
       UpdateSongComponent,
-      NavbarComponent],
+      SongDetailsComponent
+      // NavbarComponent
+      ],
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
