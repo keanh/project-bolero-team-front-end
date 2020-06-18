@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Song} from '../../interface/Song';
-import {FormControl, FormGroup} from '@angular/forms';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {SongService} from '../../service/song.service';
 import {AngularFireStorage} from '@angular/fire/storage';
 import {environment} from '../../../environments/environment';
@@ -26,32 +26,42 @@ export class AddSongComponent implements OnInit {
               private imageService: ImageServiceService) {}
   ngOnInit(): void {
     this.songForm = new FormGroup({
-      name: new FormControl(),
+      name: new FormControl('',
+          [Validators.required,
+            Validators.minLength(1)]),
       image: new FormControl(),
-      lyrics: new FormControl(),
+      lyrics: new FormControl('',
+        [Validators.required,
+          Validators.minLength(10)]),
       fileMp3: new FormControl(),
-      singer: new FormControl(),
-      author: new FormControl(),
+      singer: new FormControl('',
+        [Validators.required,
+          Validators.minLength(1)]),
+      author: new FormControl('',
+        [Validators.required,
+          Validators.minLength(1)]),
       }
     );
   }
   createSong(){
-      const {value} = this.songForm;
-      this.songService.addSong(value)
-        .subscribe(result =>
-        { console.log('Add supplier successfully !');
-          this.songList.push(result);
-          this.songForm.reset({
-            name: '',
-            image: '',
-            lyrics: '',
-            fileMp3: '',
-            singer: '',
-            author: '',
+      if (this.songForm.valid){
+        const {value} = this.songForm;
+        this.songService.addSong(value)
+          .subscribe(result =>
+          { console.log('Add supplier successfully !');
+            this.songList.push(result);
+            this.songForm.reset({
+              name: '',
+              image: '',
+              lyrics: '',
+              fileMp3: '',
+              singer: '',
+              author: '',
+            });
+          }, error => {
+            console.log('Add post successfully !');
           });
-        }, error => {
-          console.log('Add post successfully !');
-        });
+      }
     }
 
   async createImage() {

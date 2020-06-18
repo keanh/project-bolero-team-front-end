@@ -8,8 +8,8 @@ import {AngularFireModule} from '@angular/fire';
 import {AngularFirestoreModule} from '@angular/fire/firestore';
 import {AngularFireAuthModule} from '@angular/fire/auth';
 import {AngularFireStorageModule} from '@angular/fire/storage';
-
 import {HttpClientModule} from '@angular/common/http';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 const routes: Routes = [
 
   {
@@ -22,7 +22,7 @@ const routes: Routes = [
 
 @NgModule({
   declarations: [
-    AppComponent,
+    AppComponent
   ],
   imports: [
     BrowserModule,
@@ -31,9 +31,9 @@ const routes: Routes = [
     AngularFirestoreModule, // firestore
     AngularFireAuthModule, // auth
     AngularFireStorageModule, // storage
-    RouterModule.forRoot(routes),
     HttpClientModule,
-
+    ReactiveFormsModule,
+    FormsModule
   ],
   exports: [RouterModule],
 
