@@ -2,11 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import {Song} from '../../interface/Song';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {SongService} from '../../service/song.service';
-import {Router} from "@angular/router";
-import {AngularFireStorage} from "@angular/fire/storage";
-import {finalize} from "rxjs/operators";
-import {Style} from "../../interface/Style";
-import {StyleService} from "../../service/style.service";
+import {Router} from '@angular/router';
+import {AngularFireStorage} from '@angular/fire/storage';
+import {finalize} from 'rxjs/operators';
+import {Style} from '../../interface/Style';
+import {StyleService} from '../../service/style.service';
 
 @Component({
   selector: 'app-add-song',
@@ -48,7 +48,7 @@ export class AddSongComponent implements OnInit {
       author: ['', [Validators.required, Validators.minLength(5)]],
       image: ['', [Validators.required]],
       style: this.fb.group({
-          id: ['',[Validators.required]],
+          id: ['', [Validators.required]],
       }),
     });
     this.styleService.findAll().subscribe( next => (this.styleList = next), error => (this.styleList = []));
@@ -67,13 +67,13 @@ export class AddSongComponent implements OnInit {
       finalize(() => {
         fileRef.getDownloadURL().subscribe(url => {
           this.imageUrl = url;
-          console.log(this.imageUrl)
+          console.log(this.imageUrl);
         });
       })
     ).subscribe(data => {
-      console.log(data)
-    },err => {
-      console.log(err)
+      console.log(data);
+    }, err => {
+      console.log(err);
       return false;
     });
 
@@ -87,9 +87,9 @@ export class AddSongComponent implements OnInit {
         });
       })
     ).subscribe(data => {
-      console.log(data)
-    },err => {
-      console.log(err)
+      console.log(data);
+    }, err => {
+      console.log(err);
       return false;
     });
 
@@ -97,26 +97,26 @@ export class AddSongComponent implements OnInit {
   }
 
   onchangeImage(event){
-    if(event.target.files[0] !== null){
+    if (event.target.files[0] !== null){
       this.selectedImage = event.target.files[0];
       console.log(this.selectedImage);
     }
   }
 
   onchangeMusic(event){
-    if(event.target.files[0] !== null){
+    if (event.target.files[0] !== null){
       this.selectedMusic = event.target.files[0];
       console.log(this.selectedMusic);
     }
   }
 
   wait(ms) {
-    return new Promise(r => setTimeout(r, ms))
+    return new Promise(r => setTimeout(r, ms));
   }
 
   async onSubmit() {
      const {value} = this.songForm;
-     let check = this.upload();
+     const check = this.upload();
      if (check) {
        await this.wait(2000);
        const song: Song = {
@@ -126,11 +126,11 @@ export class AddSongComponent implements OnInit {
          lyrics: value.lyrics,
          image: this.imageUrl,
          fileMp3: this.musicUrl,
-       }
+       };
        this.songService.addSong(song).subscribe(() => {
-         console.log("create thành công")
+         console.log('create thành công');
        }, (e) => {
-         console.log(e)
+         console.log(e);
        });
        console.log(song);
        this.songForm.reset();
