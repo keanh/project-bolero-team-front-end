@@ -31,6 +31,10 @@ const routes: Routes = [
       {
         path: 'update',
         component: UpdateSongComponent
+      },
+      {
+        path: 'song-details/:id',
+        component: SongDetailsComponent
       }
     ]
   }
