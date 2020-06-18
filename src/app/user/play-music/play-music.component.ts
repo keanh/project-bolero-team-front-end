@@ -11,5 +11,4 @@ export class PlayMusicComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
 }
