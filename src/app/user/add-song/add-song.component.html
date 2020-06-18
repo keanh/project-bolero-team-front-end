@@ -14,15 +14,6 @@
                 <input class="form-control" id="name" type="text" formControlName="name">
               </div>
             </div>
-<!--            <div class="form-row form-group">-->
-<!--              <label class="col-md-4 text-md-right col-form-label" for="fileMp3">Song File</label>-->
-<!--              <div class="col-md-7">-->
-<!--                <div class="custom-file">-->
-<!--                  <input class="custom-file-input" id="fileMp3" type="file">-->
-<!--                  <label class="custom-file-label" for="fileMp3">Choose file</label>-->
-<!--                </div>-->
-<!--              </div>-->
-<!--            </div>-->
             <div class="form-row form-group">
               <label class="col-md-4 text-md-right col-form-label" for="singer" >Singer </label>
               <div class="col-md-7">
@@ -38,30 +29,18 @@
             <div class="form-row form-group">
               <label class="col-md-4 text-md-right col-form-label" >Song Cover Image</label>
               <div class="col-md-7">
-                <!--                <div class="custom-file">-->
-                <!--                  <input class="custom-file-input" id="image" type="file" formControlName="image">-->
-                <!--                  <label class="custom-file-label" for="image" ></label>-->
-                <!--                </div>-->
                 <input type="file" (change)="onchangeImage($event)">
               </div>
             </div>
             <div class="form-row form-group">
               <label class="col-md-4 text-md-right col-form-label">Song File</label>
               <div class="col-md-7">
-                <!--                <div class="custom-file">-->
-                <!--                  <input class="custom-file-input" id="image" type="file" formControlName="image">-->
-                <!--                  <label class="custom-file-label" for="image" ></label>-->
-                <!--                </div>-->
                 <input type="file" (change)="onchangeMusic($event)">
               </div>
             </div>
             <div class="form-row form-group">
               <label class="col-md-4 text-md-right col-form-label">Lyrics Song</label>
               <div class="col-md-7">
-                <!--                <div class="custom-file">-->
-                <!--                  <input class="custom-file-input" id="image" type="file" formControlName="image">-->
-                <!--                  <label class="custom-file-label" for="image" ></label>-->
-                <!--                </div>-->
                 <ckeditor formControlName="lyrics"></ckeditor>
               </div>
             </div>
