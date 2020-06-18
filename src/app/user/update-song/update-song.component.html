@@ -1,23 +1,23 @@
 <form [formGroup]="songForm" (ngSubmit)="updateSong()">
   <div>
     <label>
-      Title
+      Name
       <br>
-      <input type="text" formControlName="title">
+      <input type="text" formControlName="name">
     </label>
   </div>
-  <div *ngIf="songForm.get('name').invalid && songForm.get('name').touched" style="color: #ef2b2b">
-    Title is required and min length is 10
+  <div *ngIf="songForm.get('name').invalid && songForm.get('name').touched" style="color: red">
+    Name is required and min length is 1
   </div>
   <div>
     <label>
-      Lyrics
+      Singer
       <br>
-      <input type="text" formControlName="lyrics">
+      <input type="text" formControlName="singer">
     </label>
   </div>
-  <div *ngIf="songForm.get('lyrics').invalid && songForm.get('lyrics').touched" style="color: red">
-    Lyrics is required and min length is 10
+  <div *ngIf="songForm.get('singer').invalid && songForm.get('singer').touched" style="color: red">
+    singer is required and min length is 1
   </div>
   <div>
     <label>
@@ -31,13 +31,13 @@
   </div>
   <div>
     <label>
-      Singer
+      Lyrics
       <br>
-      <textarea  formControlName="singer" cols="30" rows="10"></textarea>
+      <textarea  formControlName="lyrics" cols="30" rows="10" style="border: solid gray"></textarea>
     </label>
   </div>
-  <div *ngIf="songForm.get('singer').invalid && songForm.get('singer').touched" style="color: #ff0000">
-    Description is required and min length is 1
+  <div *ngIf="songForm.get('lyrics').invalid && songForm.get('lyrics').touched" style="color: red">
+    Lyrics is required and min length is 10
   </div>
   <button type="submit">Update song</button>
 </form>

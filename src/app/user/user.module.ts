@@ -28,6 +28,10 @@ const routes: Routes = [
         path: 'style-list',
         component: StyleListComponent
       },
+      {
+        path: 'update',
+        component: UpdateSongComponent
+      },
     ]
   }
 ];
