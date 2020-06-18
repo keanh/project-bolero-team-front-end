@@ -1,12 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import {Song} from '../../interface/Song';
-import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {SongService} from '../../service/song.service';
-import {AngularFireStorage} from '@angular/fire/storage';
-import {environment} from '../../../environments/environment';
-import {finalize} from 'rxjs/operators';
-import {Image} from '../../interface/Image';
-import {ImageServiceService} from '../../service/image-service.service';
+import {Router} from "@angular/router";
+import {AngularFireStorage} from "@angular/fire/storage";
+import {finalize} from "rxjs/operators";
 
 @Component({
   selector: 'app-add-song',
@@ -14,88 +12,121 @@ import {ImageServiceService} from '../../service/image-service.service';
   styleUrls: ['./add-song.component.css']
 })
 export class AddSongComponent implements OnInit {
+  imageUrl: string;
+  musicUrl: string;
+
+  selectedMusic: any = null;
+  selectedImage: any = null;
 
   songList: Song[] = [];
-  success: string;
-  fail: string;
   songForm: FormGroup;
-  selectedImages: any[] = [];
+  // success: string;
+  // fail: string;
+  // songForm = new FormGroup({
+  //     name: new FormControl(),
+  //     image: new FormControl(),
+  //     lyrics: new FormControl(),
+  //     fileMp3: new FormControl(),
+  //     singer: new FormControl(),
+  //     author: new FormControl(),
+  //   }
+  // );
 
   constructor(private songService: SongService,
-              private storage: AngularFireStorage,
-              private imageService: ImageServiceService) {}
+              private fb: FormBuilder,
+              private storage: AngularFireStorage) {}
+
   ngOnInit(): void {
-    this.songForm = new FormGroup({
-      name: new FormControl('',
-          [Validators.required,
-            Validators.minLength(1)]),
-      image: new FormControl(),
-      lyrics: new FormControl('',
-        [Validators.required,
-          Validators.minLength(10)]),
-      fileMp3: new FormControl(),
-      singer: new FormControl('',
-        [Validators.required,
-          Validators.minLength(1)]),
-      author: new FormControl('',
-        [Validators.required,
-          Validators.minLength(1)]),
-      }
-    );
+    this.songForm = this.fb.group({
+      name: ['', [Validators.required, Validators.minLength(1)]],
+      // lyrics: ['', [Validators.required, Validators.minLength(50)]],
+      singer: ['', [Validators.required, Validators.minLength(5)]],
+      author: ['', [Validators.required, Validators.minLength(5)]],
+      image: ['', [Validators.required]],
+    });
   }
-  createSong(){
-      if (this.songForm.valid){
-        const {value} = this.songForm;
-        this.songService.addSong(value)
-          .subscribe(result =>
-          { console.log('Add supplier successfully !');
-            this.songList.push(result);
-            this.songForm.reset({
-              name: '',
-              image: '',
-              lyrics: '',
-              fileMp3: '',
-              singer: '',
-              author: '',
-            });
-          }, error => {
-            console.log('Add post successfully !');
-          });
-      }
-    }
 
-  async createImage() {
-    const song = await this.createSong();
-    if (song != null) {
-      if (this.selectedImages.length !== 0) {
-        this.songForm.reset();
-        for (const selectedImage of this.selectedImages) {
-          const filePath = `${environment.firebaseConfig.storageBucket}/${selectedImage.name.split('.').slice(0, -1).join('.')}_${new Date().getTime()}`;
-          const fileRef = this.storage.ref(filePath);
-          this.storage.upload(filePath, selectedImage).snapshotChanges().pipe(
-            finalize(() => {
-              fileRef.getDownloadURL().subscribe(data => {
-                const image: Image = {
-                  url: data
-                };
-                this.imageService.createImage(image).subscribe(() => {
-                }, () => {
-                });
-              });
-            })
-          ).subscribe();
-        }
-      }
+  onRemove(event) {
+    console.log(event);
+    this.songList.splice(this.songList.indexOf(event), 1);
+  }
+
+  upload(){
+    const filePath = `databasezingmp3.appspot.com/${this.selectedImage.name.split('.').slice(0, -1).join('.')}_${new Date().getTime()}`;
+    const fileRef = this.storage.ref(filePath);
+    this.storage.upload(filePath, this.selectedImage).snapshotChanges().pipe(
+      finalize(() => {
+        fileRef.getDownloadURL().subscribe(url => {
+          this.imageUrl = url;
+          console.log(this.imageUrl)
+        });
+      })
+    ).subscribe(data => {
+      console.log(data)
+    },err => {
+      console.log(err)
+      return false;
+    });
+
+    const filePath2 = `databasezingmp3.appspot.com/${this.selectedMusic.name.split('.').slice(0, -1).join('.')}_${new Date().getTime()}`;
+    const fileRef2 = this.storage.ref(filePath2);
+    this.storage.upload(filePath2, this.selectedMusic).snapshotChanges().pipe(
+      finalize(() => {
+        fileRef2.getDownloadURL().subscribe(url => {
+          this.musicUrl = url;
+          console.log(this.musicUrl);
+        });
+      })
+    ).subscribe(data => {
+      console.log(data)
+    },err => {
+      console.log(err)
+      return false;
+    });
+
+    return true;
+  }
+
+  onchangeImage(event){
+    if(event.target.files[0] !== null){
+      this.selectedImage = event.target.files[0];
+      console.log(this.selectedImage);
     }
   }
 
-  showPreview(event: any) {
-    if (event.target.files && event.target.files[0]) {
-      const reader = new FileReader();
-      reader.readAsDataURL(event.target.files[0]);
-      this.selectedImages = event.target.files;
-    } else {
-      this.selectedImages = [];
+  onchangeMusic(event){
+    if(event.target.files[0] !== null){
+      this.selectedMusic = event.target.files[0];
+      console.log(this.selectedMusic);
     }
   }
+
+  wait(ms) {
+    return new Promise(r => setTimeout(r, ms))
+  }
+
+  async onSubmit() {
+     const {value} = this.songForm;
+     let check = this.upload();
+     if (check) {
+       await this.wait(2000);
+       const song: Song = {
+         name: value.name,
+         singer: value.singer,
+         author: value.author,
+         image: this.imageUrl,
+         fileMp3: this.musicUrl,
+       }
+       this.songService.addSong(song).subscribe(() => {
+         console.log("create thành công")
+       }, (e) => {
+         console.log(e)
+       });
+       console.log(song);
+       this.songForm.reset();
+        } else {
+          return;
+     }
+   }
+
 }
