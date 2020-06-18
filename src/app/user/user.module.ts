@@ -8,6 +8,7 @@ import { AddSongComponent } from './add-song/add-song.component';
 import {StyleListComponent} from './style-list/style-list.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { UpdateSongComponent } from './update-song/update-song.component';
+import {WelcomeAreaComponent} from './welcome-area/welcome-area.component';
 
 const routes: Routes = [
   {
@@ -23,7 +24,7 @@ const routes: Routes = [
         component: AddSongComponent
       },
       {
-        path: 'style-list',
+        path: '',
         component: StyleListComponent
       },
       {
@@ -35,13 +36,13 @@ const routes: Routes = [
 ];
 
 @NgModule({
-    declarations: [FooterComponent,
-      HeaderComponent,
-      LayoutComponent,
-      AddSongComponent,
-      StyleListComponent,
-      UpdateSongComponent,
-    ],
+  declarations: [FooterComponent,
+    HeaderComponent,
+    LayoutComponent,
+    AddSongComponent,
+    StyleListComponent,
+    UpdateSongComponent, WelcomeAreaComponent,
+  ],
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
