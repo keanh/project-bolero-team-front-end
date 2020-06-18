@@ -23,6 +23,17 @@ export class AddSongComponent implements OnInit {
   songList: Song[] = [];
   styleList: Style[] = [];
   songForm: FormGroup;
+  // success: string;
+  // fail: string;
+  // songForm = new FormGroup({
+  //     name: new FormControl(),
+  //     image: new FormControl(),
+  //     lyrics: new FormControl(),
+  //     fileMp3: new FormControl(),
+  //     singer: new FormControl(),
+  //     author: new FormControl(),
+  //   }
+  // );
 
   constructor(private songService: SongService,
               private styleService: StyleService,
