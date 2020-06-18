@@ -123,6 +123,6 @@
   },
   "defaultProject": "bolero-team",
   "cli": {
-    "analytics": false
+    "analytics": "985347cc-34f8-451a-bcf3-b69848c35334"
   }
 }

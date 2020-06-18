@@ -8,9 +8,9 @@ import { PlayMusicComponent } from './play-music/play-music.component';
 import { AddSongComponent } from './add-song/add-song.component';
 import {StyleListComponent} from './style-list/style-list.component';
 import {ReactiveFormsModule} from '@angular/forms';
-// import { MVComponent } from './mv/mv.component';
-// import { NavbarComponent } from './navbar/navbar.component';
-import {CKEditorModule} from 'ckeditor4-angular';
+import { MVComponent } from './mv/mv.component';
+import { NavbarComponent } from './navbar/navbar.component';
+import {CKEditorModule} from "ckeditor4-angular";
 
 const routes: Routes = [
   {
@@ -21,10 +21,10 @@ const routes: Routes = [
         path: '',
       component: PlayMusicComponent
       },
-      // {
-      //   path: '',
-      //   component: MVComponent
-      // },
+      {
+        path: '',
+        component: MVComponent
+      },
       {
         path: 'add',
         component: AddSongComponent
@@ -38,12 +38,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  declarations: [FooterComponent,
-    HeaderComponent,
-    LayoutComponent,
-    PlayMusicComponent,
-    AddSongComponent,
-    StyleListComponent],
+  declarations: [FooterComponent, HeaderComponent, LayoutComponent, PlayMusicComponent, AddSongComponent, StyleListComponent, NavbarComponent],
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
@@ -51,4 +46,4 @@ const routes: Routes = [
     CKEditorModule
   ]
 })
-export class UserModule {}
+export class UserModule { }
