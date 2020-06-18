@@ -10,6 +10,7 @@ import {StyleListComponent} from './style-list/style-list.component';
 import {ReactiveFormsModule} from '@angular/forms';
 import { MVComponent } from './mv/mv.component';
 import { NavbarComponent } from './navbar/navbar.component';
+import {CKEditorModule} from "ckeditor4-angular";
 
 const routes: Routes = [
   {
@@ -37,11 +38,12 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  declarations: [FooterComponent, HeaderComponent, LayoutComponent, PlayMusicComponent, AddSongComponent, StyleListComponent],
+    declarations: [FooterComponent, HeaderComponent, LayoutComponent, PlayMusicComponent, AddSongComponent, StyleListComponent, NavbarComponent],
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    CKEditorModule
   ]
 })
 export class UserModule { }

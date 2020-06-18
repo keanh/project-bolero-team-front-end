@@ -39,7 +39,7 @@ export class AddSongComponent implements OnInit {
   ngOnInit(): void {
     this.songForm = this.fb.group({
       name: ['', [Validators.required, Validators.minLength(1)]],
-      // lyrics: ['', [Validators.required, Validators.minLength(50)]],
+      lyrics: ['', [Validators.required, Validators.minLength(50)]],
       singer: ['', [Validators.required, Validators.minLength(5)]],
       author: ['', [Validators.required, Validators.minLength(5)]],
       image: ['', [Validators.required]],
@@ -114,6 +114,7 @@ export class AddSongComponent implements OnInit {
          name: value.name,
          singer: value.singer,
          author: value.author,
+         lyrics: value.lyrics,
          image: this.imageUrl,
          fileMp3: this.musicUrl,
        }

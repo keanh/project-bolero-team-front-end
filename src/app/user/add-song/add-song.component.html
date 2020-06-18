@@ -14,26 +14,6 @@
                 <input class="form-control" id="name" type="text" formControlName="name">
               </div>
             </div>
-            <div class="form-row form-group">
-              <label class="col-md-4 text-md-right col-form-label" >Song Cover Image</label>
-              <div class="col-md-7">
-<!--                <div class="custom-file">-->
-<!--                  <input class="custom-file-input" id="image" type="file" formControlName="image">-->
-<!--                  <label class="custom-file-label" for="image" ></label>-->
-<!--                </div>-->
-                <input type="file" (change)="onchangeImage($event)">
-              </div>
-            </div>
-            <div class="form-row form-group">
-              <label class="col-md-4 text-md-right col-form-label">Song File</label>
-              <div class="col-md-7">
-                <!--                <div class="custom-file">-->
-                <!--                  <input class="custom-file-input" id="image" type="file" formControlName="image">-->
-                <!--                  <label class="custom-file-label" for="image" ></label>-->
-                <!--                </div>-->
-                <input type="file" (change)="onchangeMusic($event)">
-              </div>
-            </div>
 <!--            <div class="form-row form-group">-->
 <!--              <label class="col-md-4 text-md-right col-form-label" for="fileMp3">Song File</label>-->
 <!--              <div class="col-md-7">-->
@@ -50,16 +30,41 @@
               </div>
             </div>
             <div class="form-row form-group">
-              <div class="col-md-4">
-              </div>
-            </div>
-            <div class="form-row form-group">
               <label class="col-md-4 text-md-right col-form-label" for="author">Author</label>
               <div class="col-md-7">
                 <input class="form-control" id="author" type="text" formControlName="author">
               </div>
             </div>
-
+            <div class="form-row form-group">
+              <label class="col-md-4 text-md-right col-form-label" >Song Cover Image</label>
+              <div class="col-md-7">
+                <!--                <div class="custom-file">-->
+                <!--                  <input class="custom-file-input" id="image" type="file" formControlName="image">-->
+                <!--                  <label class="custom-file-label" for="image" ></label>-->
+                <!--                </div>-->
+                <input type="file" (change)="onchangeImage($event)">
+              </div>
+            </div>
+            <div class="form-row form-group">
+              <label class="col-md-4 text-md-right col-form-label">Song File</label>
+              <div class="col-md-7">
+                <!--                <div class="custom-file">-->
+                <!--                  <input class="custom-file-input" id="image" type="file" formControlName="image">-->
+                <!--                  <label class="custom-file-label" for="image" ></label>-->
+                <!--                </div>-->
+                <input type="file" (change)="onchangeMusic($event)">
+              </div>
+            </div>
+            <div class="form-row form-group">
+              <label class="col-md-4 text-md-right col-form-label">Lyrics Song</label>
+              <div class="col-md-7">
+                <!--                <div class="custom-file">-->
+                <!--                  <input class="custom-file-input" id="image" type="file" formControlName="image">-->
+                <!--                  <label class="custom-file-label" for="image" ></label>-->
+                <!--                </div>-->
+                <ckeditor formControlName="lyrics"></ckeditor>
+              </div>
+            </div>
 <!--            <div class="form-row form-group">-->
 <!--              <label class="col-md-4 text-md-right col-form-label" for="style">Style</label>-->
 <!--              <div class="col-md-7">-->
@@ -69,11 +74,6 @@
 <!--              <select ng-model="selectedItem">-->
 <!--                <option ng-repeat="item in items" value="{{item.age}}"{{item.name}}</option>-->
 <!--              </select>-->
-
-
-<!--            </div>-->
-<!--            <div >-->
-<!--              <button class="btn btn-brand btn-air" type="submit" >Save Song</button>-->
 <!--            </div>-->
             <div class="row">
               <div class="col-md-4"></div>
