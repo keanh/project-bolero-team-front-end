@@ -10,6 +10,9 @@ import {AngularFireAuthModule} from '@angular/fire/auth';
 import {AngularFireStorageModule} from '@angular/fire/storage';
 
 import {HttpClientModule} from '@angular/common/http';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+
+
 const routes: Routes = [
 
   {
@@ -26,14 +29,14 @@ const routes: Routes = [
   ],
   imports: [
     BrowserModule,
-    RouterModule.forRoot(routes),
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFirestoreModule, // firestore
     AngularFireAuthModule, // auth
     AngularFireStorageModule, // storage
     RouterModule.forRoot(routes),
     HttpClientModule,
-
+    ReactiveFormsModule,
+    FormsModule
   ],
   exports: [RouterModule],
 
