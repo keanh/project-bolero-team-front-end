@@ -65,16 +65,16 @@
                 <ckeditor formControlName="lyrics"></ckeditor>
               </div>
             </div>
-<!--            <div class="form-row form-group">-->
-<!--              <label class="col-md-4 text-md-right col-form-label" for="style">Style</label>-->
-<!--              <div class="col-md-7">-->
-<!--                <input class="form-control" id="style" type="text">-->
-<!--              </div>-->
-<!--              <div>selected item is : {{selectedItem}}</div>-->
-<!--              <select ng-model="selectedItem">-->
-<!--                <option ng-repeat="item in items" value="{{item.age}}"{{item.name}}</option>-->
-<!--              </select>-->
-<!--            </div>-->
+            <div class="form-row form-group" formGroupName="style">
+              <label class="col-md-4 text-md-right col-form-label">Style</label>
+              <select formControlName="id" style="color: black;height: 30px" class="col-md-7">
+                <option value="" [disabled]="true">Chọn thể loại nhạc</option>
+                <option *ngFor="let style of styleList" value="{{style.id}}">{{style.name}}</option>
+                <div *ngIf="songForm.get('style').get('id').invalid && songForm.get('style').get('id').touched" style="color: red">
+                  Category is required
+                </div>
+              </select>
+            </div>
             <div class="row">
               <div class="col-md-4"></div>
               <div class="col-md-7 btn-inline">

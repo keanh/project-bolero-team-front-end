@@ -5,6 +5,8 @@ import {SongService} from '../../service/song.service';
 import {Router} from "@angular/router";
 import {AngularFireStorage} from "@angular/fire/storage";
 import {finalize} from "rxjs/operators";
+import {Style} from "../../interface/Style";
+import {StyleService} from "../../service/style.service";
 
 @Component({
   selector: 'app-add-song',
@@ -19,20 +21,11 @@ export class AddSongComponent implements OnInit {
   selectedImage: any = null;
 
   songList: Song[] = [];
+  styleList: Style[] = [];
   songForm: FormGroup;
-  // success: string;
-  // fail: string;
-  // songForm = new FormGroup({
-  //     name: new FormControl(),
-  //     image: new FormControl(),
-  //     lyrics: new FormControl(),
-  //     fileMp3: new FormControl(),
-  //     singer: new FormControl(),
-  //     author: new FormControl(),
-  //   }
-  // );
 
   constructor(private songService: SongService,
+              private styleService: StyleService,
               private fb: FormBuilder,
               private storage: AngularFireStorage) {}
 
@@ -43,7 +36,12 @@ export class AddSongComponent implements OnInit {
       singer: ['', [Validators.required, Validators.minLength(5)]],
       author: ['', [Validators.required, Validators.minLength(5)]],
       image: ['', [Validators.required]],
+      style: this.fb.group({
+          id: ['',[Validators.required]],
+      }),
     });
+    this.styleService.findAll().subscribe( next => (this.styleList = next), error => (this.styleList = []));
+    console.log(this.styleList);
   }
 
   onRemove(event) {
