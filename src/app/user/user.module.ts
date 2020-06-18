@@ -11,6 +11,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { NavbarComponent } from './navbar/navbar.component';
 import {CKEditorModule} from "ckeditor4-angular";
 import { UpdateSongComponent } from './update-song/update-song.component';
+import { ListComponent } from './list/list.component';
 
 const routes: Routes = [
   {
@@ -33,6 +34,10 @@ const routes: Routes = [
         path: 'update/:id',
         component: UpdateSongComponent
       },
+      {
+        path: 'list',
+        component: ListComponent
+      },
     ]
   }
 ];
@@ -45,7 +50,8 @@ const routes: Routes = [
       AddSongComponent,
       StyleListComponent,
       UpdateSongComponent,
-      NavbarComponent],
+      NavbarComponent,
+      ListComponent],
   imports: [
     CommonModule,
     RouterModule.forChild(routes),

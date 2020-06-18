@@ -54,8 +54,8 @@
         <div class="card-body">
           <form [formGroup] = "songForm"  class="ng-untouched ng-pristine ng-valid"  (ngSubmit)="updateSong()">
             <div class="form-row form-group">
-              <label class="col-md-4 text-md-right col-form-label" for="name" >Song Name</label>
-              <div class="col-md-7">
+              <label class="col-lg-3 text-md-right col-form-label" for="name" >Song Name</label>
+              <div class="col-lg-9">
                 <input class="form-control" id="name" type="text" formControlName="name">
                 <div *ngIf="songForm.get('name').invalid && songForm.get('name').touched" style="color: red">
                   Name is required and min length is 1
@@ -63,8 +63,8 @@
               </div>
             </div>
             <div class="form-row form-group">
-              <label class="col-md-4 text-md-right col-form-label" for="singer" >Singer </label>
-              <div class="col-md-7">
+              <label class="col-lg-3 text-md-right col-form-label" for="singer" >Singer </label>
+              <div class="col-lg-9">
                 <input class="form-control" id="singer" type="text" formControlName="singer">
                 <div *ngIf="songForm.get('singer').invalid && songForm.get('singer').touched" style="color: red">
                   Singer is required and min length is 5
@@ -72,8 +72,8 @@
               </div>
             </div>
             <div class="form-row form-group">
-              <label class="col-md-4 text-md-right col-form-label" for="author">Author</label>
-              <div class="col-md-7">
+              <label class="col-lg-3 text-md-right col-form-label" for="author">Author</label>
+              <div class="col-lg-9">
                 <input class="form-control" id="author" type="text" formControlName="author">
                 <div *ngIf="songForm.get('author').invalid && songForm.get('author').touched" style="color: red">
                   Author is required and min length is 5
@@ -81,20 +81,20 @@
               </div>
             </div>
 <!--            <div class="form-row form-group">-->
-<!--              <label class="col-md-4 text-md-right col-form-label" >Song Cover Image</label>-->
-<!--              <div class="col-md-7">-->
+<!--              <label class="col-lg-3 text-md-right col-form-label" >Song Cover Image</label>-->
+<!--              <div class="col-lg-9">-->
 <!--                <input type="file" (change)="onchangeImage($event)">-->
 <!--              </div>-->
 <!--            </div>-->
 <!--            <div class="form-row form-group">-->
-<!--              <label class="col-md-4 text-md-right col-form-label">Song File</label>-->
-<!--              <div class="col-md-7">-->
+<!--              <label class="col-lg-3 text-md-right col-form-label">Song File</label>-->
+<!--              <div class="col-lg-9">-->
 <!--                <input type="file" (change)="onchangeMusic($event)">-->
 <!--              </div>-->
 <!--            </div>-->
             <div class="form-row form-group">
-              <label class="col-md-4 text-md-right col-form-label">Lyrics Song</label>
-              <div class="col-md-7">
+              <label class="col-lg-3 text-md-right col-form-label">Lyrics Song</label>
+              <div class="col-lg-9">
                 <ckeditor formControlName="lyrics"></ckeditor>
               </div>
               <div *ngIf="songForm.get('lyrics').invalid && songForm.get('lyrics').touched" style="color: red">
@@ -102,8 +102,8 @@
               </div>
             </div>
             <div class="form-row form-group" formGroupName="style">
-              <label class="col-md-4 text-md-right col-form-label">Style</label>
-              <select formControlName="id" style="color: black;height: 30px" class="col-md-7">
+              <label class="col-lg-3 text-md-right col-form-label">Style</label>
+              <select formControlName="id" style="color: black;height: 30px" class="col-lg-9">
                 <option value="" [disabled]="true">Chọn thể loại nhạc</option>
                 <option *ngFor="let style of styleList" value="{{style.id}}">{{style.name}}</option>
                 <div *ngIf="songForm.get('style').get('id').invalid && songForm.get('style').get('id').touched" style="color: red">
@@ -112,8 +112,8 @@
               </select>
             </div>
             <div class="row">
-              <div class="col-md-4"></div>
-              <div class="col-md-7 btn-inline">
+              <div class="col-lg-3"></div>
+              <div class="col-lg-9 btn-inline">
                 <button class="btn btn-outline-secondary" type="button">Cancel</button>
 
                 <button class="btn btn-brand btn-air" type="submit" >Save Song</button>

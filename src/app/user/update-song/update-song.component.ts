@@ -22,7 +22,7 @@ export class UpdateSongComponent implements OnInit {
   selectedImage: any = null;
 
   styleList: Style[] = [];
-  song: Song[] = [];
+  song: Song;
   success: string;
   fail: string;
   songForm: FormGroup;
@@ -81,6 +81,7 @@ export class UpdateSongComponent implements OnInit {
       };
       this.songService.updateSong(data)
         .subscribe(result => {
+          alert("thành công");
           this.routes.navigate(['']);
         }, error => {
           console.log(error);

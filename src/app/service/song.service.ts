@@ -29,4 +29,8 @@ export class SongService {
   deleteSong(id: number): Observable<Song> {
     return this.httpClient.delete<Song>(this.API_SONG + `/${id}`);
   }
+
+  getSongs(): Observable<Song[]> {
+    return this.httpClient.get<Song[]>(this.API_SONG);
+  }
 }
