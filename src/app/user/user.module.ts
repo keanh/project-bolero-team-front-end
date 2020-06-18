@@ -7,9 +7,9 @@ import {RouterModule, Routes} from '@angular/router';
 import { PlayMusicComponent } from './play-music/play-music.component';
 import { AddSongComponent } from './add-song/add-song.component';
 import {StyleListComponent} from './style-list/style-list.component';
-import {ReactiveFormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { NavbarComponent } from './navbar/navbar.component';
-import { ListSongComponent } from './list-song/list-song.component';
+import { UpdateSongComponent } from './update-song/update-song.component';
 
 const routes: Routes = [
   {
@@ -28,16 +28,27 @@ const routes: Routes = [
         path: 'style-list',
         component: StyleListComponent
       },
+      {
+        path: 'update',
+        component: UpdateSongComponent
+      },
     ]
   }
 ];
 
 @NgModule({
-  declarations: [FooterComponent, HeaderComponent, LayoutComponent,
-    PlayMusicComponent, AddSongComponent, StyleListComponent, NavbarComponent, ListSongComponent],
+    declarations: [FooterComponent,
+      HeaderComponent,
+      LayoutComponent,
+      PlayMusicComponent,
+      AddSongComponent,
+      StyleListComponent,
+      UpdateSongComponent,
+      NavbarComponent],
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
+    FormsModule,
     ReactiveFormsModule
   ]
 })

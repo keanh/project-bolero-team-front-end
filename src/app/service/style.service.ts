@@ -3,7 +3,7 @@ import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {Style} from '../interface/Style';
 
-const API_URL = 'http://localhost:8080/api/styles';
+const API_STYLE = 'http://localhost:8080/api/styles';
 @Injectable({
   providedIn: 'root'
 })
@@ -12,7 +12,7 @@ export class StyleService {
   }
 
   findAll(): Observable<Style[]> {
-    return this.httpClient.get<Style[]>(API_URL);
+    return this.httpClient.get<Style[]>(API_STYLE);
   }
 
 }
