@@ -30,7 +30,7 @@ const routes: Routes = [
         component: StyleListComponent
       },
       {
-        path: 'update',
+        path: 'update/:id',
         component: UpdateSongComponent
       },
     ]

@@ -126,6 +126,7 @@ export class AddSongComponent implements OnInit {
          lyrics: value.lyrics,
          image: this.imageUrl,
          fileMp3: this.musicUrl,
+         style: value.style,
        }
        this.songService.addSong(song).subscribe(() => {
          console.log("create thành công")
