@@ -8,6 +8,8 @@ import { PlayMusicComponent } from './play-music/play-music.component';
 import { AddSongComponent } from './add-song/add-song.component';
 import {StyleListComponent} from './style-list/style-list.component';
 import {ReactiveFormsModule} from '@angular/forms';
+import { MVComponent } from './mv/mv.component';
+import { NavbarComponent } from './navbar/navbar.component';
 
 const routes: Routes = [
   {
@@ -17,6 +19,10 @@ const routes: Routes = [
       {
         path: '',
       component: PlayMusicComponent
+      },
+      {
+        path: '',
+        component: MVComponent
       },
       {
         path: 'add',

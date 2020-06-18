@@ -10,26 +10,30 @@ import {AngularFireAuthModule} from '@angular/fire/auth';
 import {AngularFireStorageModule} from '@angular/fire/storage';
 
 import {HttpClientModule} from '@angular/common/http';
-import {FormsModule} from '@angular/forms';
 const routes: Routes = [
+
   {
     path: '',
     loadChildren: () => import('./user/user.module').then(m => m.UserModule)
   }
+
 ];
+
+
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     BrowserModule,
-    FormsModule,
     RouterModule.forRoot(routes),
-    HttpClientModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFirestoreModule, // firestore
     AngularFireAuthModule, // auth
-    AngularFireStorageModule // storage
+    AngularFireStorageModule, // storage
+    RouterModule.forRoot(routes),
+    HttpClientModule,
+
   ],
   exports: [RouterModule],
 
