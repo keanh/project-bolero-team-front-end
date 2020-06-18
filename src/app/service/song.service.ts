@@ -4,17 +4,17 @@ import {Song} from '../interface/Song';
 import {Observable} from 'rxjs';
 
 
-const API_SONG = 'http://localhost:8080/song';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class SongService {
-
+  private readonly API_SONG_CREATE = 'http://localhost:8080/song/create';
   constructor(private httpClient: HttpClient) { }
 
   addSong(song: Song): Observable<Song> {
-    return this.httpClient.post<Song>(API_SONG + '/create', song);
+    return this.httpClient.post<Song>(this.API_SONG_CREATE, song);
   }
 
 }

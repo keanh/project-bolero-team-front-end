@@ -15,26 +15,32 @@
               </div>
             </div>
             <div class="form-row form-group">
-              <label class="col-md-4 text-md-right col-form-label" for="image" >Song Cover Image</label>
+              <label class="col-md-4 text-md-right col-form-label" >Song Cover Image</label>
               <div class="col-md-7">
-                <div class="custom-file">
-                  <input class="custom-file-input" id="image" type="file" formControlName="image">
-                  <label class="custom-file-label" for="image">Choose file</label>
-                </div>
+<!--                <div class="custom-file">-->
+<!--                  <input class="custom-file-input" id="image" type="file" formControlName="image">-->
+<!--                  <label class="custom-file-label" for="image" ></label>-->
+<!--                </div>-->
+                <input type="file" (change)="onchangeImage($event)">
               </div>
             </div>
             <div class="form-row form-group">
-              <label class="col-md-4 text-md-right col-form-label" for="fileMp3">Song File</label>
+              <label class="col-md-4 text-md-right col-form-label">Song File</label>
               <div class="col-md-7">
-                <div class="custom-file">
-                  <input class="custom-file-input" id="fileMp3" type="file" formControlName="fileMp3">
-                  <label class="custom-file-label" for="fileMp3">Choose file</label>
-                </div>
+                <!--                <div class="custom-file">-->
+                <!--                  <input class="custom-file-input" id="image" type="file" formControlName="image">-->
+                <!--                  <label class="custom-file-label" for="image" ></label>-->
+                <!--                </div>-->
+                <input type="file" (change)="onchangeMusic($event)">
               </div>
             </div>
-<!--            <div class="form-row form-group"><label class="col-md-4 text-md-right col-form-label" for="dateSubmitted">Date Submitted</label>-->
+<!--            <div class="form-row form-group">-->
+<!--              <label class="col-md-4 text-md-right col-form-label" for="fileMp3">Song File</label>-->
 <!--              <div class="col-md-7">-->
-<!--                <input class="form-control" id="dateSubmitted" type="text" formControlName="fileMp3">-->
+<!--                <div class="custom-file">-->
+<!--                  <input class="custom-file-input" id="fileMp3" type="file">-->
+<!--                  <label class="custom-file-label" for="fileMp3">Choose file</label>-->
+<!--                </div>-->
 <!--              </div>-->
 <!--            </div>-->
             <div class="form-row form-group">
@@ -66,17 +72,18 @@
 
 
 <!--            </div>-->
-          </form>
-        </div>
-        <div class="card-footer">
-          <div class="row">
-            <div class="col-md-4"></div>
-            <div class="col-md-7 btn-inline">
-              <button class="btn btn-outline-secondary" type="button">Cancel</button>
+<!--            <div >-->
+<!--              <button class="btn btn-brand btn-air" type="submit" >Save Song</button>-->
+<!--            </div>-->
+            <div class="row">
+              <div class="col-md-4"></div>
+              <div class="col-md-7 btn-inline">
+                <button class="btn btn-outline-secondary" type="button">Cancel</button>
 
-              <button class="btn btn-brand btn-air" type="button">Save Song</button>
+                <button class="btn btn-brand btn-air" type="submit" >Save Song</button>
+              </div>
             </div>
-          </div>
+          </form>
         </div>
       </div>
     </div>
