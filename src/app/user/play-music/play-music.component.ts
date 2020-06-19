@@ -6,7 +6,9 @@ declare var $: any;
   styleUrls: ['./play-music.component.css']
 })
 export class PlayMusicComponent implements OnInit {
-  constructor() { }
+  constructor() {
+  }
+
   ngOnInit(): void {
   }
 }
