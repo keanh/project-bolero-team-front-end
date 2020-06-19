@@ -57,7 +57,7 @@
               <label class="col-lg-3 text-md-right col-form-label" for="name" >Song Name</label>
               <div class="col-lg-9">
                 <input class="form-control" id="name" type="text" formControlName="name">
-                <div *ngIf="songForm.get('name').invalid && songForm.get('name').touched" style="color: red">
+                <div *ngIf="songForm.get('name').invalid && songForm.get('name').touched" style="color: #ff0000">
                   Name is required and min length is 1
                 </div>
               </div>
@@ -107,7 +107,7 @@
                 <option value="" [disabled]="true">Chọn thể loại nhạc</option>
                 <option *ngFor="let style of styleList" value="{{style.id}}">{{style.name}}</option>
                 <div *ngIf="songForm.get('style').get('id').invalid && songForm.get('style').get('id').touched" style="color: red">
-                  Category is required
+                  Style is required
                 </div>
               </select>
             </div>

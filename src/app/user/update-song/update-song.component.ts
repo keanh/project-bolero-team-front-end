@@ -4,9 +4,9 @@ import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {SongService} from '../../service/song.service';
 import {AngularFireStorage} from '@angular/fire/storage';
 import {ActivatedRoute, Router} from '@angular/router';
-import {Style} from "../../interface/Style";
-import {StyleService} from "../../service/style.service";
-import {finalize} from "rxjs/operators";
+import {Style} from '../../interface/Style';
+import {StyleService} from '../../service/style.service';
+import {finalize} from 'rxjs/operators';
 
 @Component({
   selector: 'app-update-song',
@@ -57,7 +57,7 @@ export class UpdateSongComponent implements OnInit {
       author: ['', [Validators.required, Validators.minLength(5)]],
       // image: ['', [Validators.required]],
       style: this.fb.group({
-        id: ['',[Validators.required]],
+        id: ['', [Validators.required]],
       }),
     });
     this.styleService.findAll().subscribe( next => (this.styleList = next), error => (this.styleList = []));
@@ -81,7 +81,7 @@ export class UpdateSongComponent implements OnInit {
       };
       this.songService.updateSong(data)
         .subscribe(result => {
-          alert("thành công");
+          alert('OK');
           this.routes.navigate(['']);
         }, error => {
           console.log(error);
