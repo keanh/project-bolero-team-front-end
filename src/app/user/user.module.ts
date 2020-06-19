@@ -14,6 +14,7 @@ import { HeaderComponent } from './header/header.component';
 import { LatestSongComponent } from './latest-song/latest-song.component';
 import { CKEditorModule} from 'ckeditor4-angular';
 import { ListenBarComponent } from './listen-bar/listen-bar.component';
+import {ListComponent} from './list/list.component';
 
 const routes: Routes = [
   {
@@ -36,6 +37,10 @@ const routes: Routes = [
         path: 'update',
         component: UpdateSongComponent
       },
+      {
+        path: 'list',
+        component: ListComponent
+      },
     ]
   }
 ];
@@ -52,6 +57,7 @@ const routes: Routes = [
     HeaderComponent,
     LatestSongComponent,
     ListenBarComponent,
+    ListComponent
   ],
   imports: [
     CommonModule,
