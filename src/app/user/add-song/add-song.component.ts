@@ -59,11 +59,7 @@ export class AddSongComponent implements OnInit {
            console.log(this.imageUrl);
          });
        })
-     ).subscribe(data => {
-       console.log(data);
-     }, err => {
-       console.log(err);
-     });
+     );
    }
     upload2(){
     const filePath2 = `databasezingmp3.appspot.com/${this.selectedMusic.name.split('.').slice(0, -1).join('.')}_${new Date().getTime()}`;
@@ -98,10 +94,10 @@ export class AddSongComponent implements OnInit {
 
   async onSubmit() {
      const {value} = this.songForm;
-     const upload = this.upload2();
-     if (true) {
+     const upload1 = await this.upload1().toPromise();
+     const upload2 = await this.upload2().toPromise();
        // await this.wait(15000);
-       const song: Song = {
+     const song: Song = {
          name: value.name,
          singer: value.singer,
          author: value.author,
@@ -110,16 +106,12 @@ export class AddSongComponent implements OnInit {
          fileMp3: this.musicUrl,
          style: value.style,
        };
-       this.songService.addSong(song).subscribe(() => {
+     this.songService.addSong(song).subscribe(() => {
          alert('create thành công');
        }, (e) => {
          console.log(e);
        });
-       console.log(song);
-       this.songForm.reset();
-        } else {
-          return;
-     }
+     console.log(song);
+     this.songForm.reset();
    }
-
 }
