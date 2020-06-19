@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FooterComponent } from './footer/footer.component';
-import { HeaderComponent } from './header/header.component';
 import { LayoutComponent } from './layout/layout.component';
 import {RouterModule, Routes} from '@angular/router';
 import { AddSongComponent } from './add-song/add-song.component';
@@ -11,6 +10,8 @@ import { UpdateSongComponent } from './update-song/update-song.component';
 import {WelcomeAreaComponent} from './welcome-area/welcome-area.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { FeatureComponent } from './feature/feature.component';
+import { HeaderComponent } from './header/header.component';
+import { LatestSongComponent } from './latest-song/latest-song.component';
 
 const routes: Routes = [
   {
@@ -19,15 +20,15 @@ const routes: Routes = [
     children: [
       // {
       //   path: '',
-      // component: PlayMusicComponent
+      // component: WelcomeAreaComponent
       // },
+      {
+        path: '',
+        component: LatestSongComponent
+      },
       {
         path: 'add',
         component: AddSongComponent
-      },
-      {
-        path: '',
-        component: StyleListComponent
       },
       {
         path: 'update',
@@ -39,11 +40,15 @@ const routes: Routes = [
 
 @NgModule({
   declarations: [FooterComponent,
-    HeaderComponent,
     LayoutComponent,
     AddSongComponent,
     StyleListComponent,
-    UpdateSongComponent, WelcomeAreaComponent, NavbarComponent, FeatureComponent,
+    UpdateSongComponent,
+    WelcomeAreaComponent,
+    NavbarComponent,
+    FeatureComponent,
+    HeaderComponent,
+    LatestSongComponent,
   ],
   imports: [
     CommonModule,
