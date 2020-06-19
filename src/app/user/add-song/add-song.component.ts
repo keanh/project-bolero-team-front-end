@@ -52,26 +52,29 @@ export class AddSongComponent implements OnInit {
    upload1() {
      const filePath = `databasezingmp3.appspot.com/${this.selectedImage.name.split('.').slice(0, -1).join('.')}_${new Date().getTime()}`;
      const fileRef = this.storage.ref(filePath);
-     return this.storage.upload(filePath, this.selectedImage).snapshotChanges().pipe(
-       finalize(() => {
-         fileRef.getDownloadURL().subscribe(url => {
-           this.imageUrl = url;
-           console.log(this.imageUrl);
-         });
-       })
-     );
+     return this.storage.upload(filePath, this.selectedImage).snapshotChanges().toPromise();
+     //   .pipe(
+     //   finalize(() => {
+     //     fileRef.getDownloadURL().subscribe(url => {
+     //       this.imageUrl = url;
+     //       console.log(this.imageUrl);
+     //     });
+     //   })
+     // ).toPromise();
    }
     upload2(){
     const filePath2 = `databasezingmp3.appspot.com/${this.selectedMusic.name.split('.').slice(0, -1).join('.')}_${new Date().getTime()}`;
     const fileRef2 = this.storage.ref(filePath2);
-    return this.storage.upload(filePath2, this.selectedMusic).snapshotChanges().pipe(
-       finalize(() => {
-        fileRef2.getDownloadURL().subscribe(url => {
-          this.musicUrl = url;
-          console.log(this.musicUrl);
-        });
-      })
-    );
+    return this.storage.upload(filePath2, this.selectedMusic).snapshotChanges().toPromise();
+
+    //   .pipe(
+    //    finalize(() => {
+    //     fileRef2.getDownloadURL().subscribe(url => {
+    //       this.musicUrl = url;
+    //       console.log(this.musicUrl);
+    //     });
+    //   })
+    // ).toPromise();
   }
 
   onchangeImage(event){
@@ -94,24 +97,32 @@ export class AddSongComponent implements OnInit {
 
   async onSubmit() {
      const {value} = this.songForm;
-     const upload1 = await this.upload1().toPromise();
-     const upload2 = await this.upload2().toPromise();
+
+     const upload1 = this.upload1();
+     const upload2 = this.upload2();
+     Promise.all([upload1, upload2]).then( async (result) => {
        // await this.wait(15000);
-     const song: Song = {
-         name: value.name,
-         singer: value.singer,
-         author: value.author,
-         lyrics: value.lyrics,
-         image: this.imageUrl,
-         fileMp3: this.musicUrl,
-         style: value.style,
-       };
-     this.songService.addSong(song).subscribe(() => {
-         alert('create thành công');
-       }, (e) => {
-         console.log(e);
-       });
-     console.log(song);
-     this.songForm.reset();
+       console.log(result);
+       const image = await result[0].ref.getDownloadURL();
+       const music = await result[1].ref.getDownloadURL();
+       console.log(image);
+       console.log(music);
+       const song: Song = {
+           name: value.name,
+           singer: value.singer,
+           author: value.author,
+           lyrics: value.lyrics,
+           image,
+           fileMp3: music,
+           style: value.style,
+         };
+       this.songService.addSong(song).subscribe(() => {
+           // alert('create thành công');
+         }, (e) => {
+           console.log(e);
+         });
+       console.log(song);
+       this.songForm.reset();
+     });
    }
 }
