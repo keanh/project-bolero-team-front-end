@@ -12,16 +12,13 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { FeatureComponent } from './feature/feature.component';
 import { HeaderComponent } from './header/header.component';
 import { LatestSongComponent } from './latest-song/latest-song.component';
+import { ListenBarComponent } from './listen-bar/listen-bar.component';
 
 const routes: Routes = [
   {
     path: '',
     component: LayoutComponent,
     children: [
-      // {
-      //   path: '',
-      // component: WelcomeAreaComponent
-      // },
       {
         path: '',
         component: LatestSongComponent
@@ -29,6 +26,10 @@ const routes: Routes = [
       {
         path: 'add',
         component: AddSongComponent
+      },
+      {
+        path: '',
+        component: WelcomeAreaComponent
       },
       {
         path: 'update',
@@ -49,6 +50,7 @@ const routes: Routes = [
     FeatureComponent,
     HeaderComponent,
     LatestSongComponent,
+    ListenBarComponent,
   ],
   imports: [
     CommonModule,
