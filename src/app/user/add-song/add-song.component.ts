@@ -5,6 +5,8 @@ import {SongService} from '../../service/song.service';
 import {Router} from '@angular/router';
 import {AngularFireStorage} from '@angular/fire/storage';
 import {finalize} from 'rxjs/operators';
+import {Style} from '../../interface/Style';
+import {StyleService} from '../../service/style.service';
 
 @Component({
   selector: 'app-add-song',
@@ -19,31 +21,27 @@ export class AddSongComponent implements OnInit {
   selectedImage: any = null;
 
   songList: Song[] = [];
+  styleList: Style[] = [];
   songForm: FormGroup;
-  // success: string;
-  // fail: string;
-  // songForm = new FormGroup({
-  //     name: new FormControl(),
-  //     image: new FormControl(),
-  //     lyrics: new FormControl(),
-  //     fileMp3: new FormControl(),
-  //     singer: new FormControl(),
-  //     author: new FormControl(),
-  //   }
-  // );
 
   constructor(private songService: SongService,
+              private styleService: StyleService,
               private fb: FormBuilder,
               private storage: AngularFireStorage) {}
 
   ngOnInit(): void {
     this.songForm = this.fb.group({
       name: ['', [Validators.required, Validators.minLength(1)]],
-      // lyrics: ['', [Validators.required, Validators.minLength(50)]],
+      lyrics: ['', [Validators.required, Validators.minLength(10)]],
       singer: ['', [Validators.required, Validators.minLength(5)]],
       author: ['', [Validators.required, Validators.minLength(5)]],
       image: ['', [Validators.required]],
+      style: this.fb.group({
+          id: ['', [Validators.required]],
+      }),
     });
+    this.styleService.findAll().subscribe( next => (this.styleList = next), error => (this.styleList = []));
+    console.log(this.styleList);
   }
 
   onRemove(event) {
@@ -51,40 +49,33 @@ export class AddSongComponent implements OnInit {
     this.songList.splice(this.songList.indexOf(event), 1);
   }
 
-  upload(){
-    const filePath = `databasezingmp3.appspot.com/${this.selectedImage.name.split('.').slice(0, -1).join('.')}_${new Date().getTime()}`;
-    const fileRef = this.storage.ref(filePath);
-    this.storage.upload(filePath, this.selectedImage).snapshotChanges().pipe(
-      finalize(() => {
-        fileRef.getDownloadURL().subscribe(url => {
-          this.imageUrl = url;
-          console.log(this.imageUrl);
-        });
-      })
-    ).subscribe(data => {
-      console.log(data);
-    }, err => {
-      console.log(err);
-      return false;
-    });
-
+   upload1() {
+     const filePath = `databasezingmp3.appspot.com/${this.selectedImage.name.split('.').slice(0, -1).join('.')}_${new Date().getTime()}`;
+     const fileRef = this.storage.ref(filePath);
+     return this.storage.upload(filePath, this.selectedImage).snapshotChanges().pipe(
+       finalize(() => {
+         fileRef.getDownloadURL().subscribe(url => {
+           this.imageUrl = url;
+           console.log(this.imageUrl);
+         });
+       })
+     ).subscribe(data => {
+       console.log(data);
+     }, err => {
+       console.log(err);
+     });
+   }
+    upload2(){
     const filePath2 = `databasezingmp3.appspot.com/${this.selectedMusic.name.split('.').slice(0, -1).join('.')}_${new Date().getTime()}`;
     const fileRef2 = this.storage.ref(filePath2);
-    this.storage.upload(filePath2, this.selectedMusic).snapshotChanges().pipe(
-      finalize(() => {
+    return this.storage.upload(filePath2, this.selectedMusic).snapshotChanges().pipe(
+       finalize(() => {
         fileRef2.getDownloadURL().subscribe(url => {
           this.musicUrl = url;
           console.log(this.musicUrl);
         });
       })
-    ).subscribe(data => {
-      console.log(data);
-    }, err => {
-      console.log(err);
-      return false;
-    });
-
-    return true;
+    );
   }
 
   onchangeImage(event){
@@ -107,18 +98,20 @@ export class AddSongComponent implements OnInit {
 
   async onSubmit() {
      const {value} = this.songForm;
-     const check = this.upload();
-     if (check) {
-       await this.wait(2000);
+     const upload = this.upload2();
+     if (true) {
+       // await this.wait(15000);
        const song: Song = {
          name: value.name,
          singer: value.singer,
          author: value.author,
+         lyrics: value.lyrics,
          image: this.imageUrl,
          fileMp3: this.musicUrl,
+         style: value.style,
        };
        this.songService.addSong(song).subscribe(() => {
-         console.log('create thành công');
+         alert('create thành công');
        }, (e) => {
          console.log(e);
        });

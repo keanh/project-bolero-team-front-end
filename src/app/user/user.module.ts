@@ -12,6 +12,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { FeatureComponent } from './feature/feature.component';
 import { HeaderComponent } from './header/header.component';
 import { LatestSongComponent } from './latest-song/latest-song.component';
+import { CKEditorModule} from 'ckeditor4-angular';
 import { ListenBarComponent } from './listen-bar/listen-bar.component';
 
 const routes: Routes = [
@@ -38,6 +39,7 @@ const routes: Routes = [
     ]
   }
 ];
+
 @NgModule({
   declarations: [FooterComponent,
     LayoutComponent,
@@ -55,7 +57,8 @@ const routes: Routes = [
     CommonModule,
     RouterModule.forChild(routes),
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    CKEditorModule
   ]
 })
 export class UserModule { }

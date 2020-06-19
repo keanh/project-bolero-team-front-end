@@ -1,0 +1,32 @@
+<table>
+  <thead>
+  <tr>
+    <th>name</th>
+    <th>SINGER</th>
+    <th>AUTHOR</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let song of songList; index as i">
+    <td>
+      <h5>{{song.name}}</h5>
+    </td>
+    <td>
+      {{song.singer}}
+    </td>
+    <td>
+      {{song.author}}
+    </td>
+    <!--    <td>-->
+    <!--      <a [routerLink]="['detail',book.id]">view</a>-->
+    <!--    </td>-->
+    <!--    <td>-->
+    <!--      <button [routerLink]="['/book',book.id,'edit']">edit</button>-->
+    <!--    </td>-->
+    <!--    <td>-->
+    <!--      <button (click)="onclick(book.id)">delete</button>-->
+    <!--    </td>-->
+  </tr>
+  </tbody>
+</table>
+
