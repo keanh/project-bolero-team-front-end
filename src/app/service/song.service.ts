@@ -22,7 +22,7 @@ export class SongService {
     return this.httpClient.put<Song>(`${this.API_SONG}/${song.id}`, song);
   }
 
-  getSongById(id: number): Observable<any> {
+  getSongById(id: number): Observable<Song> {
     return this.httpClient.get<any>(`${this.API_SONG}/${id}`);
   }
 
@@ -33,4 +33,7 @@ export class SongService {
   getSongs(): Observable<Song[]> {
     return this.httpClient.get<Song[]>(this.API_SONG);
   }
+  // detailSong(id: string): Observable<Song> {
+  //   return this.httpClient.get<Song>(this.API_SONG + `/${id}`);
+  // }
 }

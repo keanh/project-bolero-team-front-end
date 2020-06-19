@@ -4,13 +4,14 @@ import { FooterComponent } from './footer/footer.component';
 import { HeaderComponent } from './header/header.component';
 import { LayoutComponent } from './layout/layout.component';
 import {RouterModule, Routes} from '@angular/router';
-import { PlayMusicComponent } from './play-music/play-music.component';
 import { AddSongComponent } from './add-song/add-song.component';
 import {StyleListComponent} from './style-list/style-list.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { NavbarComponent } from './navbar/navbar.component';
-import {CKEditorModule} from "ckeditor4-angular";
+import {CKEditorModule} from 'ckeditor4-angular';
 import { UpdateSongComponent } from './update-song/update-song.component';
+import { SongDetailsComponent } from './song-details/song-details.component';
+import {PlayMusicComponent} from './play-music/play-music.component';
 import { ListComponent } from './list/list.component';
 
 const routes: Routes = [
@@ -35,6 +36,10 @@ const routes: Routes = [
         component: UpdateSongComponent
       },
       {
+        path: 'song-details/:id',
+        component: SongDetailsComponent
+      },
+      {
         path: 'list',
         component: ListComponent
       },
@@ -51,7 +56,10 @@ const routes: Routes = [
       StyleListComponent,
       UpdateSongComponent,
       NavbarComponent,
-      ListComponent],
+      ListComponent,
+      SongDetailsComponent
+      // NavbarComponent
+      ],
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
