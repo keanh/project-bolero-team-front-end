@@ -2,16 +2,17 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FooterComponent } from './footer/footer.component';
 import { LayoutComponent } from './layout/layout.component';
-import {RouterModule, Routes} from '@angular/router';
+import { RouterModule, Routes} from '@angular/router';
 import { AddSongComponent } from './add-song/add-song.component';
-import {StyleListComponent} from './style-list/style-list.component';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { StyleListComponent} from './style-list/style-list.component';
+import { FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { UpdateSongComponent } from './update-song/update-song.component';
-import {WelcomeAreaComponent} from './welcome-area/welcome-area.component';
+import { WelcomeAreaComponent} from './welcome-area/welcome-area.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { FeatureComponent } from './feature/feature.component';
 import { HeaderComponent } from './header/header.component';
 import { LatestSongComponent } from './latest-song/latest-song.component';
+import { CKEditorModule} from 'ckeditor4-angular';
 
 const routes: Routes = [
   {
@@ -54,7 +55,8 @@ const routes: Routes = [
     CommonModule,
     RouterModule.forChild(routes),
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    CKEditorModule
   ]
 })
 export class UserModule { }

@@ -33,7 +33,7 @@ const routes: Routes = [
     AngularFireStorageModule, // storage
     HttpClientModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
   ],
   exports: [RouterModule],
 

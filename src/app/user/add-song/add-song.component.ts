@@ -23,17 +23,6 @@ export class AddSongComponent implements OnInit {
   songList: Song[] = [];
   styleList: Style[] = [];
   songForm: FormGroup;
-  // success: string;
-  // fail: string;
-  // songForm = new FormGroup({
-  //     name: new FormControl(),
-  //     image: new FormControl(),
-  //     lyrics: new FormControl(),
-  //     fileMp3: new FormControl(),
-  //     singer: new FormControl(),
-  //     author: new FormControl(),
-  //   }
-  // );
 
   constructor(private songService: SongService,
               private styleService: StyleService,
@@ -60,40 +49,33 @@ export class AddSongComponent implements OnInit {
     this.songList.splice(this.songList.indexOf(event), 1);
   }
 
-  upload(){
-    const filePath = `databasezingmp3.appspot.com/${this.selectedImage.name.split('.').slice(0, -1).join('.')}_${new Date().getTime()}`;
-    const fileRef = this.storage.ref(filePath);
-    this.storage.upload(filePath, this.selectedImage).snapshotChanges().pipe(
-      finalize(() => {
-        fileRef.getDownloadURL().subscribe(url => {
-          this.imageUrl = url;
-          console.log(this.imageUrl);
-        });
-      })
-    ).subscribe(data => {
-      console.log(data);
-    }, err => {
-      console.log(err);
-      return false;
-    });
-
+   upload1() {
+     const filePath = `databasezingmp3.appspot.com/${this.selectedImage.name.split('.').slice(0, -1).join('.')}_${new Date().getTime()}`;
+     const fileRef = this.storage.ref(filePath);
+     return this.storage.upload(filePath, this.selectedImage).snapshotChanges().pipe(
+       finalize(() => {
+         fileRef.getDownloadURL().subscribe(url => {
+           this.imageUrl = url;
+           console.log(this.imageUrl);
+         });
+       })
+     ).subscribe(data => {
+       console.log(data);
+     }, err => {
+       console.log(err);
+     });
+   }
+    upload2(){
     const filePath2 = `databasezingmp3.appspot.com/${this.selectedMusic.name.split('.').slice(0, -1).join('.')}_${new Date().getTime()}`;
     const fileRef2 = this.storage.ref(filePath2);
-    this.storage.upload(filePath2, this.selectedMusic).snapshotChanges().pipe(
-      finalize(() => {
+    return this.storage.upload(filePath2, this.selectedMusic).snapshotChanges().pipe(
+       finalize(() => {
         fileRef2.getDownloadURL().subscribe(url => {
           this.musicUrl = url;
           console.log(this.musicUrl);
         });
       })
-    ).subscribe(data => {
-      console.log(data);
-    }, err => {
-      console.log(err);
-      return false;
-    });
-
-    return true;
+    );
   }
 
   onchangeImage(event){
@@ -116,9 +98,9 @@ export class AddSongComponent implements OnInit {
 
   async onSubmit() {
      const {value} = this.songForm;
-     const check = this.upload();
-     if (check) {
-       await this.wait(7000);
+     const upload = this.upload2();
+     if (true) {
+       // await this.wait(15000);
        const song: Song = {
          name: value.name,
          singer: value.singer,

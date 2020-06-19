@@ -29,21 +29,21 @@
       <!-- Single gallery Item -->
       <div class="col-12 col-md-6 single_gallery_item entre wow fadeInUp" data-wow-delay="0.2s">
         <!-- Welcome Music Area -->
-        <div class="poca-music-area style-2 d-flex align-items-center flex-wrap">
+        <div class="poca-music-area style-2 d-flex align-items-center flex-wrap" *ngFor="let song of songList">
           <div class="poca-music-thumbnail">
-            <img src="https://img.vn/uploads/thuvien/viber-image-2019-08-06-10-40-38-jpg-20190807145944LO3qbinQdG.jpg" alt="">
+            <img src="{{song.image}}" alt="" style="height: 340px; width: 600px">
           </div>
           <div class="poca-music-content text-center">
-            <span class="music-published-date mb-2">December 9, 2018</span>
-            <h2>Episode 201 - You Don’t Know Squat!</h2>
+            <span class="music-published-date mb-2">{{song.dateSubmitted}}</span>
+            <h2>{{song.name}}</h2>
             <div class="music-meta-data">
-              <p>By <a href="#" class="music-author">Admin</a> | <a href="#" class="music-catagory">Tutorials</a> | <a
+              <p>By <a href="#" class="music-author">Admin</a> | <a href="#" class="music-catagory">{{song.style}}</a> | <a
                 href="#" class="music-duration">00:02:56</a></p>
             </div>
             <!-- Music Player -->
             <div class="poca-music-player">
               <audio preload="auto" controls>
-                <source src="https://firebasestorage.googleapis.com/v0/b/databasezingmp3.appspot.com/o/databasezingmp3.appspot.com%2FTinhSauThienThuMuonLoi-VoDinhHieu-6262177_1592540479337?alt=media&token=b9bd61f2-04e1-4a0e-b0be-1815b38b9db4">
+                <source src="{{song.fileMp3}}">
               </audio>
             </div>
             <!-- Likes, Share & Download -->
