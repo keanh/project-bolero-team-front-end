@@ -23,6 +23,6 @@ export class SongDetailsComponent implements OnInit {
         this.song = res;
       })
       .catch(error => console.log(error));
-    console.log("phai hien thi cuoi cung");
+    console.log('phai hien thi cuoi cung');
   }
 }

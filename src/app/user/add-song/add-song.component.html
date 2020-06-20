@@ -1,3 +1,4 @@
+
 <app-welcome-area></app-welcome-area>
 <div class="container" style="text-align: center; font-size: 40px;">
      <b>
@@ -19,7 +20,7 @@
                 <input class="form-control is-valid" id="name" type="text" formControlName="name"
                 [ngClass]="songForm.get('name').invalid ? 'is-invalid' : 'is-valid'">
                 <div *ngIf="songForm.get('name').invalid && songForm.get('name').touched" style="color: red">
-                  Name is required and min length is 2
+                  Name is required and min length is 1
                 </div>
               </div>
 
@@ -91,6 +92,10 @@
                 <button class="btn btn-outline-secondary" type="button" routerLink="/">Cancel</button>
                 &nbsp;
                 <button class="btn btn-outline-success" [disabled]="!songForm.invalid" type="submit" >Save Song</button>
+
+<!--                <button type="button" class="btn btn-success swalDefaultSuccess" (click)="test()">-->
+<!--                  Launch Success Toast-->
+<!--                </button>-->
               </div>
             </div>
           </form>
@@ -99,3 +104,11 @@
     </div>
   </div>
 </div>
+
+<script src="../../../assets/sweetalert2/sweetalert2.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/promise-polyfill@8/dist/polyfill.js"></script>
+
+
+
+
+

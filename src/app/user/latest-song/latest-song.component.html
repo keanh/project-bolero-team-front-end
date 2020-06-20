@@ -39,9 +39,11 @@
           </div>
           <div class="poca-music-content text-center">
 <!--            <span class="music-published-date mb-2">{{song.dateSubmitted}}</span>-->
-            <h2 class="title">
-              {{song.name}}
-            </h2>
+            <h3 class="title">
+              <a [routerLink]="['/detail',song.id]">
+                {{song.name}}
+              </a>
+            </h3>
             <div class="music-meta-data">
               <p>By <a href="#" class="music-author">Admin</a> | <a href="#" class="music-catagory">{{song.style.name}}</a> |
                 {{song.dateSubmitted}}</p>
