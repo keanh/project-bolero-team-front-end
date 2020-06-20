@@ -27,6 +27,7 @@ export class AddSongComponent implements OnInit {
   constructor(private songService: SongService,
               private styleService: StyleService,
               private fb: FormBuilder,
+              private router: Router,
               private storage: AngularFireStorage) {}
 
   ngOnInit(): void {
@@ -123,6 +124,7 @@ export class AddSongComponent implements OnInit {
            console.log(e);
          });
        console.log(song);
+       await this.router.navigate(['/']);
        this.songForm.reset();
      });
    }
