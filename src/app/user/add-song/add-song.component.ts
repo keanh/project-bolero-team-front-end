@@ -67,7 +67,6 @@ export class AddSongComponent implements OnInit {
     const filePath2 = `databasezingmp3.appspot.com/${this.selectedMusic.name.split('.').slice(0, -1).join('.')}_${new Date().getTime()}`;
     const fileRef2 = this.storage.ref(filePath2);
     return this.storage.upload(filePath2, this.selectedMusic).snapshotChanges().toPromise();
-
     //   .pipe(
     //    finalize(() => {
     //     fileRef2.getDownloadURL().subscribe(url => {

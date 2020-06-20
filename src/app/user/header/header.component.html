@@ -60,8 +60,8 @@
             <!-- Top Search Area -->
             <div class="top-search-area">
               <form action="index.html" method="post">
-                <input type="search" name="top-search-bar" class="form-control" placeholder="Search and hit enter..." [(ngModel)]="keyword" (input)="search()">>
-                <button type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
+                <input type="search" name="top-search-bar" class="form-control" placeholder="Search and hit enter..." [(ngModel)]="value" (click)="search()">
+                <button type="submit" ><i class="fa fa-search" aria-hidden="true"></i></button>
               </form>
             </div>
             <!-- Top Social Area -->

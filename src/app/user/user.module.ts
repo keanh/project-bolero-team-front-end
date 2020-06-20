@@ -34,7 +34,7 @@ const routes: Routes = [
         component: WelcomeAreaComponent
       },
       {
-        path: 'update',
+        path: 'update/:id',
         component: UpdateSongComponent
       },
       {
