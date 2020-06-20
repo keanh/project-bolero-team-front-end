@@ -15,14 +15,14 @@ export class SongDetailsComponent implements OnInit {
     private songService: SongService
   ) {}
 
-  ngOnInit() {
+  async ngOnInit() {
     const id = +this.route.snapshot.paramMap.get('id');
-    this.songService.getSongById(id).subscribe(
-      next => (this.song = next),
-      error => {
-        console.log(error);
-        this.song = null;
-      }
-    );
+    await this.songService.getSongById(id).toPromise()
+      .then(res => {
+        console.log(res);
+        this.song = res;
+      })
+      .catch(error => console.log(error));
+    console.log("phai hien thi cuoi cung");
   }
 }

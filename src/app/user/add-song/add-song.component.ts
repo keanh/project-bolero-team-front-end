@@ -7,6 +7,7 @@ import {AngularFireStorage} from '@angular/fire/storage';
 import {finalize} from 'rxjs/operators';
 import {Style} from '../../interface/Style';
 import {StyleService} from '../../service/style.service';
+import {CKEditor4} from 'ckeditor4-angular';
 
 @Component({
   selector: 'app-add-song',
@@ -119,13 +120,13 @@ export class AddSongComponent implements OnInit {
            style: value.style,
          };
        this.songService.addSong(song).subscribe(() => {
-           // alert('create thành công');
          }, (e) => {
            console.log(e);
          });
        console.log(song);
        await this.router.navigate(['/']);
        this.songForm.reset();
+       // alert('create thành công');
      });
    }
 }
