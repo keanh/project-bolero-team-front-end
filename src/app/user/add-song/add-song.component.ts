@@ -104,16 +104,16 @@ export class AddSongComponent implements OnInit {
      Promise.all([upload1, upload2]).then( async (result) => {
        // await this.wait(15000);
        console.log(result);
-       const image = await result[0].ref.getDownloadURL();
+       const picture = await result[0].ref.getDownloadURL();
        const music = await result[1].ref.getDownloadURL();
-       console.log(image);
+       console.log(picture);
        console.log(music);
        const song: Song = {
            name: value.name,
            singer: value.singer,
            author: value.author,
            lyrics: value.lyrics,
-           image,
+           image: picture,
            fileMp3: music,
            style: value.style,
          };
