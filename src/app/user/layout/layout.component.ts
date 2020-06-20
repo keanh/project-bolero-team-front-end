@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {Song} from '../../interface/Song';
+import {SongService} from '../../service/song.service';
 
 @Component({
   selector: 'app-layout',
@@ -6,8 +8,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./layout.component.css']
 })
 export class LayoutComponent implements OnInit {
-
-  constructor() { }
+  songList: Song[] = [];
+  constructor(private songService: SongService) { }
 
   ngOnInit(): void {
   }

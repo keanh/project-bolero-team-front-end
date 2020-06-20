@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {Song} from '../../interface/Song';
+import {SongService} from '../../service/song.service';
 
 @Component({
   selector: 'app-latest-song',
@@ -7,9 +9,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LatestSongComponent implements OnInit {
 
-  constructor() { }
+  songList: Song[] = [];
+  constructor(private songService: SongService) { }
 
   ngOnInit(): void {
+    this.songService.getSongs().subscribe(next => (this.songList = next), error => (this.songList = []));
   }
 
 }
