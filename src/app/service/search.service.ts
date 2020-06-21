@@ -8,6 +8,6 @@ export class SearchService {
   value = new BehaviorSubject('');
   constructor() { }
   changeValue(message: string) {
-    this.value.next(message)
+    this.value.next(message);
   }
 }
