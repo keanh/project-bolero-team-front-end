@@ -22,12 +22,6 @@ export class LatestSongComponent implements OnInit, OnChanges {
     // await this.getVale();
     this.getListSearch();
   }
-  getVale(){
-      this.searchService.value.subscribe( data => {
-      this.value = data;
-      console.log(this.value);
-    });
-  }
   getListSearch(){
     this.searchService.list.subscribe( data => {
     this.songList = data;

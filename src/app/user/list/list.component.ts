@@ -14,10 +14,10 @@ export class ListComponent implements OnInit {
   constructor(private songService: SongService, private searchServe: SearchService) { }
 
   ngOnInit(): void {
-    this.searchServe.value.subscribe( data => {
-      this.value = data;
-    });
-    console.log(this.value);
+    // this.searchServe.value.subscribe( data => {
+    //   this.value = data;
+    // });
+    // console.log(this.value);
   }
   searching(){
     // if (this.value !== ''){
