@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {SongService} from '../../service/song.service';
 import {Song} from '../../interface/Song';
 import {SearchService} from '../../service/search.service';
-import {Router} from "@angular/router";
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-list',
