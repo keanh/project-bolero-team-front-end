@@ -28,11 +28,10 @@
   </div>
   <div class="container">
     <div class="row poca-portfolio">
-
       <!-- Single gallery Item -->
       <div class="col-12 col-md-4 single_gallery_item entre wow fadeInUp" data-wow-delay="0.2s" *ngFor="let song of songList">
         <!-- Welcome Music Area -->
-        <div class="poca-music-area style-2 d-flex align-items-center flex-wrap" >
+        <div class="poca-music-area style-2 d-flex align-items-center flex-wrap">
           <div class="poca-music-thumbnail">
             <a [routerLink]="['/detail',song.id]">
               <img src="{{song.image}}" alt="" style="height: 340px; width: 600px">
@@ -40,13 +39,13 @@
           </div>
           <div class="poca-music-content text-center">
 <!--            <span class="music-published-date mb-2">{{song.dateSubmitted}}</span>-->
-            <h3 class="title">
+            <h3 class="title" style="font-size: 18px">
               <a [routerLink]="['/detail',song.id]">
                 {{song.name}}
               </a>
             </h3>
             <div class="music-meta-data">
-              <p>By <a href="#" class="music-author">Admin</a> | <a href="#" class="music-catagory">{{song.style.name}}</a> |
+              <p style="height: 20px; font-size: 10px">By <a href="#" class="music-author" style="font-size: 10px">Admin</a> | <a href="#" class="music-catagory" style="font-size: 10px">{{song.style.name}}</a> |
                 {{song.dateSubmitted}}</p>
             </div>
             <!-- Music Player -->

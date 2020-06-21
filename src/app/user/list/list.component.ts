@@ -15,7 +15,7 @@ export class ListComponent implements OnInit {
   constructor(private songService: SongService,
               private searchServe: SearchService,
               private router: Router,
-              private route: ActivatedRoute ) { }
+              private route: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.songService.getAllSongs().subscribe( data => {
@@ -37,10 +37,18 @@ export class ListComponent implements OnInit {
   delete(id: number) {
     this.songService.deleteSong(id).subscribe( () => {
       console.log(' delete success');
-      this.songService.getAllSongs();
-      // this.router.navigate(['list'], {relativeTo: this.route});
+      this.getAllSong();
+      // this.router.getCurrentNavigation();
+      // this.router.navigate(['/'], {relativeTo: this.route}).then(r => console.log(r));
     }, error => {
       console.log('delete failed');
+    });
+  }
+  getAllSong(){
+    this.songService.getAllSongs().subscribe( data => {
+      this.songList = data;
+    }, error => {
+      console.log(error);
     });
   }
 }
