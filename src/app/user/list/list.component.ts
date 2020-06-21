@@ -14,22 +14,18 @@ export class ListComponent implements OnInit {
   constructor(private songService: SongService, private searchServe: SearchService) { }
 
   ngOnInit(): void {
-    this.songService.getSongs().subscribe( data => {
-      this.songList = data;
-      console.log(this.songList);
-    } );
     this.searchServe.value.subscribe( data => {
       this.value = data;
     });
     console.log(this.value);
   }
   searching(){
-    if (this.value !== ''){
-      this.songList = this.songList.filter( res => {
-        return res.name.toLocaleLowerCase().match(this.value.toLocaleLowerCase());
-      });
-    }else if (this.value === ''){
-      this.ngOnInit();
-    }
+    // if (this.value !== ''){
+    //   this.songList = this.songList.filter( res => {
+    //     return res.name.toLocaleLowerCase().match(this.value.toLocaleLowerCase());
+    //   });
+    // }else if (this.value === ''){
+    //   this.ngOnInit();
+    // }
   }
 }
