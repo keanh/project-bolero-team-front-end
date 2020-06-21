@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {SongService} from "../../service/song.service";
 import {Song} from "../../interface/Song";
 import {SearchService} from '../../service/search.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-list',
@@ -11,25 +12,30 @@ import {SearchService} from '../../service/search.service';
 export class ListComponent implements OnInit {
   value = '';
   songList: Song[] = [];
-  constructor(private songService: SongService, private searchServe: SearchService) { }
+  constructor(private songService: SongService,
+              private searchServe: SearchService,
+              private router: Router) { }
 
   ngOnInit(): void {
-    this.songService.getSongs().subscribe( data => {
+    this.songService.getSongs().subscribe(data => {
       this.songList = data;
-      console.log(this.songList);
-    } );
-    this.searchServe.value.subscribe( data => {
-      this.value = data;
+    }, error => {
+      console.log(error);
     });
-    console.log(this.value);
+  }
+
+  deletePost(id){
+    this.songService.deleteSong(id).subscribe(() => {
+      this.router.navigate(['/list']);
+    });
   }
   searching(){
-    if (this.value !== ''){
-      this.songList = this.songList.filter( res => {
-        return res.name.toLocaleLowerCase().match(this.value.toLocaleLowerCase());
-      });
-    }else if (this.value === ''){
-      this.ngOnInit();
-    }
+    // if (this.value !== ''){
+    //   this.songList = this.songList.filter( res => {
+    //     return res.name.toLocaleLowerCase().match(this.value.toLocaleLowerCase());
+    //   });
+    // }else if (this.value === ''){
+    //   this.ngOnInit();
+    // }
   }
 }

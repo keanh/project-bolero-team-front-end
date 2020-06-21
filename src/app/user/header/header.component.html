@@ -16,7 +16,6 @@
           <div class="classycloseIcon">
             <div class="cross-wrap"><span class="top"></span><span class="bottom"></span></div>
           </div>
-
           <!-- Nav Start -->
           <div class="classynav">
             <ul id="nav">
@@ -47,7 +46,7 @@
                   </li>
                 </ul>
               </li>
-              <li><a href="./podcast.html">Podcasts</a></li>
+              <li><a href="./podcast.html">My List</a></li>
               <li><a href="./about.html">About</a></li>
               <li><a href="#">Blog</a>
                 <ul class="dropdown">
@@ -60,8 +59,8 @@
             <!-- Top Search Area -->
             <div class="top-search-area">
               <form action="index.html" method="post">
-                <input type="search" name="top-search-bar" class="form-control" placeholder="Search and hit enter..." [(ngModel)]="value" (click)="search()">
-                <button type="submit" ><i class="fa fa-search" aria-hidden="true"></i></button>
+                <input type="search" name="top-search-bar" class="form-control" placeholder="Search and hit enter..." [(ngModel)]="value" (keyup.enter) = "search()">
+                <button type="submit" (click) = "search()"><i class="fa fa-search" aria-hidden="true"></i></button>
               </form>
             </div>
             <!-- Top Social Area -->

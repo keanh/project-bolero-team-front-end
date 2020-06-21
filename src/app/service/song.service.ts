@@ -11,6 +11,7 @@ import {Observable} from 'rxjs';
 export class SongService {
   private readonly API_URL_SONG_LIST = 'http://localhost:8080/song/create';
   private readonly API_SONG = 'http://localhost:8080/song';
+  private readonly API_SONG_FIND = 'http://localhost:8080/findByName';
   constructor(private httpClient: HttpClient) {
   }
 
@@ -25,7 +26,9 @@ export class SongService {
   getSongById(id: number): Observable<Song> {
     return this.httpClient.get<any>(`${this.API_SONG}/${id}`);
   }
-
+  getSongByName(name: string): Observable<Song[]> {
+    return this.httpClient.get<Song[]>(`${this.API_SONG_FIND}/${name}`);
+  }
   deleteSong(id: number): Observable<Song> {
     return this.httpClient.delete<Song>(this.API_SONG + `/${id}`);
   }
@@ -33,7 +36,7 @@ export class SongService {
   getSongs(): Observable<Song[]> {
     return this.httpClient.get<Song[]>(this.API_SONG);
   }
-  // detailSong(id: string): Observable<Song> {
-  //   return this.httpClient.get<Song>(this.API_SONG + `/${id}`);
-  // }
+  detailSong(id: string): Observable<Song> {
+    return this.httpClient.get<Song>(this.API_SONG + `/${id}`);
+  }
 }
