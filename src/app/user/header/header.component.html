@@ -16,44 +16,39 @@
           <div class="classycloseIcon">
             <div class="cross-wrap"><span class="top"></span><span class="bottom"></span></div>
           </div>
-
           <!-- Nav Start -->
           <div class="classynav">
             <ul id="nav">
-              <li class="current-item"><a href="./index.html">Home</a></li>
-              <li><a href="#">Pages</a>
-                <ul class="dropdown">
-                  <li><a href="./index.html">- Home</a></li>
-                  <li><a href="./podcast.html">- Podcast</a></li>
-                  <li><a href="./single-podcast.html">- Single Podcast</a></li>
-                  <li><a href="./about.html">- About Us</a></li>
-                  <li><a href="./blog.html">- Blog</a></li>
-                  <li><a href="./single-blog.html">- Blog Details</a></li>
-                  <li><a href="./contact.html">- Contact</a></li>
-                  <li><a href="#">- Dropdown</a>
-                    <ul class="dropdown">
-                      <li><a href="#">- Dropdown Item</a></li>
-                      <li><a href="#">- Dropdown Item</a>
-                        <ul class="dropdown">
-                          <li><a href="#">- Even Dropdown</a></li>
-                          <li><a href="#">- Even Dropdown</a></li>
-                          <li><a href="#">- Even Dropdown</a></li>
-                          <li><a href="#">- Even Dropdown</a></li>
-                        </ul>
-                      </li>
-                      <li><a href="#">- Dropdown Item</a></li>
-                      <li><a href="#">- Dropdown Item</a></li>
-                    </ul>
-                  </li>
-                </ul>
-              </li>
-              <li><a href="./podcast.html">Podcasts</a></li>
+              <li class="current-item"><a routerLink="">Home</a></li>
+<!--              <li><a href="#">Pages</a>-->
+<!--                <ul class="dropdown">-->
+<!--                  <li><a href="./index.html">- Home</a></li>-->
+<!--                  <li><a routerLink="list" >-List</a></li>-->
+<!--                  <li><a href="./single-podcast.html">- Single Podcast</a></li>-->
+<!--                  <li><a href="./about.html">- About Us</a></li>-->
+<!--                  <li><a href="./blog.html">- Blog</a></li>-->
+<!--                  <li><a href="./single-blog.html">- Blog Details</a></li>-->
+<!--                  <li><a href="./contact.html">- List</a></li>-->
+<!--                  <li><a href="#">- Dropdown</a>-->
+<!--                    <ul class="dropdown">-->
+<!--                      <li><a href="#">- Dropdown Item</a></li>-->
+<!--                      <li><a href="#">- Dropdown Item</a>-->
+<!--&lt;!&ndash;                        <ul class="dropdown">&ndash;&gt;-->
+<!--&lt;!&ndash;                          <li><a href="#">- Even Dropdown</a></li>&ndash;&gt;-->
+<!--&lt;!&ndash;                          <li><a href="#">- Even Dropdown</a></li>&ndash;&gt;-->
+<!--&lt;!&ndash;                          <li><a href="#">- Even Dropdown</a></li>&ndash;&gt;-->
+<!--&lt;!&ndash;                          <li><a href="#">- Even Dropdown</a></li>&ndash;&gt;-->
+<!--&lt;!&ndash;                        </ul>&ndash;&gt;-->
+<!--                      </li>-->
+<!--                      <li><a href="#">- Dropdown Item</a></li>-->
+<!--                      <li><a href="#">- Dropdown Item</a></li>-->
+<!--                    </ul>-->
+<!--                  </li>-->
+<!--                </ul>-->
+<!--              </li>-->
+              <li><a href="/list"> My List</a></li>
               <li><a href="./about.html">About</a></li>
-              <li><a href="#">Blog</a>
-                <ul class="dropdown">
-                  <li><a href="./blog.html">- Blog</a></li>
-                  <li><a href="./single-blog.html">- Blog Details</a></li>
-                </ul>
+              <li><a routerLink="add">Create Song</a>
               </li>
               <li><a href="./contact.html">Contact</a></li>
             </ul>
@@ -62,8 +57,8 @@
             <!-- Top Search Area -->
             <div class="top-search-area">
               <form action="index.html" method="post">
-                <input type="search" name="top-search-bar" class="form-control" placeholder="Search and hit enter..." [(ngModel)]="value" (click)="search()">
-                <button type="submit" ><i class="fa fa-search" aria-hidden="true"></i></button>
+                <input type="search" name="top-search-bar" class="form-control" placeholder="Search and hit enter..." [(ngModel)]="value" (keyup.enter) = "search()">
+                <button type="submit" (click) = "search()"><i class="fa fa-search" aria-hidden="true"></i></button>
               </form>
             </div>
             <!-- Top Social Area -->

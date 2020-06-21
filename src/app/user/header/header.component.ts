@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import {SearchService} from '../../service/search.service';
 import {Song} from '../../interface/Song';
 import {SongService} from '../../service/song.service';
-import {SearchService} from '../../service/search.service';
 
 @Component({
   selector: 'app-header',
@@ -10,12 +10,23 @@ import {SearchService} from '../../service/search.service';
 })
 export class HeaderComponent implements OnInit {
   value: string;
-  constructor(public searchService: SearchService) { }
+  songList: Song[] = [];
+  constructor(public searchService: SearchService, private songService: SongService) { }
 
   ngOnInit(): void {
   }
   search(){
-    this.searchService.changeValue(this.value);
-    console.log(this.value);
+    if (this.value !== ''){
+      this.songService.getSongByName(this.value).subscribe( data => {
+        this.songList = data;
+        this.searchService.changeValue(this.value, this.songList);
+        // console.log(this.songList);
+      });
+    }else {
+      this.songService.getSongs().subscribe( data => {
+        this.songList = data;
+        this.searchService.changeValue(this.value, this.songList);
+      });
+    }
   }
 }

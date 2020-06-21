@@ -131,7 +131,7 @@ export class AddSongComponent implements OnInit {
         console.log(e);
       });
       console.log(song);
-      await this.router.navigate(['/']);
+      // await this.router.navigate(['/']);
       this.createSuccess();
       this.songForm.reset();
       // alert('create thành công');

@@ -18,14 +18,16 @@
         </thead>
         <tbody>
         <tr *ngFor="let list of songList">
-          <td class="pt-3-half" style="width: 200px; height: 200px;"><img [src]="list.image" alt=""></td>
+          <td class="pt-3-half" style="width: 100px; height: 100px;"><img [src]="list.image" alt=""></td>
           <td class="pt-3-half" >{{list.name}}</td>
           <td class="pt-3-half" >{{list.singer}}</td>
           <td class="pt-3-half">{{list.author}}</td>
           <td>
-            <span class="table-remove"><button type="button" class="btn btn-danger btn-rounded btn-sm my-0">Edit</button></span>
+            <span class="table-remove"><button type="button" class="btn btn-danger btn-rounded btn-sm my-0"><a
+             [routerLink]="['/update',list.id]">Edit</a></button></span>
             &nbsp;
-            <span class="table-remove"><button type="button" class="btn btn-danger btn-rounded btn-sm my-0">Remove</button></span>
+            <span class="table-remove"><button type="button" class="btn btn-danger btn-rounded btn-sm my-0" (click)="delete(list.id)">
+              Delete</button></span>
           </td>
         </tr>
         <!-- This is our clonable table line -->
