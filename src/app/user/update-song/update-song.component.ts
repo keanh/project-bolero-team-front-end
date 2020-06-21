@@ -83,7 +83,7 @@ export class UpdateSongComponent implements OnInit {
   updateSuccess(){
     this.Toast.fire({
       icon: 'success',
-      title: 'Tạo mới thành công'
+      title: 'Cập nhật thành công'
     });
   }
 }
