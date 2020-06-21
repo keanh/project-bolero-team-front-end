@@ -23,7 +23,7 @@ export class HeaderComponent implements OnInit {
         // console.log(this.songList);
       });
     }else {
-      this.songService.getSongs().subscribe( data => {
+      this.songService.getAllSongs().subscribe( data => {
         this.songList = data;
         this.searchService.changeValue(this.value, this.songList);
       });

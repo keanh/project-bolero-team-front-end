@@ -16,7 +16,7 @@ export class LatestSongComponent implements OnInit, OnChanges {
   constructor(private songService: SongService, public searchService: SearchService) {
   }
    ngOnInit(): void {
-    this.songService.getSongs().subscribe(next => {
+    this.songService.getAllSongs().subscribe(next => {
       this.songList = next;
       this.songListTem = this.songList; }, error => (this.songList = []));
     // await this.getVale();
@@ -30,7 +30,6 @@ export class LatestSongComponent implements OnInit, OnChanges {
     });
   }
   ngOnChanges(changes: SimpleChanges): void {
-    console.log('dasdasdasd');
     console.log(changes);
   }
 }
