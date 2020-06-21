@@ -40,4 +40,8 @@ export class SongService {
   detailSong(id: string): Observable<Song> {
     return this.httpClient.get<Song>(this.API_SONG + `/${id}`);
   }
+
+  getSongs(): Observable<Song[]> {
+    return this.httpClient.get<Song[]>(this.API_SONG);
+  }
 }
