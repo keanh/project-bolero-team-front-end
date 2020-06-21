@@ -67,7 +67,7 @@ export class UpdateSongComponent implements OnInit {
       this.songService.updateSong(data)
         .subscribe(result => {
           alert('OK');
-          this.routes.navigate(['']);
+          this.routes.navigate(['/list']);
         }, error => {
           console.log(error);
         });
