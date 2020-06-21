@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {SongService} from "../../service/song.service";
-import {Song} from "../../interface/Song";
+import {SongService} from '../../service/song.service';
+import {Song} from '../../interface/Song';
 import {SearchService} from '../../service/search.service';
 import {Router} from '@angular/router';
 
@@ -12,21 +12,13 @@ import {Router} from '@angular/router';
 export class ListComponent implements OnInit {
   value = '';
   songList: Song[] = [];
-  constructor(private songService: SongService,
-              private searchServe: SearchService,
-              private router: Router) { }
+  constructor(private songService: SongService, private searchServe: SearchService , private route: Router) { }
 
   ngOnInit(): void {
-    this.songService.getSongs().subscribe(data => {
+    this.songService.getSongs().subscribe( data => {
       this.songList = data;
     }, error => {
       console.log(error);
-    });
-  }
-
-  deletePost(id){
-    this.songService.deleteSong(id).subscribe(() => {
-      this.router.navigate(['/list']);
     });
   }
   searching(){
@@ -37,5 +29,15 @@ export class ListComponent implements OnInit {
     // }else if (this.value === ''){
     //   this.ngOnInit();
     // }
+  }
+
+  delete(id: number) {
+    this.songService.deleteSong(id).subscribe( () => {
+      console.log(' delete success');
+      // @ts-ignore
+      this.route.navigate(['/list'], {relativeTo: this.route});
+    }, error => {
+      console.log('delete failed');
+    });
   }
 }
