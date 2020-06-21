@@ -18,7 +18,11 @@ export class ListComponent implements OnInit {
               private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.getAllSong();
+    this.songService.getAllSongs().subscribe( data => {
+      this.songList = data;
+    }, error => {
+      console.log(error);
+    });
   }
   searching(){
     // if (this.value !== ''){
@@ -41,7 +45,7 @@ export class ListComponent implements OnInit {
     });
   }
   getAllSong(){
-    this.songService.getSongs().subscribe( data => {
+    this.songService.getAllSongs().subscribe( data => {
       this.songList = data;
     }, error => {
       console.log(error);
