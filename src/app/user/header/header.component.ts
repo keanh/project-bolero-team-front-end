@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {SearchService} from '../../service/search.service';
 import {Song} from '../../interface/Song';
 import {SongService} from '../../service/song.service';
 
@@ -8,22 +9,24 @@ import {SongService} from '../../service/song.service';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-  keyword: string;
-  songList: Song[];
-  constructor(private songService: SongService) { }
+  value: string;
+  songList: Song[] = [];
+  constructor(public searchService: SearchService, private songService: SongService) { }
 
   ngOnInit(): void {
-    this.songService.getSongs().subscribe( data => {
-      this.songList = data;
-    } )
   }
   search(){
-    if (this.keyword !== ''){
-      this.songList = this.songList.filter( res => {
-        return res.name.toLocaleLowerCase().match(this.keyword.toLocaleLowerCase());
+    if (this.value !== ''){
+      this.songService.getSongByName(this.value).subscribe( data => {
+        this.songList = data;
+        this.searchService.changeValue(this.value, this.songList);
+        // console.log(this.songList);
       });
-    }else if (this.keyword === ''){
-      this.ngOnInit();
+    }else {
+      this.songService.getSongs().subscribe( data => {
+        this.songList = data;
+        this.searchService.changeValue(this.value, this.songList);
+      });
     }
   }
 }
