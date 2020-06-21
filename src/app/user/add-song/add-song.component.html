@@ -1,3 +1,4 @@
+
 <app-welcome-area></app-welcome-area>
 <div class="container" style="text-align: center; font-size: 40px;">
      <b>
@@ -18,28 +19,31 @@
               <div class="col-lg-9">
                 <input class="form-control is-valid" id="name" type="text" formControlName="name"
                 [ngClass]="songForm.get('name').invalid ? 'is-invalid' : 'is-valid'">
+                <div *ngIf="songForm.get('name').invalid && songForm.get('name').touched" style="color: red">
+                  Name is required and min length is 1
+                </div>
               </div>
-              <div *ngIf="songForm.get('name').invalid && songForm.get('name').touched" style="color: red">
-                Name is required and min length is
-              </div>
+
             </div>
             <div class="form-row form-group">
               <label class="col-lg-3 text-md-right col-form-label" for="singer" >Singer </label>
               <div class="col-lg-9">
                 <input class="form-control" id="singer" type="text" formControlName="singer">
+                <div *ngIf="songForm.get('singer').invalid && songForm.get('singer').touched" style="color: red">
+                  Singer is required and min length is 5
+                </div>
               </div>
-              <div *ngIf="songForm.get('singer').invalid && songForm.get('singer').touched" style="color: red">
-                Singer is required and min length is
-              </div>
+
             </div>
             <div class="form-row form-group">
               <label class="col-lg-3 text-md-right col-form-label" for="author">Author</label>
               <div class="col-lg-9">
                 <input class="form-control" id="author" type="text" formControlName="author">
+                <div *ngIf="songForm.get('author').invalid && songForm.get('author').touched" style="color: red">
+                  Author is required and min length is 5
+                </div>
               </div>
-              <div *ngIf="songForm.get('author').invalid && songForm.get('author').touched" style="color: red">
-                Author is required and min length is
-              </div>
+
             </div>
             <div class="form-row form-group">
               <label class="col-lg-3 text-md-right col-form-label" >Song Cover Image</label>
@@ -69,11 +73,11 @@
                 <!--                  <label class="custom-file-label" for="image" ></label>-->
                 <!--                </div>-->
                 <ckeditor formControlName="lyrics"></ckeditor>
+                <div *ngIf="songForm.get('lyrics').invalid && songForm.get('lyrics').touched" style="color: red">
+                  Lyrics is required and min length is 10
+                </div>
               </div>
 
-              <div *ngIf="songForm.get('lyrics').invalid && songForm.get('lyrics').touched" style="color: red">
-                Lyrics is required and min length is 10
-              </div>
             </div>
             <div class="form-row form-group" formGroupName="style">
               <label class="col-lg-3 text-md-right col-form-label">Style</label>
@@ -85,8 +89,13 @@
             <div class="row">
               <div class="col-lg-3"></div>
               <div class="col-lg-9 btn-inline">
-                <button class="btn btn-outline-secondary" type="button">Cancel</button>
-                <button class="btn btn-brand btn-air" [disabled]="!songForm.invalid" type="submit" >Save Song</button>
+                <button class="btn btn-outline-secondary" type="button" routerLink="/">Cancel</button>
+                &nbsp;
+                <button class="btn btn-outline-success" [disabled]="!songForm.invalid" type="submit" >Save Song</button>
+
+<!--                <button type="button" class="btn btn-success swalDefaultSuccess" (click)="test()">-->
+<!--                  Launch Success Toast-->
+<!--                </button>-->
               </div>
             </div>
           </form>
@@ -95,3 +104,11 @@
     </div>
   </div>
 </div>
+
+<script src="../../../assets/sweetalert2/sweetalert2.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/promise-polyfill@8/dist/polyfill.js"></script>
+
+
+
+
+

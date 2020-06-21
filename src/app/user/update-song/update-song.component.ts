@@ -35,21 +35,6 @@ export class UpdateSongComponent implements OnInit {
               private fb: FormBuilder) {}
 
   ngOnInit(): void {
-    // this.songForm = new FormGroup({
-    //     name: new FormControl('',
-    //       [Validators.required,
-    //         Validators.minLength(1)]),
-    //     lyrics: new FormControl('',
-    //       [Validators.required,
-    //         Validators.minLength(10)]),
-    //     singer: new FormControl('',
-    //       [Validators.required,
-    //         Validators.minLength(1)]),
-    //     author: new FormControl('',
-    //       [Validators.required,
-    //         Validators.minLength(1)]),
-    //   }
-    // )
     this.songForm = this.fb.group({
       name: ['', [Validators.required, Validators.minLength(1)]],
       lyrics: ['', [Validators.required, Validators.minLength(10)]],
