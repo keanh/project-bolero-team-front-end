@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {SongService} from '../../service/song.service';
 import {Song} from '../../interface/Song';
 import {SearchService} from '../../service/search.service';
-import {Router} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
   selector: 'app-list',
@@ -12,14 +12,13 @@ import {Router} from '@angular/router';
 export class ListComponent implements OnInit {
   value = '';
   songList: Song[] = [];
-  constructor(private songService: SongService, private searchServe: SearchService , private route: Router) { }
+  constructor(private songService: SongService,
+              private searchServe: SearchService,
+              private router: Router,
+              private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.songService.getSongs().subscribe( data => {
-      this.songList = data;
-    }, error => {
-      console.log(error);
-    });
+    this.getAllSong();
   }
   searching(){
     // if (this.value !== ''){
@@ -34,10 +33,18 @@ export class ListComponent implements OnInit {
   delete(id: number) {
     this.songService.deleteSong(id).subscribe( () => {
       console.log(' delete success');
-      // @ts-ignore
-      this.route.navigate(['/list'], {relativeTo: this.route});
+      this.getAllSong();
+      // this.router.getCurrentNavigation();
+      // this.router.navigate(['/'], {relativeTo: this.route}).then(r => console.log(r));
     }, error => {
       console.log('delete failed');
+    });
+  }
+  getAllSong(){
+    this.songService.getSongs().subscribe( data => {
+      this.songList = data;
+    }, error => {
+      console.log(error);
     });
   }
 }
