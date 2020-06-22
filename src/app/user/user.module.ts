@@ -16,7 +16,7 @@ import { CKEditorModule} from 'ckeditor4-angular';
 import { ListenBarComponent } from './listen-bar/listen-bar.component';
 import {ListComponent} from './list/list.component';
 import {SongDetailsComponent} from './song-details/song-details.component';
-import { RegisterComponent } from './register/register.component';
+import {ListSongComponent} from './list-song/list-song.component';
 
 const routes: Routes = [
   {
@@ -47,10 +47,6 @@ const routes: Routes = [
         path: 'detail/:id',
         component: SongDetailsComponent
       },
-      {
-        path: 'register',
-        component: RegisterComponent
-      }
     ]
   }
 ];
@@ -69,7 +65,7 @@ const routes: Routes = [
     ListenBarComponent,
     ListComponent,
     SongDetailsComponent,
-    RegisterComponent
+    ListSongComponent
   ],
   imports: [
     CommonModule,
