@@ -1,3 +1,4 @@
+
 <app-welcome-area></app-welcome-area>
 <div class="container" style="text-align: center; font-size: 40px;">
      <b>
@@ -87,6 +88,13 @@
               <div class="col-lg-9 btn-inline">
                 <button class="btn btn-outline-secondary" type="button">Cancel</button>
                 <button class="btn btn-brand btn-air"  type="submit" >Save Song</button>
+                <button class="btn btn-outline-secondary" type="button" routerLink="/">Cancel</button>
+                &nbsp;
+                <button class="btn btn-outline-success" [disabled]="!songForm.invalid" type="submit" >Save Song</button>
+
+<!--                <button type="button" class="btn btn-success swalDefaultSuccess" (click)="test()">-->
+<!--                  Launch Success Toast-->
+<!--                </button>-->
               </div>
             </div>
           </form>
