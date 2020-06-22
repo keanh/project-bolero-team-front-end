@@ -34,10 +34,13 @@ export class SongService {
     return this.httpClient.delete<Song>(this.API_SONG + `/${id}`);
   }
 
-  getAllSongs(): Observable<Song[]> {
+  getAllSongsLastest(): Observable<Song[]> {
     return this.httpClient.get<Song[]>(this.API_LASTEST_SONG);
   }
-  detailSong(id: string): Observable<Song> {
-    return this.httpClient.get<Song>(this.API_SONG + `/${id}`);
+  // detailSong(id: string): Observable<Song> {
+  //   return this.httpClient.get<Song>(this.API_SONG + `/${id}`);
+  // }
+  getAllSongs(): Observable<Song[]> {
+    return this.httpClient.get<Song[]>(this.API_SONG);
   }
 }

@@ -82,7 +82,7 @@
             <div class="form-row form-group" formGroupName="style">
               <label class="col-lg-3 text-md-right col-form-label">Style</label>
               <select formControlName="id" style="color: black;height: 30px" class="col-lg-9">
-                <option value="" [disabled]="true">Chọn thể loại nhạc</option>
+                <option value="" [disabled]="true">Choose style</option>
                 <option *ngFor="let style of styleList" value="{{style.id}}">{{style.name}}</option>
               </select>
             </div>
