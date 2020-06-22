@@ -6,10 +6,10 @@ import {User} from '../interface/User';
   providedIn: 'root'
 })
 export class UserService {
-  private readonly API_URL_REGISTER = 'http://localhost:8080/user/register';
+  private readonly API_URL_REGISTER = 'http://localhost:8080/register';
   constructor( private httpClient: HttpClient) {
   }
-  addUser(user: User){
+  createUser(user: User){
     return this.httpClient.post<User>(this.API_URL_REGISTER, user);
   }
 }
