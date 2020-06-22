@@ -16,6 +16,7 @@ import { CKEditorModule} from 'ckeditor4-angular';
 import { ListenBarComponent } from './listen-bar/listen-bar.component';
 import {ListComponent} from './list/list.component';
 import {SongDetailsComponent} from './song-details/song-details.component';
+import { RegisterComponent } from './register/register.component';
 import { ProfileComponent } from './profile/profile.component';
 
 const routes: Routes = [
@@ -48,6 +49,10 @@ const routes: Routes = [
         component: SongDetailsComponent
       },
       {
+        path: 'register',
+        component: RegisterComponent
+      },
+      {
         path: 'profile',
         component: ProfileComponent
       },
@@ -68,6 +73,8 @@ const routes: Routes = [
     LatestSongComponent,
     ListenBarComponent,
     ListComponent,
+    SongDetailsComponent,
+    RegisterComponent,
     SongDetailsComponent,
     ProfileComponent
   ],
