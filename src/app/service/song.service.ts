@@ -9,10 +9,10 @@ import {Observable} from 'rxjs';
   providedIn: 'root'
 })
 export class SongService {
-  private readonly API_URL_SONG_LIST = 'http://localhost:8080/song/create';
+  private readonly API_URL_SONG_LIST = 'http://localhost:8080/song/list';
   private readonly API_SONG = 'http://localhost:8080/song';
   private readonly API_SONG_FIND = 'http://localhost:8080/findByName';
-  private readonly API_LASTEST_SONG = 'http://localhost:8080/lastest-song';
+  private readonly API_LATEST_SONG = 'http://localhost:8080/lastest-song';
   constructor(private httpClient: HttpClient) {
   }
 
@@ -35,7 +35,7 @@ export class SongService {
   }
 
   getAllSongs(): Observable<Song[]> {
-    return this.httpClient.get<Song[]>(this.API_LASTEST_SONG);
+    return this.httpClient.get<Song[]>(this.API_LATEST_SONG);
   }
   detailSong(id: string): Observable<Song> {
     return this.httpClient.get<Song>(this.API_SONG + `/${id}`);

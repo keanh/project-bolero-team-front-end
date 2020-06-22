@@ -107,7 +107,6 @@ export class AddSongComponent implements OnInit {
 
   async onSubmit() {
     const {value} = this.songForm;
-
     const upload1 = this.upload1();
     const upload2 = this.upload2();
     Promise.all([upload1, upload2]).then(async (result) => {
@@ -131,7 +130,7 @@ export class AddSongComponent implements OnInit {
         console.log(e);
       });
       console.log(song);
-      // await this.router.navigate(['/']);
+      await this.router.navigate(['']);
       this.createSuccess();
       this.songForm.reset();
       // alert('create thành công');
