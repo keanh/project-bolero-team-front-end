@@ -3,6 +3,7 @@ import {SongService} from '../../service/song.service';
 import {Song} from '../../interface/Song';
 import {SearchService} from '../../service/search.service';
 import {ActivatedRoute, Router} from '@angular/router';
+import Swal from '../../../assets/sweetalert2/sweetalert2.min.js';
 
 @Component({
   selector: 'app-list',
@@ -12,6 +13,13 @@ import {ActivatedRoute, Router} from '@angular/router';
 export class ListComponent implements OnInit {
   value = '';
   songList: Song[] = [];
+
+  Toast = Swal.mixin({
+    toast: true,
+    position: 'top-end',
+    showConfirmButton: false,
+    timer: 3000
+  });
   constructor(private songService: SongService,
               private searchServe: SearchService,
               private router: Router,
@@ -36,6 +44,7 @@ export class ListComponent implements OnInit {
 
   delete(id: number) {
     this.songService.deleteSong(id).subscribe( () => {
+      this.deleteSuccess();
       console.log(' delete success');
       this.getAllSong();
       // this.router.getCurrentNavigation();
@@ -49,6 +58,13 @@ export class ListComponent implements OnInit {
       this.songList = data;
     }, error => {
       console.log(error);
+    });
+  }
+
+  deleteSuccess(){
+    this.Toast.fire({
+      icon: 'success',
+      title: 'Xóa thành công'
     });
   }
 }
