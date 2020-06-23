@@ -17,7 +17,7 @@ export class UserDetailsComponent implements OnInit {
 
   async ngOnInit() {
     const id = +this.route.snapshot.paramMap.get('id');
-    await this.userService.getUserById(id).toPromise()
+    await this.userService.getUserInfo(id).toPromise()
       .then(res => {
         console.log(res);
         this.user = res;
