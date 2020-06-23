@@ -10,14 +10,20 @@ import {AngularFireAuthModule} from '@angular/fire/auth';
 import {AngularFireStorageModule} from '@angular/fire/storage';
 import {HttpClientModule} from '@angular/common/http';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import { AddAlbumComponent } from './user/add-album/add-album.component';
 import {UserModule} from "./user/user.module";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 const routes: Routes = [
-
   {
-    path: '',
+    path: 'user',
     loadChildren: () => import('./user/user.module').then(m => m.UserModule)
+  },
+  {
+    path: 'song',
+    loadChildren: () => import('./song/song.module').then(m => m.SongModule)
+  },
+  {
+    path: 'album',
+    loadChildren: () => import('./album/album.module').then(m => m.AlbumModule)
   }
 
 ];

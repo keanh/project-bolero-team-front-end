@@ -12,7 +12,7 @@ export class SongService {
   private readonly API_URL_CREATE_SONG = 'http://localhost:8080/song/create';
   private readonly API_SONG = 'http://localhost:8080/song';
   private readonly API_SONG_FIND = 'http://localhost:8080/findByName';
-  private readonly API_LASTEST_SONG = 'http://localhost:8080/lastest-song';
+  private readonly API_LATEST_SONG = 'http://localhost:8080/latest-song';
   constructor(private httpClient: HttpClient) {
   }
 
@@ -33,9 +33,8 @@ export class SongService {
   deleteSong(id: number): Observable<Song> {
     return this.httpClient.delete<Song>(this.API_SONG + `/${id}`);
   }
-
-  getAllSongsLastest(): Observable<Song[]> {
-    return this.httpClient.get<Song[]>(this.API_LASTEST_SONG);
+  getAllSongsLatest(): Observable<Song[]> {
+    return this.httpClient.get<Song[]>(this.API_LATEST_SONG);
   }
   // detailSong(id: string): Observable<Song> {
   //   return this.httpClient.get<Song>(this.API_SONG + `/${id}`);

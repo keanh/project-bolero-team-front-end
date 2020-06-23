@@ -3,91 +3,53 @@ import { CommonModule } from '@angular/common';
 import { FooterComponent } from './footer/footer.component';
 import { LayoutComponent } from './layout/layout.component';
 import {RouterModule, Routes} from '@angular/router';
-import { AddSongComponent } from './add-song/add-song.component';
-import {StyleListComponent} from './style-list/style-list.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import { UpdateSongComponent } from './update-song/update-song.component';
 import {WelcomeAreaComponent} from './welcome-area/welcome-area.component';
 import { NavbarComponent } from './navbar/navbar.component';
-import { FeatureComponent } from './feature/feature.component';
 import { HeaderComponent } from './header/header.component';
-import { LatestSongComponent } from './latest-song/latest-song.component';
 import { CKEditorModule} from 'ckeditor4-angular';
-import { ListenBarComponent } from './listen-bar/listen-bar.component';
-import {ListComponent} from './list/list.component';
-import {SongDetailsComponent} from './song-details/song-details.component';
-import {AddAlbumComponent} from "./add-album/add-album.component";
-import { AddAblumSongComponent } from './add-ablum-song/add-ablum-song.component';
-import {MatCheckboxModule} from "@angular/material/checkbox";
+import { UpdatePasswordComponent } from './update-password/update-password.component';
+import {RegisterComponent} from './register/register.component';
+import { UserDetailsComponent } from './user-details/user-details.component';
 
 const routes: Routes = [
   {
-    path: '',
+    path: ' ',
     component: LayoutComponent,
     children: [
       {
-        path: '',
-        component: LatestSongComponent
+        path: 'register',
+        component: RegisterComponent
       },
       {
-        path: 'add',
-        component: AddSongComponent
+        path: 'update-password',
+        component: UpdatePasswordComponent
       },
       {
-        path: '',
-        component: WelcomeAreaComponent
-      },
-      {
-        path: 'update/:id',
-        component: UpdateSongComponent
-      },
-      {
-        path: 'list',
-        component: ListComponent
-      },
-      {
-        path: 'detail/:id',
-        component: SongDetailsComponent
-      },
-      {
-        path: 'album/add',
-        component: AddAlbumComponent
-      },
-      {
-        path: 'album/addSong',
-        component: AddAblumSongComponent
-      },
+        path: 'user-details:/id',
+        component: UserDetailsComponent
+      }
     ]
   }
 ];
 
 @NgModule({
-    declarations: [FooterComponent,
-        LayoutComponent,
-        AddSongComponent,
-        StyleListComponent,
-        UpdateSongComponent,
-        WelcomeAreaComponent,
-        NavbarComponent,
-        FeatureComponent,
-        HeaderComponent,
-        LatestSongComponent,
-        ListenBarComponent,
-        ListComponent,
-        SongDetailsComponent,
-        AddAlbumComponent,
-        AddAblumSongComponent
-    ],
-    exports: [
-        WelcomeAreaComponent
-    ],
+  declarations: [
+    FooterComponent,
+    LayoutComponent,
+    WelcomeAreaComponent,
+    NavbarComponent,
+    HeaderComponent,
+    RegisterComponent,
+    UpdatePasswordComponent,
+    UserDetailsComponent
+  ],
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
     FormsModule,
     ReactiveFormsModule,
-    CKEditorModule,
-    MatCheckboxModule
+    CKEditorModule
   ]
 })
 export class UserModule { }
