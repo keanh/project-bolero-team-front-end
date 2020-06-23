@@ -21,6 +21,7 @@ export class SongDetailsComponent implements OnInit {
       .then(res => {
         console.log(res);
         this.song = res;
+        this.song.views++;
       })
       .catch(error => console.log(error));
     console.log('phai hien thi cuoi cung');
