@@ -36,7 +36,7 @@ export class SongService {
   }
 
   getAllSongs(): Observable<Song[]> {
-    return this.httpClient.get<Song[]>(this.API_LASTEST_SONG);
+    return this.httpClient.get<Song[]>(this.API_SONG);
   }
   detailSong(id: string): Observable<Song> {
     return this.httpClient.get<Song>(this.API_SONG + `/${id}`);

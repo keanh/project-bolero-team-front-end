@@ -17,6 +17,8 @@ import { ListenBarComponent } from './listen-bar/listen-bar.component';
 import {ListComponent} from './list/list.component';
 import {SongDetailsComponent} from './song-details/song-details.component';
 import {ListSongComponent} from './list-song/list-song.component';
+import { ProfileComponent } from './profile/profile.component';
+import {RegisterComponent} from './register/register.component';
 
 const routes: Routes = [
   {
@@ -47,6 +49,10 @@ const routes: Routes = [
         path: 'detail/:id',
         component: SongDetailsComponent
       },
+      {
+        path: 'user/:id',
+        component: ProfileComponent
+      }
     ]
   }
 ];
@@ -65,7 +71,9 @@ const routes: Routes = [
     ListenBarComponent,
     ListComponent,
     SongDetailsComponent,
-    ListSongComponent
+    ListSongComponent,
+    ProfileComponent,
+    RegisterComponent
   ],
   imports: [
     CommonModule,

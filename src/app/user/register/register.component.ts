@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {User} from 'firebase';
 import {UserService} from '../../service/user.service';
-import {User} from '../../interface/User';
 
 @Component({
   selector: 'app-register',
@@ -16,7 +16,7 @@ export class RegisterComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder,
               private userService: UserService
-) { }
+  ) { }
 
   ngOnInit() {
     this.registerForm = this.formBuilder.group({
