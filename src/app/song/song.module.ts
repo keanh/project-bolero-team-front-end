@@ -43,7 +43,7 @@ const routes: Routes = [
         component: ListComponent
       },
       {
-        path: 'detail/:id',
+        path: 'details/:id',
         component: SongDetailsComponent
       }
     ]

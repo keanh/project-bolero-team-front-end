@@ -1,0 +1,30 @@
+<link rel="stylesheet" href="/src/assets/style.css">
+<app-welcome-area></app-welcome-area>
+
+<div class="row poca-featured-music-area">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <div *ngIf="user" class="poca-music-area box-shadow d-flex align-items-center flex-wrap border" data-animation="fadeInUp" data-delay="900ms">
+<!--          <div class="poca-music-thumbnail">-->
+<!--            <img src="{{user.image}}" alt="">-->
+<!--          </div>-->
+          <div class="poca-music-content">
+            <span class="music-published-date">{{user.fistName}}</span>
+            <h2>{{user.lastName}}</h2>
+            <div class="music-meta-data">
+              <p>By <a href="#" class="music-author">Admin</a> | <a href="#" class="music-catagory">{{user.email}}</a> | <a href="#" class="music-duration">00:02:56</a></p>
+            </div>
+            <!-- Music Player -->
+
+            <!-- Likes, Share & Download -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<div style="padding-left: 90px">
+  <h3>Lời bài hát:</h3>
+</div>
+
