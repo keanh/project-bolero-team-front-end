@@ -10,6 +10,9 @@ import {AngularFireAuthModule} from '@angular/fire/auth';
 import {AngularFireStorageModule} from '@angular/fire/storage';
 import {HttpClientModule} from '@angular/common/http';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { AddAlbumComponent } from './user/add-album/add-album.component';
+import {UserModule} from "./user/user.module";
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 const routes: Routes = [
 
   {
@@ -34,6 +37,8 @@ const routes: Routes = [
     HttpClientModule,
     ReactiveFormsModule,
     FormsModule,
+    UserModule,
+    BrowserAnimationsModule,
   ],
   exports: [RouterModule],
 

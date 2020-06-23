@@ -4,6 +4,8 @@ import {Song} from '../../interface/Song';
 import {SearchService} from '../../service/search.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import Swal from '../../../assets/sweetalert2/sweetalert2.min.js';
+import {AlbumService} from "../../service/album.service";
+import {Album} from "../../interface/Album";
 
 @Component({
   selector: 'app-list',
@@ -13,6 +15,7 @@ import Swal from '../../../assets/sweetalert2/sweetalert2.min.js';
 export class ListComponent implements OnInit {
   value = '';
   songList: Song[] = [];
+  albumList: Album[] = [];
 
   Toast = Swal.mixin({
     toast: true,
@@ -23,11 +26,17 @@ export class ListComponent implements OnInit {
   constructor(private songService: SongService,
               private searchServe: SearchService,
               private router: Router,
-              private route: ActivatedRoute) { }
+              private route: ActivatedRoute,
+              private albumService: AlbumService) { }
 
   ngOnInit(): void {
     this.songService.getAllSongs().subscribe( data => {
       this.songList = data;
+    }, error => {
+      console.log(error);
+    });
+    this.albumService.getAllAlbum().subscribe(data => {
+      this.albumList = data;
     }, error => {
       console.log(error);
     });

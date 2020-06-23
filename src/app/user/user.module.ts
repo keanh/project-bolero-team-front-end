@@ -16,6 +16,9 @@ import { CKEditorModule} from 'ckeditor4-angular';
 import { ListenBarComponent } from './listen-bar/listen-bar.component';
 import {ListComponent} from './list/list.component';
 import {SongDetailsComponent} from './song-details/song-details.component';
+import {AddAlbumComponent} from "./add-album/add-album.component";
+import { AddAblumSongComponent } from './add-ablum-song/add-ablum-song.component';
+import {MatCheckboxModule} from "@angular/material/checkbox";
 
 const routes: Routes = [
   {
@@ -46,31 +49,45 @@ const routes: Routes = [
         path: 'detail/:id',
         component: SongDetailsComponent
       },
+      {
+        path: 'album/add',
+        component: AddAlbumComponent
+      },
+      {
+        path: 'album/addSong',
+        component: AddAblumSongComponent
+      },
     ]
   }
 ];
 
 @NgModule({
-  declarations: [FooterComponent,
-    LayoutComponent,
-    AddSongComponent,
-    StyleListComponent,
-    UpdateSongComponent,
-    WelcomeAreaComponent,
-    NavbarComponent,
-    FeatureComponent,
-    HeaderComponent,
-    LatestSongComponent,
-    ListenBarComponent,
-    ListComponent,
-    SongDetailsComponent
-  ],
+    declarations: [FooterComponent,
+        LayoutComponent,
+        AddSongComponent,
+        StyleListComponent,
+        UpdateSongComponent,
+        WelcomeAreaComponent,
+        NavbarComponent,
+        FeatureComponent,
+        HeaderComponent,
+        LatestSongComponent,
+        ListenBarComponent,
+        ListComponent,
+        SongDetailsComponent,
+        AddAlbumComponent,
+        AddAblumSongComponent
+    ],
+    exports: [
+        WelcomeAreaComponent
+    ],
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
     FormsModule,
     ReactiveFormsModule,
-    CKEditorModule
+    CKEditorModule,
+    MatCheckboxModule
   ]
 })
 export class UserModule { }
