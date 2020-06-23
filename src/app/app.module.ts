@@ -13,8 +13,12 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 const routes: Routes = [
 
   {
-    path: '',
+    path: 'user',
     loadChildren: () => import('./user/user.module').then(m => m.UserModule)
+  },
+  {
+    path: '',
+    loadChildren: () => import('./song/song.module').then(m => m.SongModule)
   }
 
 ];
