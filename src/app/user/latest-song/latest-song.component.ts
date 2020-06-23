@@ -12,6 +12,7 @@ export class LatestSongComponent implements OnInit, OnChanges {
 
   value: string;
   songList: Song[] = [];
+  lastestSong: Song[] = [];
   songListTem: Song[] = [];
   constructor(private songService: SongService, public searchService: SearchService) {
   }
@@ -21,6 +22,9 @@ export class LatestSongComponent implements OnInit, OnChanges {
       this.songListTem = this.songList; }, error => (this.songList = []));
     // await this.getVale();
     this.getListSearch();
+    this.songService.getAllSongsLatest().subscribe(next => {
+      this.lastestSong = next;
+    }, error => (this.lastestSong = []));
   }
   getListSearch(){
     this.searchService.list.subscribe( data => {

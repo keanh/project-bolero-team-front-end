@@ -8,7 +8,7 @@
       <!-- Section Heading -->
       <div class="col-12">
         <div class="section-heading text-center">
-          <h2> Latest Episodes</h2>
+          <h2> Latest Songs</h2>
           <div class="line"></div>
         </div>
       </div>
@@ -29,6 +29,56 @@
   <div class="container">
     <div class="row poca-portfolio">
       <!-- Single gallery Item -->
+
+      <div class="col-12 col-md-4 single_gallery_item entre wow fadeInUp" data-wow-delay="0.2s" *ngFor="let song of lastestSong">
+        <!-- Welcome Music Area -->
+        <div class="poca-music-area style-2 d-flex align-items-center flex-wrap">
+          <div class="poca-music-thumbnail">
+            <a [routerLink]="['/detail',song.id]">
+              <img src="{{song.image}}" alt="" style="height: 340px; width: 600px">
+            </a>
+          </div>
+          <div class="poca-music-content text-center">
+            <!--            <span class="music-published-date mb-2">{{song.dateSubmitted}}</span>-->
+            <h3 class="title" style="font-size: 18px">
+              <a [routerLink]="['/detail',song.id]">
+                {{song.name}}
+              </a>
+            </h3>
+            <div class="music-meta-data">
+              <p style="height: 20px; font-size: 10px">By <a href="#" class="music-author" style="font-size: 10px">Admin</a> | <a href="#" class="music-catagory" style="font-size: 10px">{{song.style.name}}</a> |
+                {{song.dateSubmitted}}</p>
+            </div>
+            <!-- Music Player -->
+            <div class="poca-music-player">
+              <audio preload="auto" controls>
+                <source src="{{song.fileMp3}}">
+              </audio>
+            </div>
+            <!-- Likes, Share & Download -->
+            <div class="likes-share-download d-flex align-items-center justify-content-between">
+              <a href="#"><i class="fa fa-heart" aria-hidden="true"></i> Like (29)</a>
+              <div>
+                <a href="#" class="mr-4"><i class="fa fa-share-alt" aria-hidden="true"></i> Share(04)</a>
+                <a href="#"><i class="fa fa-download" aria-hidden="true"></i> Download (12)</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="container">
+        <div class="row">
+          <!-- Section Heading -->
+          <div class="col-12">
+            <div class="section-heading text-center">
+              <h2> List Songs</h2>
+              <div class="line"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <div class="col-12 col-md-4 single_gallery_item entre wow fadeInUp" data-wow-delay="0.2s" *ngFor="let song of songList">
         <!-- Welcome Music Area -->
         <div class="poca-music-area style-2 d-flex align-items-center flex-wrap">
