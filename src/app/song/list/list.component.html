@@ -18,14 +18,14 @@
         <tbody>
         <tr *ngFor="let list of songList">
           <td class="pt-3-half" style="width: 100px; height: 100px;"><img [src]="list.image" alt=""></td>
-          <td class="pt-3-half" >{{list.name}}</td>
+          <td class="pt-3-half"><a [routerLink]="['/song/details',list.id]">{{list.name}}</a></td>
           <td class="pt-3-half" >{{list.singer}}</td>
           <td class="pt-3-half">{{list.author}}</td>
           <td>
-            <span class="table-remove"><button type="button" class="btn btn-danger btn-rounded btn-sm my-0"><a
-             [routerLink]="['/song/update',list.id]">Edit</a></button></span>
+            <span class="table-remove"><button type="button" class="btn btn-info btn-rounded btn-sm my-0"
+             [routerLink]="['/song/update',list.id]">Edit</button></span>
             &nbsp;
-0            <span class="table-remove"><button type="button" class="btn btn-danger btn-rounded btn-sm my-0" (click)="delete(list.id)">
+            <span class="table-remove"><button type="button" class="btn btn-danger btn-rounded btn-sm my-0" (click)="delete(list.id)">
               Delete</button></span>
           </td>
         </tr>
