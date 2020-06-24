@@ -1,20 +1,20 @@
-<nav class="navbar navbar-inverse">
-  <div class="container-fluid">
-    <ul class="nav navbar-nav" routerLinkActive="active">
-      <li class="nav-item"><a class="nav-link" routerLink="">Home</a></li>
-      <!--      <li *ngIf="authority === 'user'" class="nav-item">-->
-      <!--        <a class="nav-link" routerLink="user">User Board</a>-->
-      <!--      </li>-->
-      <li class="nav-item" *ngIf = "authority === 'admin'">
-        <a class="nav-link" routerLink="admin">Admin Board</a>
-      </li>
-      <!--      <li *ngIf="authority === 'pm'" class="nav-item">-->
-      <!--        <a class="nav-link" routerLink="pm">PM Board</a>-->
-      <!--      </li>-->
-      <li *ngIf="!authority" class="nav-item">
-        <a class="nav-link" routerLink="auth/login">Login</a>
-      </li>
-    </ul>
-  </div>
-</nav>
+<!--<nav class="navbar navbar-inverse">-->
+<!--  <div class="container-fluid">-->
+<!--    <ul class="nav navbar-nav" routerLinkActive="active">-->
+<!--      <li class="nav-item"><a class="nav-link" routerLink="">Home</a></li>-->
+<!--&lt;!&ndash;      <li *ngIf="authority === 'user'" class="nav-item">&ndash;&gt;-->
+<!--&lt;!&ndash;        <a class="nav-link" routerLink="user">User Board</a>&ndash;&gt;-->
+<!--&lt;!&ndash;      </li>&ndash;&gt;-->
+<!--      <li class="nav-item" *ngIf = "authority === 'admin'">-->
+<!--        <a class="nav-link" routerLink="admin">Admin Board</a>-->
+<!--      </li>-->
+<!--&lt;!&ndash;      <li *ngIf="authority === 'pm'" class="nav-item">&ndash;&gt;-->
+<!--&lt;!&ndash;        <a class="nav-link" routerLink="pm">PM Board</a>&ndash;&gt;-->
+<!--&lt;!&ndash;      </li>&ndash;&gt;-->
+<!--      <li *ngIf="!authority" class="nav-item">-->
+<!--        <a class="nav-link" routerLink="auth/login">Login</a>-->
+<!--      </li>-->
+<!--    </ul>-->
+<!--  </div>-->
+<!--</nav>-->
 <router-outlet></router-outlet>

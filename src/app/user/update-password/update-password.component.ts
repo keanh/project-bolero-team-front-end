@@ -7,7 +7,6 @@ import {StyleService} from '../../service/style.service';
 import {User} from '../../interface/User';
 import Swal from 'sweetalert2';
 import {UserService} from '../../service/user.service';
-import {MustMatch} from '../register/register.component';
 
 @Component({
   selector: 'app-update-password',
@@ -39,7 +38,7 @@ export class UpdatePasswordComponent implements OnInit {
       password: ['', [Validators.required, Validators.minLength(6)]],
       confirmPassword: ['', Validators.required]
     }, {
-      validator: MustMatch('password', 'confirmPassword')
+      // validator: MustMatch('password', 'confirmPassword')
     });
   }
 }
