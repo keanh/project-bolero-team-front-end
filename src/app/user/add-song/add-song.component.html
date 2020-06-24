@@ -17,8 +17,7 @@
             <div class="form-row form-group">
               <label class="col-lg-3 text-md-right col-form-label" for="name" >Song Name</label>
               <div class="col-lg-9">
-                <input class="form-control is-valid" id="name" type="text" formControlName="name"
-                       [ngClass]="songForm.get('name').invalid ? 'is-invalid' : 'is-valid'">
+                <input class="form-control" id="name" type="text" formControlName="name">
                 <div *ngIf="songForm.get('name').invalid && songForm.get('name').touched" style="color: red">
                   Name is required and min length is 1
                 </div>
@@ -86,6 +85,7 @@
                 <option *ngFor="let style of styleList" value="{{style.id}}">{{style.name}}</option>
               </select>
             </div>
+
             <div class="row">
               <div class="col-lg-3"></div>
               <div class="col-lg-9 btn-inline">
@@ -98,6 +98,7 @@
                 <!--                </button>-->
               </div>
             </div>
+
           </form>
         </div>
       </div>
