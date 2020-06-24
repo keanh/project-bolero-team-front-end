@@ -10,19 +10,41 @@ import {AngularFireAuthModule} from '@angular/fire/auth';
 import {AngularFireStorageModule} from '@angular/fire/storage';
 import {HttpClientModule} from '@angular/common/http';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
+import { HomeComponent } from './home/home.component';
+import { AdminComponent } from './admin/admin.component';
 const routes: Routes = [
-
   {
     path: '',
     loadChildren: () => import('./user/user.module').then(m => m.UserModule)
+  },
+  {
+    path: '',
+    component: HomeComponent
+  },
+  {
+    path: 'auth/login',
+    component: LoginComponent
+  },
+  {
+    path: 'signup',
+    component: RegisterComponent
+  },
+  {
+    path: 'admin',
+    component: AdminComponent
   }
-
 ];
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    LoginComponent,
+    RegisterComponent,
+    HomeComponent,
+    AdminComponent
   ],
   imports: [
     BrowserModule,
