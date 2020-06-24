@@ -127,6 +127,8 @@ export class AddSongComponent implements OnInit {
       };
       this.songService.addSong(song).subscribe(() => {
       }, (e) => {
+        // alert('gap loi khi them bai hat');
+        this.createFail();
         console.log(e);
       });
       console.log(song);
@@ -139,7 +141,13 @@ export class AddSongComponent implements OnInit {
   createSuccess(){
     this.Toast.fire({
       icon: 'success',
-      title: 'Tạo    mới thành công'
+      title: 'Tạo mới thành công'
+    });
+  }
+  createFail(){
+    this.Toast.fire({
+      icon: 'success',
+      title: 'Tạo mới thaast bai'
     });
   }
 }

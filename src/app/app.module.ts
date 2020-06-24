@@ -16,6 +16,7 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { HomeComponent } from './home/home.component';
 import { AdminComponent } from './admin/admin.component';
+// import { ImageComponent } from './service/image/image.component';
 const routes: Routes = [
   {
     path: 'user',
@@ -54,7 +55,8 @@ const routes: Routes = [
     LoginComponent,
     RegisterComponent,
     HomeComponent,
-    AdminComponent
+    AdminComponent,
+    // ImageComponent
   ],
   imports: [
     BrowserModule,

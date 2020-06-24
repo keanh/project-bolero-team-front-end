@@ -55,22 +55,22 @@ export class ProfileComponent implements OnInit {
         this.fail = 'Edit user fail';
       });
   }
-  updateUser(){
-    if (this.profileForm.valid) {
-      const {value} = this.profileForm;
-      const data = {
-        ...this.user,
-        ...value
-      };
-      this.userService.getUserInfo(data)
-        .subscribe(result => {
-          this.routes.navigate(['list']);
-          this.updateSuccess();
-        }, error => {
-          console.log(error);
-        });
-    }
-  }
+  // updateUser(){
+  //   if (this.profileForm.valid) {
+  //     const {value} = this.profileForm;
+  //     const data = {
+  //       ...this.user,
+  //       ...value
+  //     };
+  //     this.userService.getUserById(data)
+  //       .subscribe(result => {
+  //         this.routes.navigate(['list']);
+  //         this.updateSuccess();
+  //       }, error => {
+  //         console.log(error);
+  //       });
+  //   }
+  // }
   updateSuccess(){
     this.Toast.fire({
       icon: 'success',

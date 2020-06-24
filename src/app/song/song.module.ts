@@ -16,6 +16,7 @@ import {ListenBarComponent} from "./listen-bar/listen-bar.component";
 import {CommonModule} from "@angular/common";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {CKEditorModule} from "ckeditor4-angular";
+import {ListSongComponent} from './list-song/list-song.component';
 
 
 const routes: Routes = [
@@ -49,7 +50,7 @@ const routes: Routes = [
       }
     ]
   }
-  ];
+];
 
 @NgModule({
   declarations: [
@@ -65,7 +66,8 @@ const routes: Routes = [
     ListComponent,
     SongDetailsComponent,
     UpdateSongComponent,
-    WelcomeAreaComponent
+    WelcomeAreaComponent,
+    ListSongComponent
   ],
   imports: [
     CommonModule,

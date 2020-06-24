@@ -10,7 +10,9 @@
           <h6 class="card-title mb-0" style="text-align: center">Edit User</h6>
         </div>
         <div class="card-body">
-          <form [formGroup] = "profileForm"  class="ng-untouched ng-pristine ng-valid"  (ngSubmit)="updateUser()">
+          <form [formGroup] = "profileForm"  class="ng-untouched ng-pristine ng-valid" >
+<!--                (ngSubmit)="updateUser()"-->
+
             <div class="form-row form-group">
               <label class="col-lg-2 text-md-right col-form-label" for="firstName" >First Name</label>
               <div class="col-lg-9">

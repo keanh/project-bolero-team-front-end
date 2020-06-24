@@ -9,7 +9,7 @@ import {Observable} from 'rxjs';
   providedIn: 'root'
 })
 export class SongService {
-  private readonly API_URL_CREATE_SONG = 'http://localhost:8080/song/create';
+  private readonly API_URL_CREATE_SONG = 'http://localhost:8080/api/auth/song/create';
   private readonly API_SONG = 'http://localhost:8080/song';
   private readonly API_SONG_FIND = 'http://localhost:8080/findByName';
   private readonly API_LATEST_SONG = 'http://localhost:8080/latest-song';
