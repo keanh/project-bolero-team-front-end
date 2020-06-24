@@ -15,7 +15,7 @@ import {ProfileComponent} from './profile/profile.component';
 
 const routes: Routes = [
   {
-    path: ' ',
+    path: '',
     component: LayoutComponent,
     children: [
       {

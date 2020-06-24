@@ -10,13 +10,12 @@ import {AngularFireAuthModule} from '@angular/fire/auth';
 import {AngularFireStorageModule} from '@angular/fire/storage';
 import {HttpClientModule} from '@angular/common/http';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {UserModule} from "./user/user.module";
+import {UserModule} from './user/user.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { LoginComponent } from './login/login.component';
-import { RegisterComponent } from './register/register.component';
-import { HomeComponent } from './home/home.component';
-import { AdminComponent } from './admin/admin.component';
-// import { ImageComponent } from './service/image/image.component';
+import {HomeComponent} from './home/home.component';
+import {LoginComponent} from './login/login.component';
+import {RegisterComponent} from './register/register.component';
+import {AdminComponent} from './admin/admin.component';
 const routes: Routes = [
   {
     path: 'user',
@@ -56,7 +55,6 @@ const routes: Routes = [
     RegisterComponent,
     HomeComponent,
     AdminComponent,
-    // ImageComponent
   ],
   imports: [
     BrowserModule,

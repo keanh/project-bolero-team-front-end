@@ -13,6 +13,7 @@ export class SongService {
   private readonly API_SONG = 'http://localhost:8080/api/auth/song';
   private readonly API_SONG_FIND = 'http://localhost:8080/api/auth/findByName';
   private readonly API_LATEST_SONG = 'http://localhost:8080/api/auth/latest-song';
+  private readonly API_MOST_VIEWS_SONG = 'http://localhost:8080/api/auth/most-views-song';
   constructor(private httpClient: HttpClient) {
   }
 
@@ -41,5 +42,8 @@ export class SongService {
   // }
   getAllSongs(): Observable<Song[]> {
     return this.httpClient.get<Song[]>(this.API_SONG);
+  }
+  getMostViewSong(): Observable<Song[]>{
+    return this.httpClient.get<Song[]>(this.API_MOST_VIEWS_SONG);
   }
 }
