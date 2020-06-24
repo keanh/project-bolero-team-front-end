@@ -11,13 +11,15 @@ export class UserService {
   private readonly API_URL_UPDATE_PASSWORD = 'http://localhost:8080/user/updatePassword/{id}';
   private readonly API_URL_GET_USER = 'http://localhost:8080/user/' ;
   private readonly API_URL_USER_INFO = 'http://localhost:8080/user/info/' ;
-
-
-  constructor( private httpClient: HttpClient) {
+  private userUrl = 'http://localhost:8080/api/test/user';
+  constructor( private httpClient: HttpClient) {}
+  getUserBoard(): Observable<string> {
+    return this.httpClient.get(this.userUrl, { responseType: 'text' });
   }
   createUser(user: User): Observable<User>{
     return this.httpClient.post<User>(this.API_URL_REGISTER, user);
   }
+
   updatePassword(user: User): Observable<User>{
     return this.httpClient.put<User>(this.API_URL_UPDATE_PASSWORD, user);
   }

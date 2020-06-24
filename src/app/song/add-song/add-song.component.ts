@@ -42,8 +42,8 @@ export class AddSongComponent implements OnInit {
     this.songForm = this.fb.group({
       name: ['', [Validators.required, Validators.minLength(1)]],
       lyrics: ['', [Validators.required, Validators.minLength(10)]],
-      singer: ['', [Validators.required, Validators.minLength(5)]],
-      author: ['', [Validators.required, Validators.minLength(5)]],
+      singer: ['', [Validators.required, Validators.minLength(1)]],
+      author: ['', [Validators.required, Validators.minLength(1)]],
       image: ['', [Validators.required]],
       fileMp3: ['', [Validators.required]],
       style: this.fb.group({
@@ -139,7 +139,7 @@ export class AddSongComponent implements OnInit {
   createSuccess(){
     this.Toast.fire({
       icon: 'success',
-      title: 'Tạo mới thành công'
+      title: 'Tạo    mới thành công'
     });
   }
 }
