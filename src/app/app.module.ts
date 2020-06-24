@@ -12,10 +12,10 @@ import {HttpClientModule} from '@angular/common/http';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {UserModule} from './user/user.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { LoginComponent } from './login/login.component';
-import { RegisterComponent } from './register/register.component';
-import { HomeComponent } from './home/home.component';
-import { AdminComponent } from './admin/admin.component';
+import {HomeComponent} from './home/home.component';
+import {LoginComponent} from './login/login.component';
+import {RegisterComponent} from './register/register.component';
+import {AdminComponent} from './admin/admin.component';
 const routes: Routes = [
   {
     path: 'user',
@@ -54,7 +54,7 @@ const routes: Routes = [
     LoginComponent,
     RegisterComponent,
     HomeComponent,
-    AdminComponent
+    AdminComponent,
   ],
   imports: [
     BrowserModule,
