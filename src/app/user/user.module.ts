@@ -20,14 +20,6 @@ const routes: Routes = [
       {
         path: 'register',
         component: RegisterComponent
-      },
-      {
-        path: 'update-password',
-        component: UpdatePasswordComponent
-      },
-      {
-        path: 'user-details:/id',
-        component: UserDetailsComponent
       }
     ]
   }

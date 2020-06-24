@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {SearchService} from '../../service/search.service';
 import {Song} from '../../interface/Song';
 import {SongService} from '../../service/song.service';
+import {TokenStorageService} from '../../auth/token-storage.service';
 
 @Component({
   selector: 'app-header',
@@ -11,9 +12,18 @@ import {SongService} from '../../service/song.service';
 export class HeaderComponent implements OnInit {
   value: string;
   songList: Song[] = [];
-  constructor(public searchService: SearchService, private songService: SongService) { }
+  accessToken: string;
+  public info: any;
+  constructor(public searchService: SearchService, private songService: SongService, private token: TokenStorageService) { }
 
   ngOnInit(): void {
+    this.info = {
+      token: this.token.getToken(),
+      username: this.token.getUsername(),
+      authorities: this.token.getAuthorities()
+    };
+    console.log(this.info);
+    this.accessToken = this.token.getToken();
   }
   search(){
     if (this.value !== ''){
