@@ -64,7 +64,7 @@ export class AddAblumSongComponent implements OnInit {
     }, (e) => {
       console.log(e);
     });
-    await this.router.navigate(['/']);
+    await this.router.navigate(['song']);
     this.addSongToAlbumSuccess();
   }
 
