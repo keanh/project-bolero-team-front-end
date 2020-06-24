@@ -9,22 +9,16 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { HeaderComponent } from './header/header.component';
 import { CKEditorModule} from 'ckeditor4-angular';
 import { UpdatePasswordComponent } from './update-password/update-password.component';
-import {RegisterComponent} from './register/register.component';
 import { UserDetailsComponent } from './user-details/user-details.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: LayoutComponent,
-    children: [
-      {
-        path: 'register',
-        component: RegisterComponent
-      }
-    ]
+    component: LayoutComponent
+  //   children: [{
+  // }]
   }
 ];
-
 @NgModule({
   declarations: [
     FooterComponent,
@@ -32,7 +26,6 @@ const routes: Routes = [
     WelcomeAreaComponent,
     NavbarComponent,
     HeaderComponent,
-    RegisterComponent,
     UpdatePasswordComponent,
     UserDetailsComponent
   ],

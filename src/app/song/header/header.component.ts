@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {SearchService} from '../../service/search.service';
 import {Song} from '../../interface/Song';
 import {SongService} from '../../service/song.service';
+import {TokenStorageService} from "../../auth/token-storage.service";
 
 @Component({
   selector: 'app-header',
@@ -11,9 +12,19 @@ import {SongService} from '../../service/song.service';
 export class HeaderComponent implements OnInit {
   value: string;
   songList: Song[] = [];
-  constructor(public searchService: SearchService, private songService: SongService) { }
+  isSignedUp = false;
+  isSignUpFailed = false;
+  constructor(public searchService: SearchService, private songService: SongService,
+              private token: TokenStorageService) { }
 
   ngOnInit(): void {
+    if (this.token.getToken()) {
+      this.isSignedUp = true;
+      this.isSignUpFailed = false;
+    }else {
+      this.isSignedUp = false;
+      this.isSignUpFailed = true;
+    }
   }
   search(){
     if (this.value !== ''){
@@ -28,5 +39,9 @@ export class HeaderComponent implements OnInit {
         this.searchService.changeValue(this.value, this.songList);
       });
     }
+  }
+  logout() {
+    this.token.signOut();
+    window.location.reload();
   }
 }

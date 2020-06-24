@@ -16,8 +16,8 @@ import {ListenBarComponent} from './listen-bar/listen-bar.component';
 import {CommonModule} from '@angular/common';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {CKEditorModule} from 'ckeditor4-angular';
-import { MostViewsComponent } from './most-views/most-views.component';
-
+import {LoginComponent} from '../login/login.component';
+import {UserGuard} from '../user.guard';
 
 const routes: Routes = [
   {
@@ -28,34 +28,32 @@ const routes: Routes = [
         path: '',
         component: LatestSongComponent
       },
-      {
-        path: 'add',
-        component: AddSongComponent
-      },
       // {
-      //   path: '',
-      //   component: WelcomeAreaComponent
+      //   path: 'signin',
+      //   component: LoginComponent
       // },
       {
+        path: 'add',
+        canActivate: [UserGuard],
+        component: AddSongComponent
+      },
+      {
         path: 'update/:id',
+        canActivate: [UserGuard],
         component: UpdateSongComponent
       },
       {
         path: 'list',
+        canActivate: [UserGuard],
         component: ListComponent
       },
       {
         path: 'details/:id',
         component: SongDetailsComponent
-      },
-      {
-        path: 'most-views-song',
-        component: MostViewsComponent
       }
     ]
   }
   ];
-
 @NgModule({
   declarations: [
     FooterComponent,
@@ -70,8 +68,10 @@ const routes: Routes = [
     ListComponent,
     SongDetailsComponent,
     UpdateSongComponent,
-    WelcomeAreaComponent,
-    MostViewsComponent
+    WelcomeAreaComponent
+  ],
+  exports: [
+    WelcomeAreaComponent
   ],
   imports: [
     CommonModule,
