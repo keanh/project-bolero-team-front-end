@@ -10,14 +10,24 @@ import {AngularFireAuthModule} from '@angular/fire/auth';
 import {AngularFireStorageModule} from '@angular/fire/storage';
 import {HttpClientModule} from '@angular/common/http';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {UserModule} from "./user/user.module";
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { HomeComponent } from './home/home.component';
 import { AdminComponent } from './admin/admin.component';
 const routes: Routes = [
   {
-    path: '',
+    path: 'user',
     loadChildren: () => import('./user/user.module').then(m => m.UserModule)
+  },
+  {
+    path: 'song',
+    loadChildren: () => import('./song/song.module').then(m => m.SongModule)
+  },
+  {
+    path: 'album',
+    loadChildren: () => import('./album/album.module').then(m => m.AlbumModule)
   },
   {
     path: '',
@@ -56,6 +66,8 @@ const routes: Routes = [
     HttpClientModule,
     ReactiveFormsModule,
     FormsModule,
+    UserModule,
+    BrowserAnimationsModule,
   ],
   exports: [RouterModule],
 

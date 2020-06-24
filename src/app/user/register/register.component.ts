@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {UserService} from '../../service/user.service';
 import {User} from '../../interface/User';
+import Swal from 'sweetalert2';
+
 
 @Component({
   selector: 'app-register',
@@ -13,7 +15,14 @@ export class RegisterComponent implements OnInit {
   submitted = false;
   phoneNumberPattern = '^((\\0-?)|0)?[0-9]{10}$';
   user: User[] = [];
+  failMessage: string;
 
+  Toast = Swal.mixin({
+    toast: true,
+    position: 'top-end',
+    showConfirmButton: false,
+    timer: 3000
+  });
   constructor(private formBuilder: FormBuilder,
               private userService: UserService
 ) { }
@@ -22,6 +31,7 @@ export class RegisterComponent implements OnInit {
     this.registerForm = this.formBuilder.group({
       firstName: ['', Validators.required],
       lastName: ['', Validators.required],
+      username: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
       phoneNumber: ['', [Validators.required, Validators.pattern(this.phoneNumberPattern)]],
       password: ['', [Validators.required, Validators.minLength(6)]],
@@ -37,14 +47,25 @@ export class RegisterComponent implements OnInit {
 
   onSubmit() {
     this.submitted = true;
-
     // stop here if form is invalid
-    if (this.registerForm.invalid) {
-      return;
+    if (this.registerForm.valid) {
+      const {value} = this.registerForm;
+      this.userService.createUser(value)
+        .subscribe(result => {
+          this.user.push(result);
+          this.createSuccess();
+          this.registerForm.reset(this.onReset()
+          );
+        }, error => {
+          this.failMessage = 'Add user fail !';
+        });
     }
-
-    // display form values on success
-    alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.registerForm.value, null, 4));
+  }
+  createSuccess(){
+    this.Toast.fire({
+      icon: 'success',
+      title: 'Tạo mới thành công'
+    });
   }
 
   onReset() {
