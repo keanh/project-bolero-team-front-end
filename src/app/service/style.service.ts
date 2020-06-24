@@ -12,7 +12,7 @@ export class StyleService {
   }
 
   findAll(): Observable<Style[]> {
-    return this.httpClient.get<Style[]>(this.API_URL_STYLE_LIST);
+    return  this.httpClient.get<Style[]>(this.API_URL_STYLE_LIST);
   }
 
 }

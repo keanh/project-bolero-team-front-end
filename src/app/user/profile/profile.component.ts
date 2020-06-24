@@ -62,7 +62,7 @@ export class ProfileComponent implements OnInit {
         ...this.user,
         ...value
       };
-      this.userService.updateUser(data)
+      this.userService.getUserInfo(data)
         .subscribe(result => {
           this.routes.navigate(['list']);
           this.updateSuccess();

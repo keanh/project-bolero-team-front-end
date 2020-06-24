@@ -24,9 +24,14 @@
               "src/assets"
             ],
             "styles": [
+              "src/custom-theme.scss",
+              "./node_modules/bootstrap/dist/css/bootstrap.css",
               "src/styles.css"
             ],
-            "scripts": []
+            "scripts": [
+              "./node_modules/jquery/dist/jquery.js",
+              "./node_modules/bootstrap/dist/js/bootstrap.js"
+            ]
           },
           "configurations": {
             "production": {
@@ -123,6 +128,6 @@
   },
   "defaultProject": "bolero-team",
   "cli": {
-    "analytics": "ae0d80cd-bdb7-49bb-81fa-71e8c192b07b"
+    "analytics": "985347cc-34f8-451a-bcf3-b69848c35334"
   }
 }
