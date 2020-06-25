@@ -5,8 +5,9 @@ import {Observable} from 'rxjs';
 import {JwtResponse} from '../interface/jwt-response';
 import {SignUpInfo} from '../interface/sigup-info';
 
+// 'Authorization': 'Bearer ' + localStorage.getItem('AuthToken')
 const httpOptions = {
-  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+  headers: new HttpHeaders({ 'Content-Type': 'application/json'})
 };
 
 @Injectable({

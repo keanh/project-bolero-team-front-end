@@ -12,6 +12,7 @@ export class UserService {
   private readonly API_URL_UPDATE_PASSWORD = 'http://localhost:8080/user/updatePassword/{id}';
 
   private readonly API_URL_GET_USER = 'http://localhost:8080/user/' ;
+  private readonly API_URL_GET_USER_BY_NAME = 'http://localhost:8080/user' ;
   private readonly API_URL_USER_INFO = 'http://localhost:8080/user/info/' ;
 
 
@@ -32,13 +33,16 @@ export class UserService {
   updatePassword(user: User): Observable<User> {
     return this.httpClient.put<User>(this.API_URL_UPDATE_PASSWORD, user);
   }
-
-  getUserById(id: number): Observable<User>{
-    return this.httpClient.get<any>(this.API_URL_GET_USER);
+  // getUserById(id: number): Observable<User>{
+  //   return this.httpClient.get<any>(this.API_URL_GET_USER);
+  // }
+  getUserByUserName(name: string): Observable<User> {
+    return this.httpClient.get<User>(`${this.API_URL_GET_USER_BY_NAME}/${name}`);
   }
   getUserInfo(id: number): Observable<User>{
     return this.httpClient.get<any>(this.API_URL_USER_INFO + `/${id}`);
   }
-
 }
+
+
 

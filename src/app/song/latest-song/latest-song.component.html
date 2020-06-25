@@ -1,7 +1,7 @@
 <app-welcome-area></app-welcome-area>
 <app-listen-bar></app-listen-bar>
 <!-- ***** Latest Episodes Area Start ***** -->
-<div>{{value}}</div>
+<div><a routerLink="../user/detail" (click)="getUserDetail()">{{info.username}}</a></div>
 <section class="poca-latest-epiosodes section-padding-80">
   <!--   Projects Menu -->
   <div class="container">
@@ -68,13 +68,22 @@
           </div>
         </div>
       </div>
+    <div class="row">
+      <!-- Section Heading -->
+      <div class="col-12">
+        <div class="section-heading text-center">
+          <h2> Latest Songs</h2>
+          <div class="line"></div>
+        </div>
+      </div>
     </div>
   </div>
+
   <div class="container">
     <div class="row poca-portfolio">
       <!-- Single gallery Item -->
 
-      <div class="col-12 col-md-4 single_gallery_item entre wow fadeInUp" data-wow-delay="0.2s" *ngFor="let song of songList">
+      <div class="col-12 col-md-4 single_gallery_item entre wow fadeInUp" data-wow-delay="0.2s" *ngFor="let song of latestSong">
         <!-- Welcome Music Area -->
         <div class="poca-music-area style-2 d-flex align-items-center flex-wrap">
           <div class="poca-music-thumbnail">
@@ -90,7 +99,7 @@
               </a>
             </h3>
             <div class="music-meta-data">
-              <p style="height: 20px; font-size: 10px">By <a href="#" class="music-author" style="font-size: 10px">Admin</a> | <a href="#" class="music-catagory" style="font-size: 10px">{{song.style.name}}</a> |
+              <p style="height: 20px; font-size: 10px">By <a href="#" class="music-author" style="font-size: 10px">{{info.username}}</a> | <a href="#" class="music-catagory" style="font-size: 10px">{{song.style.name}}</a> |
                 {{song.dateSubmitted}}</p>
             </div>
             <!-- Likes, Share & Download -->
@@ -106,4 +115,6 @@
       </div>
     </div>
   </div>
+  </div>
 </section>
+<!-- ***** Latest Episodes Area End ***** -->

@@ -1,4 +1,5 @@
 import {Style} from './Style';
+import {User} from './User';
 
 export interface Song {
   id?: number;
@@ -11,5 +12,6 @@ export interface Song {
   author?: string;
   views?: number;
   style?: Style;
+  user?: User;
   likes?: number[];
 }

@@ -14,9 +14,11 @@ import { UserDetailsComponent } from './user-details/user-details.component';
 const routes: Routes = [
   {
     path: '',
-    component: LayoutComponent
-  //   children: [{
-  // }]
+    component: LayoutComponent,
+    children: [{
+      path: 'detail',
+      component: UserDetailsComponent
+  }]
   }
 ];
 

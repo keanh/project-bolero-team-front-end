@@ -1,11 +1,13 @@
-import {Component, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core';
+import {Component, OnChanges, OnInit, SimpleChanges} from '@angular/core';
 import {Song} from '../../interface/Song';
 import {SongService} from '../../service/song.service';
 import {SearchService} from '../../service/search.service';
-import {User} from "../../interface/User";
-import {LikeService} from "../../service/like.service";
-import {Like} from "../../interface/like";
-import {coerceNumberProperty} from "@angular/cdk/coercion";
+import {TokenStorageService} from '../../auth/token-storage.service';
+import {UserService} from '../../service/user.service';
+import {User} from '../../interface/User';
+import {LikeService} from '../../service/like.service';
+import {Like} from '../../interface/like';
+import {coerceNumberProperty} from '@angular/cdk/coercion';
 
 @Component({
   selector: 'app-latest-song',
@@ -16,10 +18,13 @@ export class LatestSongComponent implements OnInit, OnChanges {
   value: string;
   songList: Song[] = [];
   latestSong: Song[] = [];
-  // likeList: Like[] = [];
-  constructor(private songService: SongService,
-              public searchService: SearchService,
-              private likeService: LikeService) {
+  info: any;
+  user: User;
+  constructor(private songService: SongService, public searchService: SearchService,
+              private tokenService: TokenStorageService,
+              private userService: UserService,
+              private likeService: LikeService
+              ) {
   }
   ngOnInit(): void {
     this.songService.getAllSongs().subscribe(next => {
@@ -29,6 +34,7 @@ export class LatestSongComponent implements OnInit, OnChanges {
     this.songService.getAllSongsLatest().subscribe(next => {
       this.latestSong = next;
     }, error => (this.latestSong = []));
+    this.getUserInfor();
     // this.likeService.getLikes().subscribe(next => {
     //   this.likeList = next;
     // }, error => (this.likeList = []));
@@ -43,18 +49,33 @@ export class LatestSongComponent implements OnInit, OnChanges {
   ngOnChanges(changes: SimpleChanges): void {
     console.log(changes);
   }
-
-  onLike(id_user:number, id_song: number){
-    console.log(id_user);
-    let like = {
-        user: id_user
-    }
+  getUserInfor(){
+    this.info = {
+      token: this.tokenService.getToken(),
+      username: this.tokenService.getUsername(),
+      // authorities: this.token.getAuthorities()
+    };
+    // console.log(this.info);
+    // this.accessToken = this.token.getToken();
+  }
+  getUserDetail(){
+    this.userService.getUserByUserName(this.info.username).subscribe( data =>
+    {
+      this.user = data;
+    }, error =>
+    console.log(error));
+  }
+  onLike( idUser: number, idSong: number){
+    console.log(idUser);
+    const like = {
+      user: idUser
+    };
     console.log(like);
-    like.user = this.convertToUser(id_user);
-    this.songService.likeSong(like,id_song).subscribe(next => {
+    like.user = this.convertToUser(idUser);
+    this.songService.likeSong(like, idSong).subscribe(next => {
       this.getAllLastSong();
-      // this.getAllSong();
-      console.log(id_song);
+      this.getAllSong();
+      console.log(idSong);
       console.log(next);
     }, (e) => {
       console.log(e);
@@ -73,15 +94,14 @@ export class LatestSongComponent implements OnInit, OnChanges {
       this.songList = next;
     }, error => (this.songList = []));
   }
-
-  convertToUser(id_user){
-       let user: any= {
-        id: id_user
-      }
+  convertToUser( idUser: number){
+    const user: any = {
+      id: idUser
+    };
     return user;
   }
 
-  public trackItem (index: number, item: Song) {
+  public trackItem(index: number, item: Song) {
     return index;
   }
 }
