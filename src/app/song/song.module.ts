@@ -64,13 +64,13 @@ const routes: Routes = [
     HeaderComponent,
     ListenBarComponent,
     AddSongComponent,
-    LatestSongComponent,
     LayoutComponent,
     ListComponent,
     SongDetailsComponent,
     UpdateSongComponent,
     WelcomeAreaComponent,
-    MostViewsComponent
+    MostViewsComponent,
+    LatestSongComponent
   ],
   exports: [
     WelcomeAreaComponent
