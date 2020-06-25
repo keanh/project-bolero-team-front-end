@@ -42,4 +42,3 @@ export class UpdatePasswordComponent implements OnInit {
     });
   }
 }
-
