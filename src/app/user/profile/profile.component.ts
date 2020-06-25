@@ -8,11 +8,11 @@ import {User} from '../../interface/User';
 
 
 @Component({
-  selector: 'app-profile',
-  templateUrl: './profile.component.html',
-  styleUrls: ['./profile.component.css']
+  selector: 'app-update-profile',
+  templateUrl: './update-profile.component.html',
+  styleUrls: ['./update-profile.component.css']
 })
-export class ProfileComponent implements OnInit {
+export class UpdateProfileComponent implements OnInit {
 
   imageUrl: string;
 
@@ -46,7 +46,7 @@ export class ProfileComponent implements OnInit {
       email: ['', [Validators.required]],
     });
     const id = +this.route.snapshot.paramMap.get('id');
-    this.userService.getUserById(id)
+    this.userService.getUserInfo(id)
       .subscribe(result => {
         this.user = result;
         this.profileForm.patchValue(this.user);
@@ -55,22 +55,22 @@ export class ProfileComponent implements OnInit {
         this.fail = 'Edit user fail';
       });
   }
-  // updateUser(){
-  //   if (this.profileForm.valid) {
-  //     const {value} = this.profileForm;
-  //     const data = {
-  //       ...this.user,
-  //       ...value
-  //     };
-  //     this.userService.getUserById(data)
-  //       .subscribe(result => {
-  //         this.routes.navigate(['list']);
-  //         this.updateSuccess();
-  //       }, error => {
-  //         console.log(error);
-  //       });
-  //   }
-  // }
+  updateUser(){
+    if (this.profileForm.valid) {
+      const {value} = this.profileForm;
+      const data = {
+        ...this.user,
+        ...value
+      };
+      this.userService.getUserById(data)
+        .subscribe(result => {
+          this.routes.navigate(['list']);
+          this.updateSuccess();
+        }, error => {
+          console.log(error);
+        });
+    }
+  }
   updateSuccess(){
     this.Toast.fire({
       icon: 'success',
@@ -79,6 +79,3 @@ export class ProfileComponent implements OnInit {
   }
 
 }
-
-
-

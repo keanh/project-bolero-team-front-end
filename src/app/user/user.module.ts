@@ -10,13 +10,16 @@ import { HeaderComponent } from './header/header.component';
 import { CKEditorModule} from 'ckeditor4-angular';
 import { UpdatePasswordComponent } from './update-password/update-password.component';
 import { UserDetailsComponent } from './user-details/user-details.component';
+import {ProfileComponent} from './profile/profile.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: LayoutComponent
-  //   children: [{
-  // }]
+    component: LayoutComponent,
+    children: [{
+      path: 'detail',
+      component: UserDetailsComponent
+  }]
   }
 ];
 
@@ -28,7 +31,9 @@ const routes: Routes = [
     NavbarComponent,
     HeaderComponent,
     UpdatePasswordComponent,
-    UserDetailsComponent
+    UserDetailsComponent,
+    ProfileComponent
+
   ],
   imports: [
     CommonModule,
