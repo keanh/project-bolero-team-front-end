@@ -73,30 +73,14 @@ export class AddSongComponent implements OnInit {
 
   upload1() {
     const filePath = `databasezingmp3.appspot.com/${this.selectedImage.name.split('.').slice(0, -1).join('.')}_${new Date().getTime()}`;
-    // const fileRef = this.storage.ref(filePath);
     return this.storage.upload(filePath, this.selectedImage).snapshotChanges().toPromise();
-    //   .pipe(
-    //   finalize(() => {
-    //     fileRef.getDownloadURL().subscribe(url => {
-    //       this.imageUrl = url;
-    //       console.log(this.imageUrl);
-    //     });
-    //   })
-    // ).toPromise();
   }
 
   upload2() {
     const filePath2 = `databasezingmp3.appspot.com/${this.selectedMusic.name.split('.').slice(0, -1).join('.')}_${new Date().getTime()}`;
     const fileRef2 = this.storage.ref(filePath2);
     return this.storage.upload(filePath2, this.selectedMusic).snapshotChanges().toPromise();
-    //   .pipe(
-    //    finalize(() => {
-    //     fileRef2.getDownloadURL().subscribe(url => {
-    //       this.musicUrl = url;
-    //       console.log(this.musicUrl);
-    //     });
-    //   })
-    // ).toPromise();
+
   }
 
   onchangeImage(event) {
@@ -136,34 +120,28 @@ export class AddSongComponent implements OnInit {
         image: picture,
         fileMp3: music,
         style: value.style,
-        // user: {
-        //   id: this.user.id
-        // }
       };
-      // console.log(song);
       this.songService.addSong(song).subscribe(() => {
-        this.createSuccess();
       }, (e) => {
         this.createFail();
         console.log(e);
       });
       console.log(song);
-      await this.router.navigate(['list']);
+      await this.router.navigate(['/list']);
       this.createSuccess();
       this.songForm.reset();
-      // alert('create thành công');
     });
   }
   createSuccess(){
     this.Toast.fire({
       icon: 'success',
-      title: 'Create song success '
+      title: ' create success '
     });
   }
   createFail(){
     this.Toast.fire({
-      icon: 'success',
-      title: 'Create song fail'
+      icon: 'error',
+      title: 'create fail'
     });
   }
 
@@ -171,10 +149,7 @@ export class AddSongComponent implements OnInit {
     this.info = {
       token: this.tokenService.getToken(),
       username: this.tokenService.getUsername(),
-      // authorities: this.token.getAuthorities()
     };
-    // console.log(this.info);
-    // this.accessToken = this.token.getToken();
   }
   getUserDetail(){
     this.userService.getUserByUserName(this.info.username).subscribe( data =>
@@ -184,5 +159,7 @@ export class AddSongComponent implements OnInit {
     }, error =>
       console.log(error));
   }
+
+
 }
 

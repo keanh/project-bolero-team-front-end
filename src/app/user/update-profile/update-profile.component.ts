@@ -14,9 +14,6 @@ import {User} from '../../interface/User';
 })
 export class UpdateProfileComponent implements OnInit {
 
-  imageUrl: string;
-
-  selectedImage: any = null;
   user: User;
   success: string;
   fail: string;
@@ -36,17 +33,17 @@ export class UpdateProfileComponent implements OnInit {
               private fb: FormBuilder) {}
 
   ngOnInit(): void {
+
     this.profileForm = this.fb.group({
       firstName: ['', [Validators.required, Validators.minLength(1)]],
       lastName: ['', [Validators.required, Validators.minLength(5)]],
-      avatar: ['', [Validators.required, Validators.minLength(5)]],
-      // birthday: ['', [Validators.required]],
-      address: ['', [Validators.required]],
-      phone: ['', [Validators.required]],
+      phoneNumber: ['', [Validators.required]],
       email: ['', [Validators.required]],
+
     });
+
     const id = +this.route.snapshot.paramMap.get('id');
-    this.userService.getUserInfo(id)
+    this.userService.getUserById(id)
       .subscribe(result => {
         this.user = result;
         this.profileForm.patchValue(this.user);
@@ -54,6 +51,7 @@ export class UpdateProfileComponent implements OnInit {
       }, error => {
         this.fail = 'Edit user fail';
       });
+
   }
   updateUser(){
     if (this.profileForm.valid) {
@@ -62,7 +60,7 @@ export class UpdateProfileComponent implements OnInit {
         ...this.user,
         ...value
       };
-      this.userService.getUserById(data)
+      this.userService.updateUser(data)
         .subscribe(result => {
           this.routes.navigate(['list']);
           this.updateSuccess();

@@ -3,6 +3,7 @@ import {SearchService} from '../../service/search.service';
 import {Song} from '../../interface/Song';
 import {SongService} from '../../service/song.service';
 import {TokenStorageService} from '../../auth/token-storage.service';
+import {User} from '../../interface/User';
 
 @Component({
   selector: 'app-header',
@@ -14,6 +15,8 @@ export class HeaderComponent implements OnInit {
   songList: Song[] = [];
   isSignedUp = false;
   isSignUpFailed = false;
+  user: User
+
   constructor(public searchService: SearchService, private songService: SongService,
               private token: TokenStorageService) { }
 
