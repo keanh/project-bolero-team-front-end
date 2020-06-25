@@ -71,11 +71,10 @@
             </div>
           </div>
 
-
           <div class="form-group">
             <button class="btn btn-primary">Register</button>
             <div *ngIf="f.submitted && isSignUpFailed" class="alert alert-warning">
-              Signup failed!<br/>{{errorMessage}}
+              SignUp failed!<br/>{{errorMessage}}
             </div>
           </div>
         </form>
