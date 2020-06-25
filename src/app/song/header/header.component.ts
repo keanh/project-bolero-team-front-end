@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {SearchService} from '../../service/search.service';
 import {Song} from '../../interface/Song';
 import {SongService} from '../../service/song.service';
-import {TokenStorageService} from "../../auth/token-storage.service";
+import {TokenStorageService} from '../../auth/token-storage.service';
 
 @Component({
   selector: 'app-header',

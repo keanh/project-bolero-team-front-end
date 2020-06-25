@@ -39,9 +39,17 @@
               <a href="#" class="fa fa-twitter" aria-hidden="true"></a>
 <!--              <a href="#" class="fa fa-pinterest" aria-hidden="true"></a>-->
 <!--              <a href="#" class="fa fa-instagram" aria-hidden="true"></a>-->
-              <a routerLink="signin" *ngIf="isSignUpFailed"><i class="fa fa-user" aria-hidden="true"></i></a>
-              <button class="fa fa-sign-out" *ngIf="isSignedUp" (click) = "logout()" ></button>
+              <a routerLink="../login" *ngIf="isSignUpFailed"><i class="fa fa-user" aria-hidden="true"></i></a>
+              <button class="fa fa-sign-out"  (click) = "logout()" ></button>
             </div>
+<!--            <div class="dropdown" *ngIf="isSignedUp">-->
+<!--              <button class="fa fa-sign-out" ></button>-->
+<!--              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">-->
+<!--                <a class="dropdown-item" href="" >sfsd</a>-->
+<!--                <a class="dropdown-item" href="#">Another action</a>-->
+<!--                <a class="dropdown-item" (click) = "logout()" >Something else here</a>-->
+<!--              </div>-->
+<!--            </div>-->
           </div>
         </div>
       </nav>

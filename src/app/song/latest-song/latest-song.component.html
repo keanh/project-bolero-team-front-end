@@ -1,7 +1,7 @@
 <app-welcome-area></app-welcome-area>
 <app-listen-bar></app-listen-bar>
 <!-- ***** Latest Episodes Area Start ***** -->
-<div>{{value}}</div>
+<div><a routerLink="../user/detail" (click)="getUserDetail()">{{info.username}}</a></div>
 <section class="poca-latest-epiosodes section-padding-80">
   <div class="container">
     <div class="row">
@@ -46,7 +46,7 @@
               </a>
             </h3>
             <div class="music-meta-data">
-              <p style="height: 20px; font-size: 10px">By <a href="#" class="music-author" style="font-size: 10px">Admin</a> | <a href="#" class="music-catagory" style="font-size: 10px">{{song.style.name}}</a> |
+              <p style="height: 20px; font-size: 10px">By <a href="#" class="music-author" style="font-size: 10px">{{info.username}}</a> | <a href="#" class="music-catagory" style="font-size: 10px">{{song.style.name}}</a> |
                 {{song.dateSubmitted}}</p>
             </div>
             <!-- Music Player -->
