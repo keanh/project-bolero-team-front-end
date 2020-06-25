@@ -18,7 +18,7 @@
               <label class="col-lg-3 text-md-right col-form-label" for="name" >Album Name</label>
               <div class="col-lg-9">
                 <input class="form-control is-valid" id="name" type="text" formControlName="name"
-                       [ngClass]="albumForm.get('name').invalid ? 'is-invalid' : 'is-valid'">
+                       [ngClass]="albumForm.get('name').invalid&&albumForm.touched ? 'is-invalid' : 'is-valid'" placeholder="Example: Album">
                 <div *ngIf="albumForm.get('name').invalid && albumForm.get('name').touched" style="color: red">
                   Name is required and min length is 1
                 </div>

@@ -14,8 +14,7 @@ import {UserService} from "../../service/user.service";
 export class HeaderComponent implements OnInit {
   value: string;
   songList: Song[] = [];
-  isSignedUp = false;
-  isSignUpFailed = false;
+  accessToken: string;
   public info: any;
   user: User;
   constructor(public searchService: SearchService,
@@ -29,18 +28,16 @@ export class HeaderComponent implements OnInit {
     if (this.info.username !== ''){
       this.getUserDetail();
     }
-    if (this.tokenService.getToken()) {
-      this.isSignedUp = true;
-      this.isSignUpFailed = false;
-    }else {
-      this.isSignedUp = false;
-      this.isSignUpFailed = true;
-    }
-    this.getUserInfor();
+    this.info = {
+      token: this.tokenService.getToken(),
+      username: this.tokenService.getUsername(),
+      authorities: this.tokenService.getAuthorities()
+    };
+    console.log(this.info);
+    this.accessToken = this.tokenService.getToken();
   }
   search(){
     if (this.value !== ''){
-      console.log(this.value);
       this.songService.getSongByName(this.value).subscribe( data => {
         this.songList = data;
         this.searchService.changeValue(this.value, this.songList);
@@ -53,10 +50,7 @@ export class HeaderComponent implements OnInit {
       });
     }
   }
-  logout() {
-    this.tokenService.signOut();
-    window.location.reload();
-  }
+
   getUserInfor(){
     this.info = {
       token: this.tokenService.getToken(),
@@ -66,9 +60,8 @@ export class HeaderComponent implements OnInit {
     // console.log(this.info);
     // this.accessToken = this.token.getToken();
   }
-  async getUserDetail(){
-    console.log(this.info.username);
-    await this.userService.getUserByUserName(this.info.username).subscribe( data =>
+  getUserDetail(){
+    this.userService.getUserByUserName(this.info.username).subscribe( data =>
     {
       this.user = data;
     }, error =>

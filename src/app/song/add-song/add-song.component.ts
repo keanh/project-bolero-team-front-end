@@ -7,9 +7,9 @@ import {AngularFireStorage} from '@angular/fire/storage';
 import {Style} from '../../interface/Style';
 import {StyleService} from '../../service/style.service';
 import Swal from '../../../assets/sweetalert2/sweetalert2.min.js';
-import {TokenStorageService} from '../../auth/token-storage.service';
-import {UserService} from '../../service/user.service';
-import {User} from '../../interface/User';
+import {User} from "../../interface/User";
+import {TokenStorageService} from "../../auth/token-storage.service";
+import {UserService} from "../../service/user.service";
 
 @Component({
   selector: 'app-add-song',
@@ -19,7 +19,7 @@ import {User} from '../../interface/User';
 export class AddSongComponent implements OnInit {
   imageUrl: string;
   musicUrl: string;
-  user: User;
+  userCurrent: User;
   info: any;
   Toast = Swal.mixin({
     toast: true,
@@ -55,9 +55,8 @@ export class AddSongComponent implements OnInit {
       lyrics: ['', [Validators.required, Validators.minLength(10)]],
       singer: ['', [Validators.required, Validators.minLength(1)]],
       author: ['', [Validators.required, Validators.minLength(1)]],
-      image: ['', [Validators.required]],
-      fileMp3: ['', [Validators.required]],
-      // user: [''],
+      // image: ['', [Validators.required]],
+      // fileMp3: ['', [Validators.required]],
       style: this.fb.group({
         id: ['', [Validators.required]],
       }),
@@ -113,16 +112,11 @@ export class AddSongComponent implements OnInit {
     }
   }
 
-  // wait(ms) {
-  //   return new Promise(r => setTimeout(r, ms));
-  // }
-
   async onSubmit() {
     const {value} = this.songForm;
     const upload1 = this.upload1();
     const upload2 = this.upload2();
     Promise.all([upload1, upload2]).then(async (result) => {
-      // await this.wait(15000);
       console.log(result);
       const picture = await result[0].ref.getDownloadURL();
       const music = await result[1].ref.getDownloadURL();
@@ -136,29 +130,31 @@ export class AddSongComponent implements OnInit {
         image: picture,
         fileMp3: music,
         style: value.style,
+        user: {
+          id: this.userCurrent.id
+        }
       };
       this.songService.addSong(song).subscribe(() => {
+        console.log(song);
+        this.createSuccess();
+        this.songForm.reset();
       }, (e) => {
         this.createFail();
         console.log(e);
       });
-      console.log(song);
-      await this.router.navigate(['/list']);
-      this.createSuccess();
-      this.songForm.reset();
-      // alert('create thành công');
+      await this.router.navigate(['song/add']);
     });
   }
   createSuccess(){
     this.Toast.fire({
       icon: 'success',
-      title: ' create success '
+      title: ' Create Success '
     });
   }
   createFail(){
     this.Toast.fire({
       icon: 'error',
-      title: 'create fail'
+      title: 'Create Fail'
     });
   }
 
@@ -174,8 +170,8 @@ export class AddSongComponent implements OnInit {
   getUserDetail(){
     this.userService.getUserByUserName(this.info.username).subscribe( data =>
     {
-      this.user = data;
-      console.log(this.user);
+      this.userCurrent = data;
+      console.log(this.userCurrent);
     }, error =>
       console.log(error));
   }

@@ -1,44 +1,37 @@
 import {Component, OnChanges, OnInit, SimpleChanges} from '@angular/core';
 import {Song} from '../../interface/Song';
+import {User} from '../../interface/User';
 import {SongService} from '../../service/song.service';
 import {SearchService} from '../../service/search.service';
 import {TokenStorageService} from '../../auth/token-storage.service';
 import {UserService} from '../../service/user.service';
-import {User} from '../../interface/User';
 import {LikeService} from '../../service/like.service';
-import {Like} from '../../interface/like';
-import {coerceNumberProperty} from '@angular/cdk/coercion';
 
 @Component({
-  selector: 'app-latest-song',
-  templateUrl: './latest-song.component.html',
-  styleUrls: ['./latest-song.component.css']
+  selector: 'app-all-song',
+  templateUrl: './all-song.component.html',
+  styleUrls: ['./all-song.component.css']
 })
-export class LatestSongComponent implements OnInit, OnChanges {
+export class AllSongComponent implements OnInit, OnChanges {
+
   value: string;
   songList: Song[] = [];
-  latestSong: Song[] = [];
   info: any;
   user: User;
   constructor(private songService: SongService, public searchService: SearchService,
               private tokenService: TokenStorageService,
               private userService: UserService,
               private likeService: LikeService
-              ) {
+  ) {
   }
   ngOnInit(): void {
-    this.getUserInfor();
-    if (this.info.username !== ''){
-      this.getUserDetail();
-    }
-    // this.songService.getAllSongs().subscribe(next => {
-    //   this.songList = next;
-    //   }, error => (this.songList = []));
+    this.songService.getAllSongs().subscribe(next => {
+      this.songList = next;
+    }, error => (this.songList = []));
     this.getListSearch();
-    this.songService.getAllSongsLatest().subscribe(next => {
-      this.latestSong = next;
-    }, error => (this.latestSong = []));
-    this.getUserInfor();
+    // this.songService.getAllSongsLatest().subscribe(next => {
+    // }, error => (this = []));
+    // this.getUserInfor();
     // this.likeService.getLikes().subscribe(next => {
     //   this.likeList = next;
     // }, error => (this.likeList = []));
@@ -67,36 +60,22 @@ export class LatestSongComponent implements OnInit, OnChanges {
     {
       this.user = data;
     }, error =>
-    console.log(error));
+      console.log(error));
   }
-  onLike( idUser: number, idSong: number){
-    console.log(idUser);
-    const like = {
-      user: idUser
-    };
-    console.log(like);
-    like.user = this.convertToUser(idUser);
-    this.songService.likeSong(like, idSong).subscribe(next => {
-      this.getAllLastSong();
-      // this.getAllSong();
-      console.log(idSong);
-      console.log(next);
-    }, (e) => {
-      console.log(e);
-    });
-  }
-
-  getAllLastSong(){
-    this.songService.getAllSongsLatest().subscribe(next => {
-      this.latestSong = next;
-    }, error => (this.latestSong = []));
-  }
-
-
-  convertToUser( idUser: number){
-    const user: any = {
-      id: idUser
-    };
-    return user;
-  }
+  // onLike( idUser: number, idSong: number) {
+  //   console.log(idUser);
+  //   const like = {
+  //     user: idUser
+  //   };
+  //   console.log(like);
+  //   like.user = this.convertToUser(idUser);
+  //   this.songService.likeSong(like, idSong).subscribe(next => {
+  //     this.getAllLastSong();
+  //     this.getAllSong();
+  //     console.log(idSong);
+  //     console.log(next);
+  //   }, (e) => {
+  //     console.log(e);
+  //   });
+  // }
 }

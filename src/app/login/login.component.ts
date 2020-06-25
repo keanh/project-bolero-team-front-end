@@ -3,6 +3,7 @@ import {AuthLoginInfo} from '../interface/login-info';
 import {AuthService} from '../auth/auth.service';
 import {TokenStorageService} from '../auth/token-storage.service';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
   selector: 'app-login',
@@ -20,14 +21,16 @@ export class LoginComponent implements OnInit {
   loginForm: FormGroup;
 
 
-  constructor(private authService: AuthService, private tokenStorage: TokenStorageService) { }
+  constructor(private authService: AuthService,
+              private tokenStorage: TokenStorageService,
+              private router: Router) { }
+
   ngOnInit() {
 
     if (this.tokenStorage.getToken()) {
       this.isLoggedIn = true;
       this.roles = this.tokenStorage.getAuthorities();
     }
-
   }
 
   onSubmit() {
@@ -46,7 +49,7 @@ export class LoginComponent implements OnInit {
         this.isLoginFailed = false;
         this.isLoggedIn = true;
         this.roles = this.tokenStorage.getAuthorities();
-        this.reloadPage();
+        this.router.navigate(['/song']);
       },
       error => {
         console.log(error);
@@ -55,8 +58,8 @@ export class LoginComponent implements OnInit {
       }
     );
   }
+
   reloadPage() {
     window.location.reload();
   }
-
 }
