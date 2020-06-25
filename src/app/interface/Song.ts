@@ -11,5 +11,5 @@ export interface Song {
   author?: string;
   views?: number;
   style?: Style;
-  likes?: number;
+  likes?: number[];
 }

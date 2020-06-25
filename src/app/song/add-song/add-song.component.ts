@@ -126,12 +126,13 @@ export class AddSongComponent implements OnInit {
         style: value.style,
       };
       this.songService.addSong(song).subscribe(() => {
+        this.createSuccess();
       }, (e) => {
         console.log(e);
       });
       console.log(song);
-      await this.router.navigate(['song']);
-      this.createSuccess();
+      await this.router.navigate(['song/add']);
+
       this.songForm.reset();
       // alert('create thành công');
     });
@@ -139,7 +140,7 @@ export class AddSongComponent implements OnInit {
   createSuccess(){
     this.Toast.fire({
       icon: 'success',
-      title: 'Tạo    mới thành công'
+      title: 'Tạo mới thành công'
     });
   }
 }

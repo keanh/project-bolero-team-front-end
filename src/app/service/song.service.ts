@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Song} from '../interface/Song';
 import {Observable} from 'rxjs';
+import {Like} from "../interface/like";
 
 // const API_SONG = 'http://localhost:8080/song';
 
@@ -13,6 +14,7 @@ export class SongService {
   private readonly API_SONG = 'http://localhost:8080/song';
   private readonly API_SONG_FIND = 'http://localhost:8080/findByName';
   private readonly API_LATEST_SONG = 'http://localhost:8080/latest-song';
+  private readonly API_LIKE_SONG = 'http://localhost:8080/like';
   constructor(private httpClient: HttpClient) {
   }
 
@@ -41,5 +43,9 @@ export class SongService {
   // }
   getAllSongs(): Observable<Song[]> {
     return this.httpClient.get<Song[]>(this.API_SONG);
+  }
+
+  likeSong(like: Like,id: number): Observable<Like>{
+    return this.httpClient.put<Like>(`${this.API_LIKE_SONG}/${id}`,like);
   }
 }
