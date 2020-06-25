@@ -3,8 +3,8 @@ import {SearchService} from '../../service/search.service';
 import {Song} from '../../interface/Song';
 import {SongService} from '../../service/song.service';
 import {TokenStorageService} from '../../auth/token-storage.service';
-import {User} from "../../interface/User";
-import {UserService} from "../../service/user.service";
+import {User} from '../../interface/User';
+import {UserService} from '../../service/user.service';
 
 @Component({
   selector: 'app-header',

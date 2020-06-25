@@ -25,6 +25,7 @@
               <li><a routerLink="/add">Create Song</a>
               <li><a routerLink="/album/create">Create Album</a>
               </li>
+              <li><a href="./contact.html">Contact</a></li>
             </ul>
             <!-- Top Search Area -->
             <div class="top-search-area">
@@ -37,6 +38,11 @@
             <div class="top-social-area">
               <a routerLink="/login" *ngIf="isSignUpFailed"><i class="fa fa-user" aria-hidden="true"> &nbsp;Log in</i></a>
               <div *ngIf="isSignedUp" class="dropdown">
+                <button class="dropbtn">Hi, users</button>
+
+                <div class="dropdown-content">
+                  <a href="#">User profile</a>
+                  <a [routerLink]="['./song']" class="fa fa-sign-out" *ngIf="isSignedUp" (click) = "logout()" >&nbsp;Log out</a>
                 <button class="dropbtn" style="font-size: 13px">Hi, {{info.username}}</button>
                 <div class="dropdown-content" style="font-size: 13px">
                   <a routerLink="../user/update-password">Update Password</a>
@@ -44,12 +50,13 @@
                   <a routerLink="./song" class="fa fa-sign-out" *ngIf="isSignedUp" (click) = "logout()" >&nbsp;Log out</a>
                 </div>
               </div>
-<!--              <button class="fa fa-sign-out" *ngIf="isSignedUp" (click) = "logout()" ></button>-->
+              <!--              <button class="fa fa-sign-out" *ngIf="isSignedUp" (click) = "logout()" ></button>-->
             </div>
           </div>
         </div>
+        </div>
       </nav>
-    </div>
+   </div>
   </div>
 </header>
 <!-- ***** Header Area End ***** -->

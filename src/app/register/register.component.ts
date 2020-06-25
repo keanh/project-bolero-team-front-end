@@ -4,7 +4,7 @@ import {AuthService} from '../auth/auth.service';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import Swal from 'sweetalert2';
 import {UserService} from '../service/user.service';
-import {Router} from "@angular/router";
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-register',

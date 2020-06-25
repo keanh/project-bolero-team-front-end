@@ -3,7 +3,7 @@ import {AuthLoginInfo} from '../interface/login-info';
 import {AuthService} from '../auth/auth.service';
 import {TokenStorageService} from '../auth/token-storage.service';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
-import {ActivatedRoute, Router} from "@angular/router";
+import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
   selector: 'app-login',
