@@ -5,6 +5,9 @@ import {SearchService} from '../../service/search.service';
 import {TokenStorageService} from '../../auth/token-storage.service';
 import {UserService} from '../../service/user.service';
 import {User} from '../../interface/User';
+import {LikeService} from '../../service/like.service';
+import {Like} from '../../interface/like';
+import {coerceNumberProperty} from '@angular/cdk/coercion';
 
 @Component({
   selector: 'app-latest-song',
@@ -12,7 +15,6 @@ import {User} from '../../interface/User';
   styleUrls: ['./latest-song.component.css']
 })
 export class LatestSongComponent implements OnInit, OnChanges {
-
   value: string;
   songList: Song[] = [];
   latestSong: Song[] = [];
@@ -20,18 +22,22 @@ export class LatestSongComponent implements OnInit, OnChanges {
   user: User;
   constructor(private songService: SongService, public searchService: SearchService,
               private tokenService: TokenStorageService,
-              private userService: UserService) {
+              private userService: UserService,
+              private likeService: LikeService
+              ) {
   }
   ngOnInit(): void {
     this.songService.getAllSongs().subscribe(next => {
       this.songList = next;
       }, error => (this.songList = []));
-    // await this.getVale();
     this.getListSearch();
     this.songService.getAllSongsLatest().subscribe(next => {
       this.latestSong = next;
     }, error => (this.latestSong = []));
     this.getUserInfor();
+    // this.likeService.getLikes().subscribe(next => {
+    //   this.likeList = next;
+    // }, error => (this.likeList = []));
   }
   getListSearch(){
     this.searchService.list.subscribe( data => {
@@ -58,5 +64,44 @@ export class LatestSongComponent implements OnInit, OnChanges {
       this.user = data;
     }, error =>
     console.log(error));
+  }
+  onLike( idUser: number, idSong: number){
+    console.log(idUser);
+    const like = {
+      user: idUser
+    };
+    console.log(like);
+    like.user = this.convertToUser(idUser);
+    this.songService.likeSong(like, idSong).subscribe(next => {
+      this.getAllLastSong();
+      this.getAllSong();
+      console.log(idSong);
+      console.log(next);
+    }, (e) => {
+      console.log(e);
+    });
+
+  }
+
+  getAllLastSong(){
+    this.songService.getAllSongsLatest().subscribe(next => {
+      this.latestSong = next;
+    }, error => (this.latestSong = []));
+  }
+
+  getAllSong(){
+    this.songService.getAllSongs().subscribe(next => {
+      this.songList = next;
+    }, error => (this.songList = []));
+  }
+  convertToUser( idUser: number){
+    const user: any = {
+      id: idUser
+    };
+    return user;
+  }
+
+  public trackItem(index: number, item: Song) {
+    return index;
   }
 }
