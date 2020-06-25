@@ -16,8 +16,9 @@ import {ListenBarComponent} from './listen-bar/listen-bar.component';
 import {CommonModule} from '@angular/common';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {CKEditorModule} from 'ckeditor4-angular';
-import {LoginComponent} from '../login/login.component';
+
 import {UserGuard} from '../user.guard';
+import {MostViewsComponent} from './most-views/most-views.component';
 
 const routes: Routes = [
   {
@@ -50,6 +51,10 @@ const routes: Routes = [
       {
         path: 'details/:id',
         component: SongDetailsComponent
+      },
+      {
+        path: 'most-views-song',
+        component: MostViewsComponent
       }
     ]
   }
@@ -68,7 +73,8 @@ const routes: Routes = [
     ListComponent,
     SongDetailsComponent,
     UpdateSongComponent,
-    WelcomeAreaComponent
+    WelcomeAreaComponent,
+    MostViewsComponent
   ],
   exports: [
     WelcomeAreaComponent

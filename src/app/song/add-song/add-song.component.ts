@@ -143,6 +143,7 @@ export class AddSongComponent implements OnInit {
       console.log(song);
       this.songService.addSong(song).subscribe(() => {
       }, (e) => {
+        this.createFail();
         console.log(e);
       });
       console.log(song);
@@ -158,6 +159,13 @@ export class AddSongComponent implements OnInit {
       title: 'Tạo    mới thành công'
     });
   }
+  createFail(){
+    this.Toast.fire({
+      icon: 'success',
+      title: 'Tạo mới that bai'
+    });
+  }
+
   getUserInfor(){
     this.info = {
       token: this.tokenService.getToken(),

@@ -50,11 +50,9 @@ export class ListComponent implements OnInit {
     //   this.ngOnInit();
     // }
   }
-
   delete(id: number) {
     this.songService.deleteSong(id).subscribe( () => {
       this.deleteSuccess();
-      console.log(' delete success');
       this.getAllSong();
       // this.router.getCurrentNavigation();
       // this.router.navigate(['/'], {relativeTo: this.route}).then(r => console.log(r));

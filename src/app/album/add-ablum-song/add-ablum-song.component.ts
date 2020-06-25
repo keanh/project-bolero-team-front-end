@@ -36,10 +36,10 @@ export class AddAblumSongComponent implements OnInit {
 
   ngOnInit(): void {
     this.songService.getAllSongs().subscribe( data => {
-    this.songList = data;
-  }, error => {
-    console.log(error);
-  });
+      this.songList = data;
+    }, error => {
+      console.log(error);
+    });
     this.albumForm = this.fb.group({
       id: ['', [Validators.required]],
     })
@@ -78,11 +78,11 @@ export class AddAblumSongComponent implements OnInit {
   changeSelection(id: number){
     console.log(id);
     if (this.idSong.includes(id)){
-     for (let i=0;i<this.idSong.length;i++){
-       if (this.idSong[i] === id){
-         this.idSong.splice(i,1);
-       }
-     }
+      for (let i=0;i<this.idSong.length;i++){
+        if (this.idSong[i] === id){
+          this.idSong.splice(i,1);
+        }
+      }
       console.log(this.idSong);
     }else {
       this.idSong.push(id);

@@ -1,0 +1,76 @@
+
+h2{
+  margin-top: 130px;
+  text-align: center;
+}
+input[type="text"] {
+  /*width: 200%;*/
+  max-width: 300px;
+  border: 2px solid #aaa;
+  border-radius: 4px;
+  margin: 50px 0;
+  outline: none;
+  padding: 2px;
+  box-sizing: border-box;
+  transition: 0.3s;
+}
+input[type="password"] {
+  /*width: 200%;*/
+  max-width: 300px;
+
+  border: 2px solid #aaa;
+  border-radius: 4px;
+  margin: 50px 0;
+  outline: none;
+  padding: 2px;
+  box-sizing: border-box;
+  transition: 0.3s;
+}
+
+input[type="text"]:focus {
+  border-color: dodgerBlue;
+  box-shadow: 0 0 8px 0 dodgerBlue;
+}
+input[type="password"]:focus {
+  border-color: dodgerBlue;
+  box-shadow: 0 0 8px 0 dodgerBlue;
+}
+
+.form-input input[type="text"] {
+  padding-left: 40px;
+}
+.form-input input[type="password"] {
+  padding-left: 40px;
+}
+
+.form-input {
+  position: relative;
+}
+
+.form-input i {
+  position: absolute;
+  left: 0;
+  top: 0;
+  padding: 3px 6px;
+  color: #062c33;
+  transition: 0.3s;
+}
+
+.form-input input[type="text"]:focus + i {
+  color: dodgerBlue;
+}
+
+.form-input.inputIconBg i {
+  background-color: #aaa;
+  color: #fff;
+  padding: 9px 4px;
+  border-radius: 4px 0 0 4px;
+}
+
+.form-input.inputIconBg input[type="text"]:focus + i {
+  color: #fff;
+  background-color: dodgerBlue;
+}
+
+
+
