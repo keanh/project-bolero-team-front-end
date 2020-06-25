@@ -37,12 +37,11 @@
             <div class="top-social-area">
               <a routerLink="/login" *ngIf="isSignUpFailed"><i class="fa fa-user" aria-hidden="true"> &nbsp;Log in</i></a>
               <div *ngIf="isSignedUp" class="dropdown">
-                <button class="dropbtn">Hi, ssdfsdf</button>
-                <div class="dropdown-content">
-                  <a href="#">User profile</a>
-                  <a routerLink="../user/update-password">Change password</a>
-                  <a routerLink="../user/update-profile">Update profile</a>
-                  <a href="./song" class="fa fa-sign-out" *ngIf="isSignedUp" (click) = "logout()" >&nbsp;Log out</a>
+                <button class="dropbtn" style="font-size: 13px">Hi, ssdfsdf</button>
+                <div class="dropdown-content" style="font-size: 13px">
+                  <a routerLink="../user/update-password">Update Password</a>
+                  <a routerLink="../user/update-profile">Update Profile</a>
+                  <a routerLink="./song" class="fa fa-sign-out" *ngIf="isSignedUp" (click) = "logout()" >&nbsp;Log out</a>
                 </div>
               </div>
             </div>

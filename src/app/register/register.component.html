@@ -73,8 +73,12 @@
 
           <div class="form-group">
             <button class="btn btn-primary">Register</button>
-            <div *ngIf="f.submitted && isSignUpFailed" class="alert alert-warning">
-              SignUp failed!<br/>{{errorMessage}}
+            <div *ngIf="isSignUpFailed" class="alert alert-warning">
+              SignUp failed!<br/>
+<!--              {{errorMessage}}-->
+            </div>
+            <div *ngIf="isSignedUp" class="alert alert-warning">
+              Success!<br/>
             </div>
           </div>
         </form>
