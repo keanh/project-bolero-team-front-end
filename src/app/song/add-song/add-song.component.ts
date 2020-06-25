@@ -7,6 +7,9 @@ import {AngularFireStorage} from '@angular/fire/storage';
 import {Style} from '../../interface/Style';
 import {StyleService} from '../../service/style.service';
 import Swal from '../../../assets/sweetalert2/sweetalert2.min.js';
+import {TokenStorageService} from '../../auth/token-storage.service';
+import {UserService} from '../../service/user.service';
+import {User} from '../../interface/User';
 
 @Component({
   selector: 'app-add-song',
