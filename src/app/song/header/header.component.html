@@ -35,12 +35,15 @@
             </div>
             <!-- Top Social Area -->
             <div class="top-social-area">
-              <a href="#" class="fa fa-facebook" aria-hidden="true"></a>
-              <a href="#" class="fa fa-twitter" aria-hidden="true"></a>
-<!--              <a href="#" class="fa fa-pinterest" aria-hidden="true"></a>-->
-<!--              <a href="#" class="fa fa-instagram" aria-hidden="true"></a>-->
-              <a routerLink="/login" *ngIf="isSignUpFailed"><i class="fa fa-user" aria-hidden="true"></i></a>
-              <button class="fa fa-sign-out" *ngIf="isSignedUp" (click) = "logout()" ></button>
+              <a routerLink="/login" *ngIf="isSignUpFailed"><i class="fa fa-user" aria-hidden="true"> &nbsp;Log in</i></a>
+              <div *ngIf="isSignedUp" class="dropdown">
+                <button class="dropbtn">Hi, user</button>
+                <div class="dropdown-content">
+                  <a href="#">User profile</a>
+                  <a href="#" class="fa fa-sign-out" *ngIf="isSignedUp" (click) = "logout()" >&nbsp;Log out</a>
+                </div>
+              </div>
+<!--              <button class="fa fa-sign-out" *ngIf="isSignedUp" (click) = "logout()" ></button>-->
             </div>
           </div>
         </div>
