@@ -12,6 +12,8 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {CKEditorModule} from 'ckeditor4-angular';
 import {UserGuard} from '../user.guard';
 
+import { AllAlbumComponent } from './all-album/all-album.component';
+
 const routes: Routes = [
   {
     path: '',
@@ -27,10 +29,10 @@ const routes: Routes = [
         canActivate: [UserGuard],
         component: AddAblumSongComponent
       },
-      // {
-      //   path: 'user-details:/id',
-      //   component: UserDetailsComponent
-      // }
+      {
+        path: '',
+        component: AllAlbumComponent
+      }
     ]
   }
 ];
@@ -43,7 +45,8 @@ const routes: Routes = [
     NavbarComponent,
     HeaderComponent,
     AddAblumSongComponent,
-    AddAlbumComponent
+    AddAlbumComponent,
+    AllAlbumComponent
   ],
   imports: [
     CommonModule,

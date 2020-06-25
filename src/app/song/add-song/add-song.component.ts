@@ -51,7 +51,7 @@ export class AddSongComponent implements OnInit {
       this.getUserDetail();
     }
     this.songForm = this.fb.group({
-      name: ['', [Validators.required, Validators.minLength(1)]],
+      name: ['', [Validators.required, Validators.minLength(1), Validators.maxLength(100)]],
       lyrics: ['', [Validators.required, Validators.minLength(10)]],
       singer: ['', [Validators.required, Validators.minLength(1)]],
       author: ['', [Validators.required, Validators.minLength(1)]],
@@ -148,13 +148,13 @@ export class AddSongComponent implements OnInit {
   createSuccess(){
     this.Toast.fire({
       icon: 'success',
-      title: 'Tạo mới thành công'
+      title: ' Create Success '
     });
   }
   createFail(){
     this.Toast.fire({
-      icon: 'success',
-      title: 'Tạo mới that bai'
+      icon: 'error',
+      title: 'Create Fail'
     });
   }
 
@@ -175,5 +175,7 @@ export class AddSongComponent implements OnInit {
     }, error =>
       console.log(error));
   }
+
+
 }
 

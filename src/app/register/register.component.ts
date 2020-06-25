@@ -4,6 +4,7 @@ import {AuthService} from '../auth/auth.service';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import Swal from 'sweetalert2';
 import {UserService} from '../service/user.service';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-register',
@@ -17,15 +18,14 @@ export class RegisterComponent implements OnInit {
   isSignUpFailed = false;
   errorMessage = '';
 
-  constructor(private authService: AuthService) {
+  constructor(private authService: AuthService,
+              private router: Router) {
   }
 
   ngOnInit() {
   }
 
   onSubmit() {
-    console.log(this.form);
-
     this.signupInfo = new SignUpInfo(
       this.form.name,
       this.form.username,
@@ -41,6 +41,7 @@ export class RegisterComponent implements OnInit {
         console.log(data);
         this.isSignedUp = true;
         this.isSignUpFailed = false;
+        // this.router.navigate(['/song']);
       }, error => {
         console.log(error);
         this.errorMessage = error.error.message;
