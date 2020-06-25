@@ -29,10 +29,6 @@ const routes: Routes = [
         path: '',
         component: LatestSongComponent
       },
-      // {
-      //   path: 'signin',
-      //   component: LoginComponent
-      // },
       {
         path: 'add',
         canActivate: [UserGuard],
