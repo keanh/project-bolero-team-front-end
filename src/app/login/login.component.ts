@@ -28,7 +28,6 @@ export class LoginComponent implements OnInit {
       this.isLoggedIn = true;
       this.roles = this.tokenStorage.getAuthorities();
     }
-
   }
 
   onSubmit() {
@@ -60,5 +59,4 @@ export class LoginComponent implements OnInit {
   reloadPage() {
     window.location.reload();
   }
-
 }

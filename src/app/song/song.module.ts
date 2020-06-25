@@ -11,14 +11,14 @@ import {FooterComponent} from "./footer/footer.component";
 import {StyleListComponent} from "./style-list/style-list.component";
 import {NavbarComponent} from "./navbar/navbar.component";
 import {FeatureComponent} from "./feature/feature.component";
-import {HeaderComponent} from "./header/header.component";
 import {ListenBarComponent} from "./listen-bar/listen-bar.component";
 import {CommonModule} from "@angular/common";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {CKEditorModule} from "ckeditor4-angular";
-
 import {UserGuard} from '../user.guard';
 import {MostViewsComponent} from './most-views/most-views.component';
+import {HeaderComponent} from "./header/header.component";
+
 
 const routes: Routes = [
   {

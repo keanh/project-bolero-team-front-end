@@ -27,9 +27,13 @@ export class LatestSongComponent implements OnInit, OnChanges {
               ) {
   }
   ngOnInit(): void {
-    this.songService.getAllSongs().subscribe(next => {
-      this.songList = next;
-      }, error => (this.songList = []));
+    this.getUserInfor();
+    if (this.info.username !== ''){
+      this.getUserDetail();
+    }
+    // this.songService.getAllSongs().subscribe(next => {
+    //   this.songList = next;
+    //   }, error => (this.songList = []));
     this.getListSearch();
     this.songService.getAllSongsLatest().subscribe(next => {
       this.latestSong = next;
@@ -74,13 +78,12 @@ export class LatestSongComponent implements OnInit, OnChanges {
     like.user = this.convertToUser(idUser);
     this.songService.likeSong(like, idSong).subscribe(next => {
       this.getAllLastSong();
-      this.getAllSong();
+      // this.getAllSong();
       console.log(idSong);
       console.log(next);
     }, (e) => {
       console.log(e);
     });
-
   }
 
   getAllLastSong(){
@@ -89,19 +92,11 @@ export class LatestSongComponent implements OnInit, OnChanges {
     }, error => (this.latestSong = []));
   }
 
-  getAllSong(){
-    this.songService.getAllSongs().subscribe(next => {
-      this.songList = next;
-    }, error => (this.songList = []));
-  }
+
   convertToUser( idUser: number){
     const user: any = {
       id: idUser
     };
     return user;
-  }
-
-  public trackItem(index: number, item: Song) {
-    return index;
   }
 }
