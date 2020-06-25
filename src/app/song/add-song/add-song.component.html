@@ -22,6 +22,7 @@
                   Name is required and min length is 1
                 </div>
               </div>
+
             </div>
             <div class="form-row form-group">
               <label class="col-lg-3 text-md-right col-form-label" for="singer" >Singer </label>
@@ -66,6 +67,10 @@
             <div class="form-row form-group">
               <label class="col-lg-3 text-md-right col-form-label">Lyrics Song</label>
               <div class="col-lg-9">
+                <!--                <div class="custom-file">-->
+                <!--                  <input class="custom-file-input" id="image" type="file" formControlName="image">-->
+                <!--                  <label class="custom-file-label" for="image" ></label>-->
+                <!--                </div>-->
                 <ckeditor formControlName="lyrics"></ckeditor>
                 <div *ngIf="songForm.get('lyrics').invalid && songForm.get('lyrics').touched" style="color: red">
                   Lyrics is required and min length is 10
@@ -85,7 +90,8 @@
               <div class="col-lg-9 btn-inline">
                 <button class="btn btn-outline-secondary" type="button" routerLink="/song">Cancel</button>
                 &nbsp;
-                <button class="btn btn-outline-success" [disabled]="!songForm.invalid" type="submit" >Save Song</button>
+                <button class="btn btn-outline-success"  type="submit" >Save Song</button>
+
 <!--                <button type="button" class="btn btn-success swalDefaultSuccess" (click)="test()">-->
 <!--                  Launch Success Toast-->
 <!--                </button>-->

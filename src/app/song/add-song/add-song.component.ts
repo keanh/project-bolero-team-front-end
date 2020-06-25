@@ -7,9 +7,6 @@ import {AngularFireStorage} from '@angular/fire/storage';
 import {Style} from '../../interface/Style';
 import {StyleService} from '../../service/style.service';
 import Swal from '../../../assets/sweetalert2/sweetalert2.min.js';
-import {TokenStorageService} from '../../auth/token-storage.service';
-import {UserService} from '../../service/user.service';
-import {User} from '../../interface/User';
 
 @Component({
   selector: 'app-add-song',
@@ -136,11 +133,7 @@ export class AddSongComponent implements OnInit {
         image: picture,
         fileMp3: music,
         style: value.style,
-        user: {
-          id: this.user.id
-        }
       };
-      console.log(song);
       this.songService.addSong(song).subscribe(() => {
       }, (e) => {
         this.createFail();
