@@ -26,7 +26,7 @@ const routes: Routes = [
         component: UpdateProfileComponent
       },
       {
-        path: 'update-password/:id',
+        path: 'update-password',
         component: UpdatePasswordComponent
       }
   ]

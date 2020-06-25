@@ -16,6 +16,11 @@ import { RegisterComponent } from './register/register.component';
 import { AdminComponent } from './admin/admin.component';
 import {SongModule} from './song/song.module';
 
+import { JwtModule } from '@auth0/angular-jwt';
+
+
+
+
 const routes: Routes = [
   {
     path: 'user',
@@ -63,10 +68,19 @@ const routes: Routes = [
     UserModule,
     BrowserAnimationsModule,
     SongModule,
+    HttpClientModule,
+    JwtModule.forRoot({
+      config: {
+        tokenGetter: () => {
+          return window.sessionStorage.getItem('AuthToken');
+        },
+        whitelistedDomains: ['localhost:8080'],
+      },
+    }),
   ],
   exports: [RouterModule],
 
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}

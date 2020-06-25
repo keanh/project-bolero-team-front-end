@@ -18,6 +18,8 @@ export class UpdatePasswordComponent implements OnInit {
   user: User;
   success: string;
   fail: string;
+  oldPassword: string;
+  newPassword: string;
   updatePasswordForm: FormGroup;
 
   Toast = Swal.mixin({
@@ -34,11 +36,12 @@ export class UpdatePasswordComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.updatePasswordForm = this.fb.group({
-      password: ['', [Validators.required, Validators.minLength(6)]],
-      confirmPassword: ['', Validators.required]
-    }, {
-      // validator: MustMatch('password', 'confirmPassword')
+  }
+  onSubmit() {
+    this.userService.updatePassword(this.oldPassword, this.newPassword).subscribe(() => {
+      console.log('success');
+      }, error => {
+      console.log(error);
     });
   }
 }
