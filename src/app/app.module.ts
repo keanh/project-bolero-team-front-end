@@ -15,7 +15,6 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { AdminComponent } from './admin/admin.component';
 import {SongModule} from './song/song.module';
-import {UserGuard} from './user.guard';
 
 const routes: Routes = [
   {

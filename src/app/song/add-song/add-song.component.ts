@@ -16,7 +16,8 @@ import Swal from '../../../assets/sweetalert2/sweetalert2.min.js';
 export class AddSongComponent implements OnInit {
   imageUrl: string;
   musicUrl: string;
-
+  user: User;
+  info: any;
   Toast = Swal.mixin({
     toast: true,
     position: 'top-end',
@@ -35,10 +36,17 @@ export class AddSongComponent implements OnInit {
               private styleService: StyleService,
               private fb: FormBuilder,
               private router: Router,
-              private storage: AngularFireStorage) {
+              private storage: AngularFireStorage,
+              private tokenService: TokenStorageService,
+              private userService: UserService) {
   }
 
   ngOnInit(): void {
+    this.getUserInfor();
+    console.log(this.info.username);
+    if (this.info.username !== ''){
+      this.getUserDetail();
+    }
     this.songForm = this.fb.group({
       name: ['', [Validators.required, Validators.minLength(1)]],
       lyrics: ['', [Validators.required, Validators.minLength(10)]],
@@ -46,6 +54,7 @@ export class AddSongComponent implements OnInit {
       author: ['', [Validators.required, Validators.minLength(1)]],
       image: ['', [Validators.required]],
       fileMp3: ['', [Validators.required]],
+      // user: [''],
       style: this.fb.group({
         id: ['', [Validators.required]],
       }),
@@ -140,7 +149,7 @@ export class AddSongComponent implements OnInit {
   createSuccess(){
     this.Toast.fire({
       icon: 'success',
-      title: 'Tạo    mới thành công'
+      title: 'Tạo mới thành công'
     });
   }
   createFail(){
@@ -150,5 +159,22 @@ export class AddSongComponent implements OnInit {
     });
   }
 
+  getUserInfor(){
+    this.info = {
+      token: this.tokenService.getToken(),
+      username: this.tokenService.getUsername(),
+      // authorities: this.token.getAuthorities()
+    };
+    // console.log(this.info);
+    // this.accessToken = this.token.getToken();
+  }
+  getUserDetail(){
+    this.userService.getUserByUserName(this.info.username).subscribe( data =>
+    {
+      this.user = data;
+      console.log(this.user);
+    }, error =>
+      console.log(error));
+  }
 }
 
