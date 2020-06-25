@@ -21,7 +21,7 @@ export class LatestSongComponent implements OnInit, OnChanges {
               public searchService: SearchService,
               private likeService: LikeService) {
   }
-   ngOnInit(): void {
+  ngOnInit(): void {
     this.songService.getAllSongs().subscribe(next => {
       this.songList = next;
       }, error => (this.songList = []));
@@ -35,8 +35,8 @@ export class LatestSongComponent implements OnInit, OnChanges {
   }
   getListSearch(){
     this.searchService.list.subscribe( data => {
-    this.songList = data;
-    console.log(this.songList); }, error => {
+      this.songList = data;
+      console.log(this.songList); }, error => {
       console.log(error);
     });
   }
@@ -53,7 +53,7 @@ export class LatestSongComponent implements OnInit, OnChanges {
     like.user = this.convertToUser(id_user);
     this.songService.likeSong(like,id_song).subscribe(next => {
       this.getAllLastSong();
-      this.getAllSong();
+      // this.getAllSong();
       console.log(id_song);
       console.log(next);
     }, (e) => {

@@ -1,6 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
 import { AppComponent } from './app.component';
 import {RouterModule, Routes} from '@angular/router';
 import {environment} from '../environments/environment';
@@ -10,12 +9,14 @@ import {AngularFireAuthModule} from '@angular/fire/auth';
 import {AngularFireStorageModule} from '@angular/fire/storage';
 import {HttpClientModule} from '@angular/common/http';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {UserModule} from "./user/user.module";
+import {UserModule} from './user/user.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
-import { HomeComponent } from './home/home.component';
 import { AdminComponent } from './admin/admin.component';
+import {SongModule} from './song/song.module';
+import {UserGuard} from './user.guard';
+
 const routes: Routes = [
   {
     path: 'user',
@@ -30,15 +31,11 @@ const routes: Routes = [
     loadChildren: () => import('./album/album.module').then(m => m.AlbumModule)
   },
   {
-    path: '',
-    component: HomeComponent
+    path: 'login',
+    component: LoginComponent,
   },
   {
-    path: 'auth/login',
-    component: LoginComponent
-  },
-  {
-    path: 'signup',
+    path: 'register',
     component: RegisterComponent
   },
   {
@@ -47,13 +44,11 @@ const routes: Routes = [
   }
 ];
 
-
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     RegisterComponent,
-    HomeComponent,
     AdminComponent
   ],
   imports: [
@@ -68,6 +63,7 @@ const routes: Routes = [
     FormsModule,
     UserModule,
     BrowserAnimationsModule,
+    SongModule,
   ],
   exports: [RouterModule],
 
