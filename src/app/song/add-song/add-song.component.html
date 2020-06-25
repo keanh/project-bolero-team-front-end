@@ -19,16 +19,17 @@
               <div class="col-lg-9">
                 <input class="form-control" id="name" type="text" formControlName="name">
                 <div *ngIf="songForm.get('name').invalid && songForm.get('name').touched" style="color: red">
-                  Name is required and min length is 1
+                  Name is required and min length is 1 and max length is 100
                 </div>
               </div>
+
             </div>
             <div class="form-row form-group">
               <label class="col-lg-3 text-md-right col-form-label" for="singer" >Singer </label>
               <div class="col-lg-9">
                 <input class="form-control" id="singer" type="text" formControlName="singer">
                 <div *ngIf="songForm.get('singer').invalid && songForm.get('singer').touched" style="color: red">
-                  Singer is required and min length is 5
+                  Singer is required and min length is 1
                 </div>
               </div>
 
@@ -38,7 +39,7 @@
               <div class="col-lg-9">
                 <input class="form-control" id="author" type="text" formControlName="author">
                 <div *ngIf="songForm.get('author').invalid && songForm.get('author').touched" style="color: red">
-                  Author is required and min length is 5
+                  Author is required and min length is 1
                 </div>
               </div>
 
@@ -66,11 +67,16 @@
             <div class="form-row form-group">
               <label class="col-lg-3 text-md-right col-form-label">Lyrics Song</label>
               <div class="col-lg-9">
+                <!--                <div class="custom-file">-->
+                <!--                  <input class="custom-file-input" id="image" type="file" formControlName="image">-->
+                <!--                  <label class="custom-file-label" for="image" ></label>-->
+                <!--                </div>-->
                 <ckeditor formControlName="lyrics"></ckeditor>
                 <div *ngIf="songForm.get('lyrics').invalid && songForm.get('lyrics').touched" style="color: red">
                   Lyrics is required and min length is 10
                 </div>
               </div>
+
             </div>
             <div class="form-row form-group" formGroupName="style">
               <label class="col-lg-3 text-md-right col-form-label">Style</label>
@@ -82,12 +88,10 @@
             <div class="row">
               <div class="col-lg-3"></div>
               <div class="col-lg-9 btn-inline">
-                <button class="btn btn-outline-secondary" type="button" routerLink="/">Cancel</button>
+                <button class="btn btn-outline-secondary" type="button" routerLink="/song">Cancel</button>
                 &nbsp;
-                <button class="btn btn-outline-success" [disabled]="!songForm.invalid" type="submit" >Save Song</button>
-<!--                <button type="button" class="btn btn-success swalDefaultSuccess" (click)="test()">-->
-<!--                  Launch Success Toast-->
-<!--                </button>-->
+                <button class="btn btn-outline-success"  type="submit" >Save Song</button>
+
               </div>
             </div>
           </form>

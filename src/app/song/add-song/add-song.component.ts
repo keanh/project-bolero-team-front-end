@@ -51,7 +51,7 @@ export class AddSongComponent implements OnInit {
       this.getUserDetail();
     }
     this.songForm = this.fb.group({
-      name: ['', [Validators.required, Validators.minLength(1)]],
+      name: ['', [Validators.required, Validators.minLength(1), Validators.maxLength(100)]],
       lyrics: ['', [Validators.required, Validators.minLength(10)]],
       singer: ['', [Validators.required, Validators.minLength(1)]],
       author: ['', [Validators.required, Validators.minLength(1)]],
@@ -136,20 +136,15 @@ export class AddSongComponent implements OnInit {
         image: picture,
         fileMp3: music,
         style: value.style,
-        user: {
-          id: this.user.id
-        }
       };
-      console.log(song);
       this.songService.addSong(song).subscribe(() => {
-        this.createSuccess();
       }, (e) => {
         this.createFail();
         console.log(e);
       });
       console.log(song);
-      await this.router.navigate(['song/add']);
-
+      await this.router.navigate(['/list']);
+      this.createSuccess();
       this.songForm.reset();
       // alert('create thành công');
     });
@@ -157,13 +152,13 @@ export class AddSongComponent implements OnInit {
   createSuccess(){
     this.Toast.fire({
       icon: 'success',
-      title: 'Tạo mới thành công'
+      title: ' create success '
     });
   }
   createFail(){
     this.Toast.fire({
-      icon: 'success',
-      title: 'Tạo mới that bai'
+      icon: 'error',
+      title: 'create fail'
     });
   }
 
@@ -184,5 +179,7 @@ export class AddSongComponent implements OnInit {
     }, error =>
       console.log(error));
   }
+
+
 }
 

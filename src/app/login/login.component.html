@@ -4,15 +4,12 @@
 <!--<ng-template #loggedOut>-->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
 <h2>Login</h2>
-  <div class="container">
-
+  <div class="container " >
 <!--    <div>Login</div>-->
   <div class="row col-lg-12" style="width: 900px">
     <form name="form" class="col-md-8 offset-md-6" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
       <div class="form-input">
         <i class="fa fa-user fa-2x" aria-hidden="true"></i>
-<!--        <label class="col-sm-12 col-form-label">Username</label>-->
-
         <input type="text" class="form-control" placeholder="Enter username" name="username" [(ngModel)]="form.username" #username="ngModel"
                required />
         <div *ngIf="f.submitted && username.invalid">
@@ -43,12 +40,7 @@
         <div  style="margin-left: 70px">
           <a href="signup" class="btn btn-success">Sign Up</a>
         </div>
-
       </div>
-
     </form>
-<!--    <hr />-->
   </div>
-<!--    <div><a href="signup" class="btn btn-success">Sign Up</a></div>-->
-  </div>
-<!--</ng-template>-->
+</div>
