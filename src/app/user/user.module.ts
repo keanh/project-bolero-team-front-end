@@ -6,11 +6,11 @@ import {RouterModule, Routes} from '@angular/router';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {WelcomeAreaComponent} from './welcome-area/welcome-area.component';
 import { NavbarComponent } from './navbar/navbar.component';
-import { HeaderComponent } from './header/header.component';
 import { CKEditorModule} from 'ckeditor4-angular';
 import { UpdatePasswordComponent } from './update-password/update-password.component';
 import { UserDetailsComponent } from './user-details/user-details.component';
 import {UpdateProfileComponent} from './update-profile/update-profile.component';
+import {SongModule} from '../song/song.module';
 
 const routes: Routes = [
   {
@@ -22,7 +22,7 @@ const routes: Routes = [
       component: UserDetailsComponent
       },
       {
-        path: 'update-profile/:id',
+        path: 'update-profile',
         component: UpdateProfileComponent
       },
       {
@@ -39,7 +39,6 @@ const routes: Routes = [
     LayoutComponent,
     WelcomeAreaComponent,
     NavbarComponent,
-    HeaderComponent,
     UpdatePasswordComponent,
     UserDetailsComponent,
     UpdateProfileComponent
@@ -49,7 +48,8 @@ const routes: Routes = [
     RouterModule.forChild(routes),
     FormsModule,
     ReactiveFormsModule,
-    CKEditorModule
+    CKEditorModule,
+    SongModule
   ]
 })
 export class UserModule { }

@@ -73,9 +73,10 @@ const routes: Routes = [
     WelcomeAreaComponent,
     MostViewsComponent
   ],
-  exports: [
-    WelcomeAreaComponent
-  ],
+    exports: [
+        WelcomeAreaComponent,
+        HeaderComponent
+    ],
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
