@@ -3,7 +3,6 @@ import {RouterModule, Routes} from '@angular/router';
 import {AddAlbumComponent} from './add-album/add-album.component';
 import {LayoutComponent} from './layout/layout.component';
 import {AddAblumSongComponent} from './add-ablum-song/add-ablum-song.component';
-import {FooterComponent} from './footer/footer.component';
 import {WelcomeAreaComponent} from './welcome-area/welcome-area.component';
 import {NavbarComponent} from './navbar/navbar.component';
 import {CommonModule} from '@angular/common';
@@ -46,7 +45,6 @@ const routes: Routes = [
 
 @NgModule({
   declarations: [
-    FooterComponent,
     LayoutComponent,
     WelcomeAreaComponent,
     NavbarComponent,

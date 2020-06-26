@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'welcome-area',
+  selector: 'a-welcome-area',
   templateUrl: './welcome-area.component.html',
   styleUrls: ['./welcome-area.component.css']
 })
