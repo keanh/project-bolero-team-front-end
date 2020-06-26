@@ -1,4 +1,4 @@
-<app-welcome-area></app-welcome-area>
+<welcome-area></welcome-area>
 <app-listen-bar></app-listen-bar>
 <!-- ***** Latest Episodes Area Start ***** -->
 <!--<div><a routerLink="../user/detail" (click)="getUserDetail()">{{info.username}}</a></div>-->
@@ -26,7 +26,7 @@
     <div class="row poca-portfolio">
       <!-- Single gallery Item -->
 
-      <div class="col-12 col-md-4 single_gallery_item entre wow fadeInUp" data-wow-delay="0.2s" *ngFor="let song of latestSong">
+      <div class="col-12 col-md-4 single_gallery_item " data-wow-delay="0.2s" *ngFor="let song of latestSong,index as index">
         <!-- Welcome Music Area -->
         <div class="poca-music-area style-2 d-flex align-items-center flex-wrap">
           <div class="poca-music-thumbnail">

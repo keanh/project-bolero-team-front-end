@@ -3,20 +3,20 @@
   <div class="container">
     <div class="row">
       <div class="col-12">
-        <div class="poca-music-area box-shadow d-flex align-items-center flex-wrap border" data-animation="fadeInUp" data-delay="900ms">
+        <div class="poca-music-area box-shadow d-flex align-items-center flex-wrap border" data-animation="fadeInUp" data-delay="900ms" *ngFor="let song of songLike">
           <div class="poca-music-thumbnail">
-            <img src="../../../assets/img/bg-img/4.jpg" alt="">
+            <img src="{{song.image}}" alt="">
           </div>
           <div class="poca-music-content">
-            <span class="music-published-date">December 9, 2018</span>
-            <h2>Episode 203 - The Last Blockbuster</h2>
+<!--            <span class="music-published-date">{{mostLikeSong.dateSubmitted}}</span>-->
+            <h2>{{song.name}}</h2>
             <div class="music-meta-data">
-              <p>By <a href="#" class="music-author">Admin</a> | <a href="#" class="music-catagory">Tutorials</a> | <a href="#" class="music-duration">00:02:56</a></p>
+              <p>By <a href="#" class="music-author">{{song.author}}</a> | <a href="#" class="music-catagory">{{song.style}}</a> | <a href="#" class="music-duration">{{song.dateSubmitted}}</a></p>
             </div>
             <!-- Music Player -->
             <div class="poca-music-player">
               <audio preload="auto" controls style="width: 787px; ">
-                <source src="../../../assets/audio/dummy-audio.mp3">
+                <source src="{{song.fileMp3}}">
               </audio>
             </div>
             <!-- Likes, Share & Download -->

@@ -7,6 +7,9 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {AlbumService} from "../../service/album.service";
 import Swal from '../../../assets/sweetalert2/sweetalert2.min.js';
 import {FormArray, FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
+import {User} from "../../interface/User";
+import {TokenStorageService} from "../../auth/token-storage.service";
+import {UserService} from "../../service/user.service";
 
 @Component({
   selector: 'app-add-ablum-song',
@@ -14,6 +17,8 @@ import {FormArray, FormBuilder, FormControl, FormGroup, Validators} from "@angul
   styleUrls: ['./add-ablum-song.component.css']
 })
 export class AddAblumSongComponent implements OnInit {
+  userCurrent: User;
+  info: any;
   value = '';
   songList: Song[] = [];
   albumList: Album[] = [];
@@ -32,9 +37,22 @@ export class AddAblumSongComponent implements OnInit {
               private router: Router,
               private fb: FormBuilder,
               private route: ActivatedRoute,
-              private albumService: AlbumService) { }
+              private albumService: AlbumService,
+              private tokenService: TokenStorageService,
+              private userService: UserService) { }
 
   ngOnInit(): void {
+    this.getUserInfor();
+    if (this.info.username !== ''){
+      this.getUserDetail()
+        .then(res => {
+          return this.albumService.getAllAlbumByUserId(res.id).toPromise()
+        })
+        .then(result => {
+          this.albumList = result;
+        })
+      ;
+    }
     this.songService.getAllSongs().subscribe( data => {
       this.songList = data;
     }, error => {
@@ -44,11 +62,11 @@ export class AddAblumSongComponent implements OnInit {
       id: ['', [Validators.required]],
     })
 
-    this.albumService.getAllAlbum().subscribe(data => {
-      this.albumList = data;
-    }, error => {
-      console.log(error);
-    });
+    // this.albumService.getAllAlbumByUserId(this.userCurrent.id).subscribe(data => {
+    //   this.albumList = data;
+    // }, error => {
+    //   console.log(error);
+    // });
   }
 
   async addSongToAlbum(){
@@ -97,5 +115,16 @@ export class AddAblumSongComponent implements OnInit {
       }
     }
     return array;
+  }
+
+  getUserInfor(){
+    this.info = {
+      token: this.tokenService.getToken(),
+      username: this.tokenService.getUsername(),
+    };
+  }
+
+  getUserDetail(){
+    return this.userService.getUserByUserName(this.info.username).toPromise();
   }
 }

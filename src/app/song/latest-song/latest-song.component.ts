@@ -20,6 +20,8 @@ export class LatestSongComponent implements OnInit, OnChanges {
   latestSong: Song[] = [];
   info: any;
   user: User;
+  likes: number = 0;
+  // userId: number[] = [];
   constructor(private songService: SongService, public searchService: SearchService,
               private tokenService: TokenStorageService,
               private userService: UserService,
@@ -31,17 +33,11 @@ export class LatestSongComponent implements OnInit, OnChanges {
     if (this.info.username !== ''){
       this.getUserDetail();
     }
-    // this.songService.getAllSongs().subscribe(next => {
-    //   this.songList = next;
-    //   }, error => (this.songList = []));
     this.getListSearch();
     this.songService.getAllSongsLatest().subscribe(next => {
       this.latestSong = next;
     }, error => (this.latestSong = []));
     this.getUserInfor();
-    // this.likeService.getLikes().subscribe(next => {
-    //   this.likeList = next;
-    // }, error => (this.likeList = []));
   }
   getListSearch(){
     this.searchService.list.subscribe( data => {
@@ -70,16 +66,15 @@ export class LatestSongComponent implements OnInit, OnChanges {
     console.log(error));
   }
   onLike( idUser: number, idSong: number){
-    console.log(idUser);
+    // console.log(idUser);
     const like = {
       user: idUser
     };
-    console.log(like);
+    // console.log(like);
     like.user = this.convertToUser(idUser);
     this.songService.likeSong(like, idSong).subscribe(next => {
       this.getAllLastSong();
-      // this.getAllSong();
-      console.log(idSong);
+      // console.log(idSong);
       console.log(next);
     }, (e) => {
       console.log(e);
@@ -99,4 +94,30 @@ export class LatestSongComponent implements OnInit, OnChanges {
     };
     return user;
   }
+
+  // likeClick(idUser: number, idSong: number,index: number){
+  //   console.log(this.latestSong[index]);
+  //   let song: Song = this.latestSong[index];
+  //   if (this.userId.length > 0){
+  //     this.userId.splice(0,this.userId.length);
+  //   }
+  //   console.log(this.userId);
+  //   for (let i=0; i < song.likes.length ; i++){
+  //     // if (song.likes[i].id == idUser){
+  //     //   this.likes = song.likes.length --;
+  //     //   this.onLike(idUser,idSong);
+  //     // }else {
+  //     //   this.likes = this.songList[index].likes.length ++;
+  //     //   this.onLike(idUser,idSong);
+  //     // }
+  //     this.userId.push(song.likes[i].id);
+  //   }
+  //   if (this.userId.includes(idUser)){
+  //     this.likes = song.likes.length --;
+  //     this.onLike(idUser,idSong);
+  //   }else {
+  //     this.likes = song.likes.length ++;
+  //     this.onLike(idUser,idSong);
+  //   }
+  // }
 }

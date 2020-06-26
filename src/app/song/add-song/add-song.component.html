@@ -1,5 +1,5 @@
 
-<app-welcome-area></app-welcome-area>
+<welcome-area></welcome-area>
 <div class="container" style="text-align: center; font-size: 40px;">
      <b>
   ADD NEW SONG
@@ -22,6 +22,7 @@
                   Name is required and min length is 1 and max length is 100
                 </div>
               </div>
+
             </div>
             <div class="form-row form-group">
               <label class="col-lg-3 text-md-right col-form-label" for="singer" >Singer </label>
@@ -76,8 +77,7 @@
               <div class="col-lg-9 btn-inline">
                 <button class="btn btn-outline-secondary" type="button" routerLink="/song">Cancel</button>
                 &nbsp;
-<!--                [disabled]="!songForm.invalid"-->
-                <button class="btn btn-outline-success"type="submit" >Save Song</button>
+                <button class="btn btn-outline-success" [disabled]="songForm.invalid" type="submit" >Save Song</button>
               </div>
             </div>
           </form>
@@ -86,8 +86,11 @@
     </div>
   </div>
 </div>
+
 <script src="../../../assets/sweetalert2/sweetalert2.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/promise-polyfill@8/dist/polyfill.js"></script>
+
+
 
 
 

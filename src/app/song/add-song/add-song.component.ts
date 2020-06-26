@@ -46,7 +46,7 @@ export class AddSongComponent implements OnInit {
 
   ngOnInit(): void {
     this.getUserInfor();
-    console.log(this.info.username);
+    // console.log(this.info.username);
     if (this.info.username !== ''){
       this.getUserDetail();
     }
@@ -55,8 +55,8 @@ export class AddSongComponent implements OnInit {
       lyrics: ['', [Validators.required, Validators.minLength(10)]],
       singer: ['', [Validators.required, Validators.minLength(1)]],
       author: ['', [Validators.required, Validators.minLength(1)]],
-      image: ['', [Validators.required]],
-      fileMp3: ['', [Validators.required]],
+      // image: ['', [Validators.required]],
+      // fileMp3: ['', [Validators.required]],
       // user: [''],
       style: this.fb.group({
         id: ['', [Validators.required]],
