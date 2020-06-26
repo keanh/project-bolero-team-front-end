@@ -29,9 +29,9 @@
               <label class="col-lg-2 text-md-right col-form-label" for="lastName" >Last Name </label>
               <div class="col-lg-9">
                 <input class="form-control" id="lastName" type="text" formControlName="lastName">
-                <div *ngIf="profileForm.get('lastName').invalid && profileForm.get('lastName').touched" style="color: red">
-                  Last Name is required and min length is 1
-                </div>
+<!--                <div *ngIf="profileForm.get('lastName').invalid && profileForm.get('lastName').touched" style="color: red">-->
+<!--                  Last Name is required and min length is 1-->
+<!--                </div>-->
               </div>
             </div>
 
@@ -63,6 +63,12 @@
                 &nbsp;
                 <button class="btn btn-outline-success" type="submit" >Update user</button>
               </div>
+            </div>
+            <div *ngIf="isUpdate" style="color: green">
+              successfully!
+            </div>
+            <div *ngIf="isUpdateFailed" style="color: red">
+              update failed. Please try again!
             </div>
           </form>
         </div>

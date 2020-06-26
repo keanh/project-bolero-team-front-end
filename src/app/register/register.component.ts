@@ -27,7 +27,7 @@ export class RegisterComponent implements OnInit {
 
   onSubmit() {
     this.signupInfo = new SignUpInfo(
-      this.form.name,
+      // this.form.name,
       this.form.username,
       this.form.email,
       this.form.password,
@@ -35,7 +35,6 @@ export class RegisterComponent implements OnInit {
       this.form.lastName,
       this.form.phoneNumber
     );
-
     this.authService.signUp(this.signupInfo).subscribe(
       data => {
         console.log(data);
@@ -44,7 +43,7 @@ export class RegisterComponent implements OnInit {
         // this.router.navigate(['/song']);
       }, error => {
         console.log(error);
-        this.errorMessage = error.error.message;
+        // this.errorMessage = error.error.message;
         this.isSignUpFailed = true;
         this.isSignedUp = false;
       }

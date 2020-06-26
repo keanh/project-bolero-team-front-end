@@ -5,6 +5,7 @@ import Swal from 'sweetalert2';
 import {AngularFireStorage} from '@angular/fire/storage';
 import {ActivatedRoute, Router} from '@angular/router';
 import {User} from '../../interface/User';
+import {TokenStorageService} from '../../auth/token-storage.service';
 
 
 @Component({
@@ -18,32 +19,35 @@ export class UpdateProfileComponent implements OnInit {
   success: string;
   fail: string;
   profileForm: FormGroup;
-
+  username: string;
+  isUpdate = false;
+  isUpdateFailed = false;
   Toast = Swal.mixin({
     toast: true,
     position: 'top-end',
     showConfirmButton: false,
     timer: 3000
   });
-
   constructor(private userService: UserService,
               private storage: AngularFireStorage,
               private route: ActivatedRoute,
               private routes: Router,
-              private fb: FormBuilder) {}
-
+              private fb: FormBuilder,
+              private token: TokenStorageService) {}
   ngOnInit(): void {
-
+    this.username = this.token.getUsername();
     this.profileForm = this.fb.group({
-      firstName: ['', [Validators.required, Validators.minLength(1)]],
-      lastName: ['', [Validators.required, Validators.minLength(5)]],
-      phoneNumber: ['', [Validators.required]],
-      email: ['', [Validators.required]],
-
+      // , [Validators.required, Validators.minLength(5)]
+      // , [Validators.required, Validators.minLength(5)]
+      // , [Validators.required]
+      // , [Validators.required]
+      firstName: [''],
+      lastName: [''],
+      phoneNumber: [''],
+      email: [''],
     });
-
-    const id = +this.route.snapshot.paramMap.get('id');
-    this.userService.getUserById(id)
+    // const id = +this.route.snapshot.paramMap.get('id');
+    this.userService.getUserByUserName(this.username)
       .subscribe(result => {
         this.user = result;
         this.profileForm.patchValue(this.user);
@@ -51,7 +55,6 @@ export class UpdateProfileComponent implements OnInit {
       }, error => {
         this.fail = 'Edit user fail';
       });
-
   }
   updateUser(){
     if (this.profileForm.valid) {
@@ -62,10 +65,15 @@ export class UpdateProfileComponent implements OnInit {
       };
       this.userService.updateUser(data)
         .subscribe(result => {
-          this.routes.navigate(['list']);
+          // console.log('success');
+          // this.routes.navigate(['list']);
           this.updateSuccess();
+          this.isUpdate  = true;
+          this.isUpdateFailed = false;
         }, error => {
           console.log(error);
+          this.isUpdate  = false;
+          this.isUpdateFailed = true;
         });
     }
   }
@@ -75,5 +83,4 @@ export class UpdateProfileComponent implements OnInit {
       title: 'Cập nhật thành công'
     });
   }
-
 }

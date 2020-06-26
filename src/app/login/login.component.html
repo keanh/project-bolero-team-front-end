@@ -51,8 +51,10 @@
             <div class="form-group">
               <p class="text-center"><a routerLink="../song">Go home</a></p>
             </div>
+            <div *ngIf="isLoginFailed" style="color: red; padding-left: 55px; font-size: 17px">
+              <div>User name or Password is missing. Try again!</div>
+            </div>
           </form>
-
         </div>
       </div>
     </div>
