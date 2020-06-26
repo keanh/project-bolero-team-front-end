@@ -81,7 +81,8 @@ const routes: Routes = [
   ],
     exports: [
         WelcomeAreaComponent,
-        HeaderComponent
+        HeaderComponent,
+        FooterComponent
     ],
   imports: [
     CommonModule,

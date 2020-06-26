@@ -7,7 +7,7 @@ import {StyleService} from '../../service/style.service';
 import {User} from '../../interface/User';
 import Swal from 'sweetalert2';
 import {UserService} from '../../service/user.service';
-import {TokenStorageService} from "../../auth/token-storage.service";
+import {TokenStorageService} from '../../auth/token-storage.service';
 
 @Component({
   selector: 'app-update-password',

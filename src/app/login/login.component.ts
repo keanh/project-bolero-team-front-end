@@ -25,7 +25,7 @@ export class LoginComponent implements OnInit {
     toast: true,
     position: 'top-end',
     showConfirmButton: false,
-    timer: 5000
+    timer: 3000
   });
 
 
