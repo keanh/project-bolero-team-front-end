@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import Swal from '../../../assets/sweetalert2/sweetalert2.min.js';
-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {AlbumService} from "../../service/album.service";
-import {Album} from "../../interface/Album";
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {AlbumService} from '../../service/album.service';
+import {Album} from '../../interface/Album';
 @Component({
   selector: 'app-add-album',
   templateUrl: './add-album.component.html',
@@ -36,7 +36,7 @@ export class AddAlbumComponent implements OnInit {
     const album: Album = {
       name: value.name,
       user_id: id,
-    }
+    };
     this.albumServie.createAlbum(album).subscribe(() => {
     }, (e) => {
       console.log(e);

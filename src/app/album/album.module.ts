@@ -6,13 +6,13 @@ import {AddAblumSongComponent} from './add-ablum-song/add-ablum-song.component';
 import {FooterComponent} from './footer/footer.component';
 import {WelcomeAreaComponent} from './welcome-area/welcome-area.component';
 import {NavbarComponent} from './navbar/navbar.component';
-import {HeaderComponent} from './header/header.component';
 import {CommonModule} from '@angular/common';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {CKEditorModule} from 'ckeditor4-angular';
 import {UserGuard} from '../user.guard';
-
 import { AllAlbumComponent } from './all-album/all-album.component';
+import {SongModule} from '../song/song.module';
+import {HeaderComponent} from './header/header.component';
 
 const routes: Routes = [
   {
@@ -53,7 +53,8 @@ const routes: Routes = [
     RouterModule.forChild(routes),
     FormsModule,
     ReactiveFormsModule,
-    CKEditorModule
+    CKEditorModule,
+    SongModule
   ]
 })
 export class AlbumModule { }

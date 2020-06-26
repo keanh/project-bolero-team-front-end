@@ -4,7 +4,7 @@ import {Song} from '../../interface/Song';
 import {SongService} from '../../service/song.service';
 
 @Component({
-  selector: 'app-header',
+  selector: 'header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']
 })

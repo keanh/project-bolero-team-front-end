@@ -1,0 +1,7 @@
+.an-di{
+  /*display: none;*/
+  visibility: hidden;
+}
+.shows{
+  visibility: collapse;
+}

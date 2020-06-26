@@ -8,10 +8,10 @@ import {Observable} from "rxjs";
 })
 export class AlbumService {
   private readonly API_URL_CREATE_ALBUM = 'http://localhost:8080/album/create';
-  private readonly API_URL_ALBUM= 'http://localhost:8080/album';
+  private readonly API_URL_ALBUM = 'http://localhost:8080/album';
   constructor(private httpClient: HttpClient) { }
 
-  createAlbum(album :Album): Observable<Album>{
+  createAlbum(album: Album): Observable<Album>{
     return this.httpClient.post<Album>(this.API_URL_CREATE_ALBUM, album);
   }
 

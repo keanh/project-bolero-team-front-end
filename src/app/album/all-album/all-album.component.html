@@ -1,1 +1,47 @@
-<p>all-album works!</p>
+
+<app-listen-bar></app-listen-bar>
+<!-- ***** Latest Episodes Area Start ***** -->
+<div>{{value}}</div>
+<section class="poca-latest-epiosodes section-padding-80">
+  <div class="container">
+    <div class="row">
+    </div>
+  </div>
+  <!--   Projects Menu -->
+  <div class="container">
+    <div class="poca-projects-menu mb-30 ">
+      <div class="text-center portfolio-menu">
+        <button class="btn" data-filter=".media"><a [routerLink]="['/song']">All</a></button>
+        <button class="btn"  data-filter=".media"><a [routerLink]="['/latest-song']">Latest</a></button>
+        <button class="btn" data-filter=".media"><a [routerLink]="['/song/most-views-song']">Hot Hit</a></button>
+        <button class="btn" data-filter=".tech"><a [routerLink]="['/album']">All Album</a></button>
+        <button class="btn" data-filter=".tutor">Tutorials</button>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="row">
+      <!-- Section Heading -->
+      <div class="col-12">
+        <div class="section-heading text-center">
+          <h2> Album</h2>
+          <div class="line"></div>All Album
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="row poca-portfolio">
+      <div class="col-12 col-md-4 single_gallery_item entre wow fadeInUp" data-wow-delay="0.2s" *ngFor="let album of albumList">
+        <!-- Welcome Music Area -->
+        <div class="poca-music-area style-2 d-flex align-items-center flex-wrap">
+          <div class="poca-music-content text-center">
+            <h3 class="title" style="font-size: 18px">
+                {{album.name}}
+            </h3>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

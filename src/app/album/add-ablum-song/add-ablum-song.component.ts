@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import {Song} from "../../interface/Song";
-import {Album} from "../../interface/Album";
-import {SongService} from "../../service/song.service";
-import {SearchService} from "../../service/search.service";
-import {ActivatedRoute, Router} from "@angular/router";
-import {AlbumService} from "../../service/album.service";
+import {Song} from '../../interface/Song';
+import {Album} from '../../interface/Album';
+import {SongService} from '../../service/song.service';
+import {SearchService} from '../../service/search.service';
+import {ActivatedRoute, Router} from '@angular/router';
+import {AlbumService} from '../../service/album.service';
 import Swal from '../../../assets/sweetalert2/sweetalert2.min.js';
-import {FormArray, FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
+import {FormArray, FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-add-ablum-song',
@@ -17,7 +17,7 @@ export class AddAblumSongComponent implements OnInit {
   value = '';
   songList: Song[] = [];
   albumList: Album[] = [];
-  idSong: any[] =[];
+  idSong: any[] = [];
   albumForm: FormGroup;
 
   Toast = Swal.mixin({
@@ -42,7 +42,7 @@ export class AddAblumSongComponent implements OnInit {
     });
     this.albumForm = this.fb.group({
       id: ['', [Validators.required]],
-    })
+    });
 
     this.albumService.getAllAlbum().subscribe(data => {
       this.albumList = data;
@@ -56,11 +56,11 @@ export class AddAblumSongComponent implements OnInit {
     const album = {
       id: value.id,
       songList: []
-    }
-    album.songList= this.convertToSong(this.idSong);
+    };
+    album.songList = this.convertToSong(this.idSong);
     await this.albumService.createAlbum(album).subscribe(next => {
       console.log(album);
-      console.log(next)
+      console.log(next);
     }, (e) => {
       console.log(e);
     });
@@ -78,9 +78,9 @@ export class AddAblumSongComponent implements OnInit {
   changeSelection(id: number){
     console.log(id);
     if (this.idSong.includes(id)){
-      for (let i=0;i<this.idSong.length;i++){
+      for (let i = 0; i < this.idSong.length; i++){
         if (this.idSong[i] === id){
-          this.idSong.splice(i,1);
+          this.idSong.splice(i, 1);
         }
       }
       console.log(this.idSong);
@@ -91,10 +91,10 @@ export class AddAblumSongComponent implements OnInit {
   }
 
   convertToSong(array){
-    for(let i = 0; i < array.length; i++){
+    for (let i = 0; i < array.length; i++){
       array[i] = {
         id: array[i]
-      }
+      };
     }
     return array;
   }
