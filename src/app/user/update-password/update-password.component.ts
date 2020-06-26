@@ -7,6 +7,7 @@ import {StyleService} from '../../service/style.service';
 import {User} from '../../interface/User';
 import Swal from 'sweetalert2';
 import {UserService} from '../../service/user.service';
+import {TokenStorageService} from "../../auth/token-storage.service";
 
 @Component({
   selector: 'app-update-password',
@@ -23,7 +24,6 @@ export class UpdatePasswordComponent implements OnInit {
   isLoggedIn = false;
   isLoginFailed = false;
   updatePasswordForm: FormGroup;
-
   Toast = Swal.mixin({
     toast: true,
     position: 'top-end',
@@ -33,21 +33,42 @@ export class UpdatePasswordComponent implements OnInit {
 
   constructor(private userService: UserService,
               private route: ActivatedRoute,
-              private routes: Router,
-              private fb: FormBuilder) {
+              private router: Router,
+              private fb: FormBuilder,
+              private token: TokenStorageService) {
   }
-
   ngOnInit(): void {
   }
   onSubmit() {
     this.userService.updatePassword(this.oldPassword, this.newPassword).subscribe(() => {
       this.isLoggedIn = true;
       this.isLoginFailed  = false;
+      this.createSuccess();
+      // this.router.navigate(['']);
+      // window.location.reload();
+      this.logout();
       console.log('success');
       }, error => {
       this.isLoginFailed = true;
       this.isLoggedIn = false;
       console.log(error);
     });
+  }
+  createSuccess(){
+    this.Toast.fire({
+      icon: 'success',
+      title: ' create success '
+    });
+  }
+  createFail(){
+    this.Toast.fire({
+      icon: 'error',
+      title: 'create fail'
+    });
+  }
+  logout() {
+    this.token.signOut();
+    this.router.navigate(['/login']);
+    // window.location.reload();
   }
 }
