@@ -4,7 +4,7 @@ import {AuthService} from '../auth/auth.service';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import Swal from 'sweetalert2';
 import {UserService} from '../service/user.service';
-import {Router} from "@angular/router";
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -46,6 +46,7 @@ export class RegisterComponent implements OnInit {
         console.log(error);
         this.errorMessage = error.error.message;
         this.isSignUpFailed = true;
+        this.isSignedUp = false;
       }
     );
   }

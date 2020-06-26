@@ -5,7 +5,7 @@
       <!-- Classy Menu -->
       <nav class="classy-navbar justify-content-between" id="pocaNav">
         <!-- Logo -->
-        <a class="nav-brand" href="./song"><img src="../../../assets/img/core-img/C1219G1%20TEAM%20BORELO.png" alt="" style="width: 75px;height: 75px"></a>
+        <a class="nav-brand" href="./song"><img src="" alt="" style="width: 75px;height: 75px"></a>
         <!-- Navbar Toggler -->
         <div class="classy-navbar-toggler">
           <span class="navbarToggler"><span></span><span></span><span></span></span>
@@ -38,18 +38,25 @@
             <div class="top-social-area">
               <a routerLink="/login" *ngIf="isSignUpFailed"><i class="fa fa-user" aria-hidden="true"> &nbsp;Log in</i></a>
               <div *ngIf="isSignedUp" class="dropdown">
-                <button class="dropbtn">Hi, {{info.username}}</button>
+                <button class="dropbtn">Hi, users</button>
+
                 <div class="dropdown-content">
                   <a href="#">User profile</a>
-                  <a href="./song" class="fa fa-sign-out" *ngIf="isSignedUp" (click) = "logout()" >&nbsp;Log out</a>
+                  <a [routerLink]="['./song']" class="fa fa-sign-out" *ngIf="isSignedUp" (click) = "logout()" >&nbsp;Log out</a>
+                <button class="dropbtn" style="font-size: 13px">Hi, {{info.username}}</button>
+                <div class="dropdown-content" style="font-size: 13px">
+                  <a routerLink="../user/update-password">Update Password</a>
+                  <a routerLink="../user/update-profile">Update Profile</a>
+                  <a routerLink="./song" class="fa fa-sign-out" *ngIf="isSignedUp" (click) = "logout()" >&nbsp;Log out</a>
                 </div>
               </div>
-<!--              <button class="fa fa-sign-out" *ngIf="isSignedUp" (click) = "logout()" ></button>-->
+              <!--              <button class="fa fa-sign-out" *ngIf="isSignedUp" (click) = "logout()" ></button>-->
             </div>
           </div>
         </div>
+        </div>
       </nav>
-    </div>
+   </div>
   </div>
 </header>
 <!-- ***** Header Area End ***** -->

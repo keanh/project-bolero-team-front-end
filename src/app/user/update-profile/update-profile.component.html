@@ -1,5 +1,9 @@
-<app-welcome-area></app-welcome-area>
-
+<welcome-area></welcome-area>
+<div class="container" style="text-align: center; font-size: 40px;">
+  <b>
+    UPDATE PROFILE
+  </b>
+</div>
 <div class="container" style="text-align: center; font-size: 40px;">
 </div>
 <div class="main-container" style="margin-top: 100px">
@@ -10,8 +14,7 @@
           <h6 class="card-title mb-0" style="text-align: center">Edit User</h6>
         </div>
         <div class="card-body">
-          <form [formGroup] = "profileForm"  class="ng-untouched ng-pristine ng-valid" >
-<!--                (ngSubmit)="updateUser()"-->
+          <form [formGroup] = "profileForm"  class="ng-untouched ng-pristine ng-valid" (ngSubmit)="updateUser()">
 
             <div class="form-row form-group">
               <label class="col-lg-2 text-md-right col-form-label" for="firstName" >First Name</label>
@@ -31,45 +34,6 @@
                 </div>
               </div>
             </div>
-<!--            <div class="form-row form-group">-->
-<!--              <label class="col-lg-3 text-md-right col-form-label" for="birthday">birthday</label>-->
-<!--              <div class="col-lg-9">-->
-<!--                <input class="form-control" id="birthday" type="text" formControlName="birthday">-->
-<!--                <div *ngIf="profileForm.get('birthday').invalid && profileForm.get('birthday').touched" style="color: red">-->
-<!--                  Birthday is required and min length is 5-->
-<!--                </div>-->
-<!--              </div>-->
-
-<!--              <div class="form-row form-group">-->
-<!--                <label class="col-lg-3 text-md-right col-form-label" > Image</label>-->
-<!--                <div class="col-lg-9">-->
-<!--                  &lt;!&ndash;                <div class="custom-file">&ndash;&gt;-->
-<!--                  &lt;!&ndash;                  <input class="custom-file-input" id="image" type="file" formControlName="image">&ndash;&gt;-->
-<!--                  &lt;!&ndash;                  <label class="custom-file-label" for="image" ></label>&ndash;&gt;-->
-<!--                  &lt;!&ndash;                </div>&ndash;&gt;-->
-<!--                  <input type="file" (change)="onchangeImage($event)">-->
-<!--                </div>-->
-<!--              </div>-->
-<!--            </div>-->
-           <div class="form-row form-group">
-              <label class="col-lg-2 text-md-right col-form-label" for="address">Address</label>
-              <div class="col-lg-9">
-                <input class="form-control" id="address" type="text" formControlName="address">
-                <div *ngIf="profileForm.get('address').invalid && profileForm.get('address').touched" style="color: red">
-                  Address is required and min length is 2
-                </div>
-              </div>
-            </div>
-
-            <div class="form-row form-group">
-              <label class="col-lg-2 text-md-right col-form-label" for="phone">Phone</label>
-              <div class="col-lg-9">
-                <input class="form-control" id="phone" type="text" formControlName="phone">
-                <div *ngIf="profileForm.get('phone').invalid && profileForm.get('phone').touched" style="color: red">
-                  Phone is required and min length is 5
-                </div>
-              </div>
-            </div>
 
             <div class="form-row form-group">
               <label class="col-lg-2 text-md-right col-form-label" for="email">Email</label>
@@ -80,6 +44,18 @@
                 </div>
               </div>
             </div>
+
+
+            <div class="form-row form-group">
+              <label class="col-lg-2 text-md-right col-form-label" for="phoneNumber">Phone Number</label>
+              <div class="col-lg-9">
+                <input class="form-control" id="phoneNumber" type="text" formControlName="phoneNumber">
+                <div *ngIf="profileForm.get('phoneNumber').invalid && profileForm.get('phoneNumber').touched" style="color: red">
+                  Phone is required and min length is 5
+                </div>
+              </div>
+            </div>
+
             <div class="row">
               <div class="col-lg-3"></div>
               <div class="col-lg-9 btn-inline">
@@ -88,11 +64,9 @@
                 <button class="btn btn-outline-success" type="submit" >Update user</button>
               </div>
             </div>
-
           </form>
         </div>
       </div>
     </div>
   </div>
 </div>
-

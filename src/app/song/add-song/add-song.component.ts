@@ -7,9 +7,9 @@ import {AngularFireStorage} from '@angular/fire/storage';
 import {Style} from '../../interface/Style';
 import {StyleService} from '../../service/style.service';
 import Swal from '../../../assets/sweetalert2/sweetalert2.min.js';
-import {User} from "../../interface/User";
-import {TokenStorageService} from "../../auth/token-storage.service";
-import {UserService} from "../../service/user.service";
+import {User} from '../../interface/User';
+import {TokenStorageService} from '../../auth/token-storage.service';
+import {UserService} from '../../service/user.service';
 
 @Component({
   selector: 'app-add-song',
@@ -55,8 +55,9 @@ export class AddSongComponent implements OnInit {
       lyrics: ['', [Validators.required, Validators.minLength(10)]],
       singer: ['', [Validators.required, Validators.minLength(1)]],
       author: ['', [Validators.required, Validators.minLength(1)]],
-      // image: ['', [Validators.required]],
-      // fileMp3: ['', [Validators.required]],
+      image: ['', [Validators.required]],
+      fileMp3: ['', [Validators.required]],
+      // user: [''],
       style: this.fb.group({
         id: ['', [Validators.required]],
       }),
@@ -72,30 +73,14 @@ export class AddSongComponent implements OnInit {
 
   upload1() {
     const filePath = `databasezingmp3.appspot.com/${this.selectedImage.name.split('.').slice(0, -1).join('.')}_${new Date().getTime()}`;
-    // const fileRef = this.storage.ref(filePath);
     return this.storage.upload(filePath, this.selectedImage).snapshotChanges().toPromise();
-    //   .pipe(
-    //   finalize(() => {
-    //     fileRef.getDownloadURL().subscribe(url => {
-    //       this.imageUrl = url;
-    //       console.log(this.imageUrl);
-    //     });
-    //   })
-    // ).toPromise();
   }
 
   upload2() {
     const filePath2 = `databasezingmp3.appspot.com/${this.selectedMusic.name.split('.').slice(0, -1).join('.')}_${new Date().getTime()}`;
     const fileRef2 = this.storage.ref(filePath2);
     return this.storage.upload(filePath2, this.selectedMusic).snapshotChanges().toPromise();
-    //   .pipe(
-    //    finalize(() => {
-    //     fileRef2.getDownloadURL().subscribe(url => {
-    //       this.musicUrl = url;
-    //       console.log(this.musicUrl);
-    //     });
-    //   })
-    // ).toPromise();
+
   }
 
   onchangeImage(event) {
@@ -138,23 +123,23 @@ export class AddSongComponent implements OnInit {
         console.log(song);
         this.createSuccess();
         this.songForm.reset();
-      }, (e) => {
+        }, (e) => {
         this.createFail();
         console.log(e);
       });
-      await this.router.navigate(['song/add']);
+      await this.router.navigate(['/list']);
     });
   }
   createSuccess(){
     this.Toast.fire({
       icon: 'success',
-      title: ' Create Success '
+      title: ' create success '
     });
   }
   createFail(){
     this.Toast.fire({
       icon: 'error',
-      title: 'Create Fail'
+      title: 'create fail'
     });
   }
 
@@ -162,10 +147,7 @@ export class AddSongComponent implements OnInit {
     this.info = {
       token: this.tokenService.getToken(),
       username: this.tokenService.getUsername(),
-      // authorities: this.token.getAuthorities()
     };
-    // console.log(this.info);
-    // this.accessToken = this.token.getToken();
   }
   getUserDetail(){
     this.userService.getUserByUserName(this.info.username).subscribe( data =>
@@ -175,7 +157,5 @@ export class AddSongComponent implements OnInit {
     }, error =>
       console.log(error));
   }
-
-
 }
 
