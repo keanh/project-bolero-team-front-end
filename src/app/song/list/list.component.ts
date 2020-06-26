@@ -38,7 +38,6 @@ export class ListComponent implements OnInit {
               private userService: UserService) { }
 
   async ngOnInit() {
-    // const id = +this.route.snapshot.paramMap.get('id');
     this.getUserInfor();
     if (this.info.username !== ''){
       this.getUserDetail()
@@ -72,11 +71,17 @@ export class ListComponent implements OnInit {
     });
   }
   getAllSong(){
-    this.songService.getAllSongs().subscribe( data => {
-      this.songList = data;
-    }, error => {
-      console.log(error);
-    });
+    this.getUserInfor();
+    if (this.info.username !== ''){
+      this.getUserDetail()
+        .then(res => {
+          return this.songService.getAllSongByUserId(res.id).toPromise()
+        })
+        .then(result => {
+          this.songList = result;
+        })
+      ;
+    }
   }
 
   deleteSuccess(){
