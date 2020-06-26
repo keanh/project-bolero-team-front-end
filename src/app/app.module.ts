@@ -18,9 +18,6 @@ import {SongModule} from './song/song.module';
 
 import { JwtModule } from '@auth0/angular-jwt';
 
-
-
-
 const routes: Routes = [
   {
     path: 'user',

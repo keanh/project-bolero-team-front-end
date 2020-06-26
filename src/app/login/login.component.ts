@@ -4,6 +4,7 @@ import {AuthService} from '../auth/auth.service';
 import {TokenStorageService} from '../auth/token-storage.service';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {ActivatedRoute, Router} from '@angular/router';
+import Swal from '../../assets/sweetalert2/sweetalert2.min';
 
 @Component({
   selector: 'app-login',
@@ -19,6 +20,13 @@ export class LoginComponent implements OnInit {
   roles: string[] = [];
   private loginInfo: AuthLoginInfo;
   loginForm: FormGroup;
+  // login error
+  Toast = Swal.mixin({
+    toast: true,
+    position: 'top-end',
+    showConfirmButton: false,
+    timer: 3000
+  });
 
 
   constructor(private authService: AuthService,
@@ -45,7 +53,6 @@ export class LoginComponent implements OnInit {
         this.tokenStorage.saveToken(data.accessToken);
         this.tokenStorage.saveUsername(data.username);
         this.tokenStorage.saveAuthorities(data.authorities);
-
         this.isLoginFailed = false;
         this.isLoggedIn = true;
         this.roles = this.tokenStorage.getAuthorities();
@@ -55,11 +62,18 @@ export class LoginComponent implements OnInit {
         console.log(error);
         this.errorMessage = error.error.message;
         this.isLoginFailed = true;
+        this.createFail();
       }
     );
   }
-
   reloadPage() {
     window.location.reload();
   }
+  createFail(){
+    this.Toast.fire({
+      icon: 'error',
+      title: 'create fail'
+    });
+  }
+
 }

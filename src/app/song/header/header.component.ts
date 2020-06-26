@@ -5,6 +5,7 @@ import {SongService} from '../../service/song.service';
 import {TokenStorageService} from '../../auth/token-storage.service';
 import {User} from '../../interface/User';
 import {UserService} from '../../service/user.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -21,7 +22,8 @@ export class HeaderComponent implements OnInit {
   constructor(public searchService: SearchService,
               private songService: SongService,
               private tokenService: TokenStorageService,
-              private userService: UserService) { }
+              private userService: UserService,
+              private router: Router) { }
 
   ngOnInit(): void {
     this.getUserInfor();
@@ -56,6 +58,7 @@ export class HeaderComponent implements OnInit {
   logout() {
     this.tokenService.signOut();
     window.location.reload();
+    this.router.navigate(['/song']);
   }
   getUserInfor(){
     this.info = {

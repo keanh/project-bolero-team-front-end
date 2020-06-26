@@ -39,8 +39,10 @@ export class UpdatePasswordComponent implements OnInit {
   }
   onSubmit() {
     this.userService.updatePassword(this.oldPassword, this.newPassword).subscribe(() => {
+      alert('success');
       console.log('success');
       }, error => {
+      alert('fails');
       console.log(error);
     });
   }

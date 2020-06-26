@@ -82,9 +82,9 @@ import {Component, OnChanges, OnInit, SimpleChanges} from '@angular/core';
 import {Song} from '../../interface/Song';
 import {SongService} from '../../service/song.service';
 import {SearchService} from '../../service/search.service';
-import {UserService} from "../../service/user.service";
-import {User} from "../../interface/User";
-import {TokenStorageService} from "../../auth/token-storage.service";
+import {UserService} from '../../service/user.service';
+import {User} from '../../interface/User';
+import {TokenStorageService} from '../../auth/token-storage.service';
 @Component({
   selector: 'app-most-views',
   templateUrl: './most-views.component.html',

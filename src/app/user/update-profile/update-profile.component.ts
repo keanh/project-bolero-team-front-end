@@ -39,7 +39,6 @@ export class UpdateProfileComponent implements OnInit {
       lastName: ['', [Validators.required, Validators.minLength(5)]],
       phoneNumber: ['', [Validators.required]],
       email: ['', [Validators.required]],
-
     });
 
     const id = +this.route.snapshot.paramMap.get('id');
@@ -75,5 +74,4 @@ export class UpdateProfileComponent implements OnInit {
       title: 'Cập nhật thành công'
     });
   }
-
 }
