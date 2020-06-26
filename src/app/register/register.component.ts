@@ -35,7 +35,6 @@ export class RegisterComponent implements OnInit {
       this.form.lastName,
       this.form.phoneNumber
     );
-
     this.authService.signUp(this.signupInfo).subscribe(
       data => {
         console.log(data);

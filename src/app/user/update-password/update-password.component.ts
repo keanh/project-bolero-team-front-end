@@ -20,6 +20,8 @@ export class UpdatePasswordComponent implements OnInit {
   fail: string;
   oldPassword: string;
   newPassword: string;
+  isLoggedIn = false;
+  isLoginFailed = false;
   updatePasswordForm: FormGroup;
 
   Toast = Swal.mixin({
@@ -39,10 +41,12 @@ export class UpdatePasswordComponent implements OnInit {
   }
   onSubmit() {
     this.userService.updatePassword(this.oldPassword, this.newPassword).subscribe(() => {
-      alert('success');
+      this.isLoggedIn = true;
+      this.isLoginFailed  = false;
       console.log('success');
       }, error => {
-      alert('fails');
+      this.isLoginFailed = true;
+      this.isLoggedIn = false;
       console.log(error);
     });
   }
