@@ -12,8 +12,9 @@ export class LikeService {
   constructor(private httpClient: HttpClient) { }
 
   likes(like: Like): Observable<Like>{
-    return this.httpClient.post<Like>(this.API_URL_LIKE,like);
+    return this.httpClient.post<Like>(this.API_URL_LIKE, like);
   }
+  // tslint:disable-next-line:component-selector
 
   // getLikes(): Observable<Like[]>{
   //   return this.httpClient.get<Like[]>(this.API_URL_LIKE);
