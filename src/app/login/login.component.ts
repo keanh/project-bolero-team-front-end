@@ -25,7 +25,7 @@ export class LoginComponent implements OnInit {
     toast: true,
     position: 'top-end',
     showConfirmButton: false,
-    timer: 3000
+    timer: 5000
   });
 
 
@@ -61,6 +61,7 @@ export class LoginComponent implements OnInit {
       error => {
         console.log(error);
         this.errorMessage = error.error.message;
+        // this.errorMessage = 'User name or Password is missing. Try again!';
         this.isLoginFailed = true;
         this.createFail();
       }
@@ -72,7 +73,7 @@ export class LoginComponent implements OnInit {
   createFail(){
     this.Toast.fire({
       icon: 'error',
-      title: 'create fail'
+      title: 'Login failed'
     });
   }
 

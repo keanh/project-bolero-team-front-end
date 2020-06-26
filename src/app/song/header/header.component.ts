@@ -57,8 +57,8 @@ export class HeaderComponent implements OnInit {
   }
   logout() {
     this.tokenService.signOut();
+    this.router.navigate(['']);
     window.location.reload();
-    this.router.navigate(['/song']);
   }
   getUserInfor(){
     this.info = {
