@@ -2,17 +2,17 @@
 <!-- Editable table -->
 <div>{{value}}</div>
 <div class="card">
-  <h3 class="card-header text-center font-weight-bold text-uppercase py-4">Editable Song</h3>
+  <h3 class="card-header text-center font-weight-bold text-uppercase py-4">Add Song To Album</h3>
   <div class="card-body">
     <form [formGroup] = "albumForm"  class="ng-untouched ng-pristine ng-valid"  (ngSubmit)="addSongToAlbum()">
       <div id="table" class="table-editable">
-        <span class="table-add float-left mb-3 mr-2"><a routerLink="../add" class="text-success">Add new song here</a></span>
+        <span class="table-add float-left mb-3 mr-2"><a routerLink="/create-song" class="text-success"><i class="fa fa-plus-circle fa-3x"></i></a></span>
         <span class="table-add float-right mb-3 mr-2">
          <select formControlName="id" style="color: black;height: 30px" class="col-lg-9">
-            <option value="" [disabled]="true">Choose Album</option>
+            <option value="" [disabled]="true">Album</option>
             <option *ngFor="let album of albumList" value="{{album.id}}">{{album.name}}</option>
          </select>
-      </span>
+        </span>
 
         <table class="table table-bordered table-responsive-md table-striped text-center">
           <thead>
@@ -31,7 +31,7 @@
             <td class="pt-3-half" >{{list.singer}}</td>
             <td class="pt-3-half">{{list.author}}</td>
             <td>
-              <input type="checkbox" (change)="changeSelection(list.id)">
+              <input type="checkbox" (click)="changeSelection(list.id)">
             </td>
           </tr>
           <!-- This is our clonable table line -->

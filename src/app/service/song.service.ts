@@ -16,6 +16,7 @@ export class SongService {
   private readonly API_LATEST_SONG = 'http://localhost:8080/latest-song';
   private readonly API_ALL_SONG_BY_USER_ID = 'http://localhost:8080/song/mylist';
   private readonly API_MOST_VIEWS_SONG = 'http://localhost:8080/most-views-song';
+  private readonly API_MOST_LIKES_SONG = 'http://localhost:8080/most-like-song';
   private readonly API_LIKE_SONG = 'http://localhost:8080/like';
   constructor(private httpClient: HttpClient) {
   }
@@ -56,5 +57,9 @@ export class SongService {
 
   likeSong(like: Like, id: number): Observable<Like>{
     return this.httpClient.put<Like>(`${this.API_LIKE_SONG}/${id}`, like);
+  }
+
+  getSongHaveMostLike(): Observable<Song[]>{
+    return this.httpClient.get<Song[]>(this.API_MOST_LIKES_SONG);
   }
 }
