@@ -10,14 +10,22 @@ import {Like} from '../interface/like';
   providedIn: 'root'
 })
 export class SongService {
-  private readonly API_URL_CREATE_SONG = 'http://localhost:8080/song/create';
-  private readonly API_SONG = 'http://localhost:8080/song';
-  private readonly API_SONG_FIND = 'http://localhost:8080/findByName';
-  private readonly API_LATEST_SONG = 'http://localhost:8080/latest-song';
-  private readonly API_ALL_SONG_BY_USER_ID = 'http://localhost:8080/song/mylist';
-  private readonly API_MOST_VIEWS_SONG = 'http://localhost:8080/most-views-song';
-  private readonly API_MOST_LIKES_SONG = 'http://localhost:8080/most-like-song';
-  private readonly API_LIKE_SONG = 'http://localhost:8080/like';
+  private readonly API_URL_CREATE_SONG = 'https://musicpage.herokuapp.com/song/create';
+  private readonly API_SONG = 'https://musicpage.herokuapp.com/song';
+  private readonly API_SONG_FIND = 'https://musicpage.herokuapp.com/findByName';
+  private readonly API_LATEST_SONG = 'https://musicpage.herokuapp.com/latest-song';
+  private readonly API_ALL_SONG_BY_USER_ID = 'https://musicpage.herokuapp.com/song/mylist';
+  private readonly API_MOST_VIEWS_SONG = 'https://musicpage.herokuapp.com/most-views-song';
+  private readonly API_MOST_LIKES_SONG = 'https://musicpage.herokuapp.com/most-like-song';
+  private readonly API_LIKE_SONG = 'https://musicpage.herokuapp.com/like';
+  // private readonly API_URL_CREATE_SONG = 'http://localhost:8080/song/create';
+  // private readonly API_SONG = 'http://localhost:8080/song';
+  // private readonly API_SONG_FIND = 'http://localhost:8080/findByName';
+  // private readonly API_LATEST_SONG = 'http://localhost:8080/latest-song';
+  // private readonly API_ALL_SONG_BY_USER_ID = 'http://localhost:8080/song/mylist';
+  // private readonly API_MOST_VIEWS_SONG = 'http://localhost:8080/most-views-song';
+  // private readonly API_MOST_LIKES_SONG = 'http://localhost:8080/most-like-song';
+  // private readonly API_LIKE_SONG = 'http://localhost:8080/like';
   constructor(private httpClient: HttpClient) {
   }
 

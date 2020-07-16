@@ -7,11 +7,16 @@ import {Observable} from "rxjs";
   providedIn: 'root'
 })
 export class AlbumService {
-  private readonly API_URL_CREATE_ALBUM = 'http://localhost:8080/album/create';
-  private readonly API_URL_ALBUM= 'http://localhost:8080/album';
-  private readonly API_URL_ALBUM_BY_ID= 'http://localhost:8080/album';
-  private readonly API_URL_DELETE_ALBUM_BY_ID= 'http://localhost:8080/album';
-  private readonly API_URL_ALBUMS_BY_USER_ID= 'http://localhost:8080/album/user';
+  // private readonly API_URL_CREATE_ALBUM = 'http://localhost:8080/album/create';
+  // private readonly API_URL_ALBUM= 'http://localhost:8080/album';
+  // private readonly API_URL_ALBUM_BY_ID= 'http://localhost:8080/album';
+  // private readonly API_URL_DELETE_ALBUM_BY_ID= 'http://localhost:8080/album';
+  // private readonly API_URL_ALBUMS_BY_USER_ID= 'http://localhost:8080/album/user';
+  private readonly API_URL_CREATE_ALBUM = 'https://musicpage.herokuapp.com/album/create';
+  private readonly API_URL_ALBUM= 'https://musicpage.herokuapp.com/album';
+  private readonly API_URL_ALBUM_BY_ID= 'https://musicpage.herokuapp.com/album';
+  private readonly API_URL_DELETE_ALBUM_BY_ID= 'https://musicpage.herokuapp.com/album';
+  private readonly API_URL_ALBUMS_BY_USER_ID= 'https://musicpage.herokuapp.com/album/user';
   constructor(private httpClient: HttpClient) { }
 
   createAlbum(album :Album): Observable<Album>{

@@ -8,7 +8,8 @@ import {Observable} from "rxjs";
 })
 export class LikeService {
   // like: Like[] = [];
-  private readonly API_URL_LIKE = 'http://localhost:8080/likes';
+  // private readonly API_URL_LIKE = 'http://localhost:8080/likes';
+  private readonly API_URL_LIKE = 'https://musicpage.herokuapp.com//likes';
   constructor(private httpClient: HttpClient) { }
 
   likes(like: Like): Observable<Like>{

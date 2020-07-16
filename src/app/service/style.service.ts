@@ -7,7 +7,7 @@ import {Style} from '../interface/Style';
   providedIn: 'root'
 })
 export class StyleService {
-  private readonly API_URL_STYLE_LIST = 'http://localhost:8080/style';
+  private readonly API_URL_STYLE_LIST = 'https://musicpage.herokuapp.com/style';
   constructor(private httpClient: HttpClient) {
   }
 

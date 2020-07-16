@@ -17,6 +17,7 @@ import {async} from "@angular/core/testing";
   styleUrls: ['./list.component.css']
 })
 export class ListComponent implements OnInit {
+  id:number;
   value = '';
   songList: Song[] = [];
   albumList: Album[] = [];
@@ -60,6 +61,11 @@ export class ListComponent implements OnInit {
     //   this.ngOnInit();
     // }
   }
+
+  saveIdSong(idSong: number){
+    this.id=idSong;
+  }
+
   delete(id: number) {
     this.songService.deleteSong(id).subscribe( () => {
       this.deleteSuccess();

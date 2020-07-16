@@ -41,10 +41,10 @@ export class UpdateProfileComponent implements OnInit {
       // , [Validators.required, Validators.minLength(5)]
       // , [Validators.required]
       // , [Validators.required]
-      firstName: [''],
-      lastName: [''],
-      phoneNumber: [''],
-      email: [''],
+      firstName: ['', [Validators.required, Validators.minLength(1)]],
+      lastName: ['', [Validators.required, Validators.minLength(1)]],
+      phoneNumber: ['', [Validators.required]],
+      email: ['', [Validators.required]],
     });
     // const id = +this.route.snapshot.paramMap.get('id');
     this.userService.getUserByUserName(this.username)

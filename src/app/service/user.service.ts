@@ -8,17 +8,20 @@ import {Song} from '../interface/Song';
   providedIn: 'root'
 })
 export class UserService {
-  private readonly API_URL_REGISTER = 'http://localhost:8080/register';
-  private readonly API_URL_UPDATE_PASSWORD = 'http://localhost:8080/api/auth/updateUser';
-
-  // private readonly API_URL_GET_USER = 'http://localhost:8080/user/' ;
-  private readonly API_URL_GET_USER_BY_NAME = 'http://localhost:8080/user' ;
   // private readonly API_URL_USER_INFO = 'http://localhost:8080/user' ;
-
-  private readonly API_URL_PROFILE = 'http://localhost:8080/user';
-  private readonly API__PROFILE = 'http://localhost:8080/user';
-
-  private userUrl = 'http://localhost:8080/api/test/user';
+  // private readonly API_URL_GET_USER = 'http://localhost:8080/user/' ;
+  private readonly API_URL_REGISTER = 'https://musicpage.herokuapp.com/register';
+  private readonly API_URL_UPDATE_PASSWORD = 'https://musicpage.herokuapp.com/api/auth/updateUser';
+  private readonly API_URL_GET_USER_BY_NAME = 'https://musicpage.herokuapp.com/user' ;
+  private readonly API_URL_PROFILE = 'https://musicpage.herokuapp.com/user';
+  private readonly API__PROFILE = 'https://musicpage.herokuapp.com/user';
+  private readonly userUrl = 'https://musicpage.herokuapp.com/api/test/user';
+  // private readonly API_URL_REGISTER = 'http://localhost:8080/register';
+  // private readonly API_URL_UPDATE_PASSWORD = 'http://localhost:8080/api/auth/updateUser';
+  // private readonly API_URL_GET_USER_BY_NAME = 'http://localhost:8080/user' ;
+  // private readonly API_URL_PROFILE = 'http://localhost:8080/user';
+  // private readonly API__PROFILE = 'http://localhost:8080/user';
+  // private readonly userUrl = 'http://localhost:8080/api/test/user';
   constructor(private httpClient: HttpClient) {
   }
 ss
