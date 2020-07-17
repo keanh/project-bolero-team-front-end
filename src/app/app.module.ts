@@ -48,6 +48,10 @@ const routes: Routes = [
   {
     path: 'style',
     component: StyleComponent
+  },
+  {
+    path: 'role',
+    component: RoleComponent
   }
 ];
 
