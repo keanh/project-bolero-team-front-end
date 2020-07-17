@@ -8,7 +8,7 @@
 
 <div class="card col-xl-8 col-md-10 mx-auto">
   <div class="card-body" style="color: red">
-    <div *ngIf="isSignedUp; else signupForm">
+    <div *ngIf="isSignedUp == true && isSignUpFailed == false">
       Your registration is successful. Please login!
     </div>
     <ng-template #signupForm>
