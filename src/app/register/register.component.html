@@ -72,10 +72,10 @@
 
           <div class="form-group">
             <button class="btn btn-primary">Register</button>
-            <div *ngIf="isSignedUp" class="alert alert-warning">
+            <div *ngIf="isSignUpFailed" class="alert alert-warning">
               Register Success! Please login<br/>
             </div>
-            <div *ngIf="isSignUpFailed" class="alert alert-warning">
+            <div *ngIf="isSignedUp" class="alert alert-warning">
               Failed!<br/>
             </div>
           </div>
