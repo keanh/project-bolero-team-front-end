@@ -18,6 +18,7 @@ import {SongModule} from './song/song.module';
 
 import { JwtModule } from '@auth0/angular-jwt';
 import { StyleComponent } from './style/style.component';
+import { RoleComponent } from './role/role.component';
 
 const routes: Routes = [
   {
@@ -56,7 +57,8 @@ const routes: Routes = [
     LoginComponent,
     RegisterComponent,
     AdminComponent,
-    StyleComponent
+    StyleComponent,
+    RoleComponent
   ],
   imports: [
     BrowserModule,

@@ -24,7 +24,7 @@ export class UserService {
   // private readonly userUrl = 'http://localhost:8080/api/test/user';
   constructor(private httpClient: HttpClient) {
   }
-ss
+
   getUserBoard(): Observable<string> {
     return this.httpClient.get(this.userUrl, {responseType: 'text'});
   }
