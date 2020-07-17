@@ -8,7 +8,7 @@
 
 <div class="card col-xl-8 col-md-10 mx-auto">
   <div class="card-body" style="color: red">
-    <div *ngIf="isSignedUp == true && isSignUpFailed == false">
+    <div *ngIf="isSignedUp && !isSignUpFailed">
       Your registration is successful. Please login!
     </div>
     <ng-template #signupForm>
@@ -72,11 +72,11 @@
 
           <div class="form-group">
             <button class="btn btn-primary">Register</button>
-            <div *ngIf="isSignUpFailed == false && isSignedUp == true" class="alert alert-warning">
+            <div *ngIf="!isSignUpFailed && isSignedUp" class="alert alert-warning">
               Register Success! Please login<br/>
             </div>
-            <div *ngIf="isSignedUp == false && isSignUpFailed == true" class="alert alert-warning">
-              failed!<br/>
+            <div *ngIf="!isSignedUp && isSignUpFailed" class="alert alert-warning">
+              Failed!<br/>
             </div>
           </div>
         </form>
